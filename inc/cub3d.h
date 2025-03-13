@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/13 21:01:22 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/13 22:33:33 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,23 +128,22 @@ typedef struct s_data {
 }		t_data;
 
 typedef struct s_ray {
-	float 	cos_angle;
+	float	cos_angle;
 	float	sin_angle;
 	float	cos_angle_diff;
-	int 	map_x;
+	int		map_x;
 	int		map_y;
 	float	dist_x;
 	float	dist_y;
 	float	hypo_x;
 	float	hypo_y;
-	int 	step_x;
+	int		step_x;
 	int		step_y;
 	float	distance;
 	float	corrected_distance;
 	int		line_length;
 	uint	wall_orient; 	//S N E W
 	float	wall_x; 		//exact hit point on the wall
-	
 }		t_ray;
 
 typedef struct s_texture {
@@ -154,13 +153,10 @@ typedef struct s_texture {
 	uint32_t		color;
 }		t_texture;
 
-
 typedef struct s_coord {
 	float	x;
 	float	y;
 }		t_coord;
-
-
 
 typedef struct s_mvt {
 	int		key;
@@ -206,21 +202,6 @@ void	clean_parse(t_data *data);
 /******************************************************************************/
 /******************************************************************************/
 
-// INBAR
-/* void	init_mlx(t_data *data);
-void	hoop_func(void *param);
-void	draw_minimap(t_data *data);
-void	draw_player(t_data *data);
-void	draw_fov(mlx_image_t *img, t_player *player);
-void	update_play(t_data *data);
-void	cast_rays(t_data *data);
-void	dda(t_data *data, t_ray *ray);
-void	escape(mlx_key_data_t keys, void *param);
-float	degree_to_rad(int nb);
-void	handle_error(char *error_message, t_data *data, int exit_status);
-void	close_window(void *param, int exit_status);
-float	degree_to_rad(int nb); */
-
 //HELENE
 void	init_mlx(t_data *data);
 void	hoop_func(void *param);
@@ -232,10 +213,8 @@ void	draw_miniray(t_data *data, t_ray *ray);
 void	draw_minimap(t_data *data);
 void	escape(mlx_key_data_t keys, void *param);
 float	degree_to_rad(int nb);
-
 bool	tile(t_data *data, float x, float y);
 float	degree_to_rad(int nb);
-
 void	handle_error(char *error_message, t_data *data);
 void	handle_error2(char *error_message, t_data *data, int exit_status);
 void	close_window(void *param);
@@ -251,8 +230,8 @@ void	close_window2(void *param, int exit_status);
 void	load_textures(t_data *data);
 uint32_t	sample_color(t_texture *texture);
 int		calc_texture_x(t_ray *ray, mlx_texture_t *texture);
-int 	use_default_clr(uint wall_orient);
-void    clean_textures(t_data *data);
+int		use_default_clr(uint wall_orient);
+void	clean_textures(t_data *data);
 
 /******************************************************************************/
 /******************************************************************************/
@@ -268,75 +247,9 @@ void	print_ray1(t_ray *ray);
 void	print_ray2(t_ray *ray);
 void	exit_err(t_data *data, char *msg, int exit_status);
 
-
 //BONUS
-void 	mouse_callback(double xpos, double ypos, void* param);
+void	mouse_callback(double xpos, double ypos, void *param);
 void	init_doors(t_data *data);
 void	doors_interaction(t_player *player, t_door *doors, int doors_nbr);
 
-
 #endif
-
-/******************************************************************************/
-/************************MLX STRUCT WE ARE USING*******************************/
-/******************************************************************************/
-
-/*
-// main MLX handle, which you'll use to initialize and manage your window.
-typedef struct mlx
-{
-	void*		window;  //The window itself.
-	void*		context;  //Abstracted opengl data.
-	int32_t		width;  //The width of the window.
-	int32_t		height; //The height of the window.
-	float		delta_time; // time diff bw the previous and the current frame. 
-}		mlx_t;
-
-// to create and manage textures for walls, sprites, and other game elements
-// To handle the main rendering buffer for your game
-// Any value can be modified except the width/height and context.
-typedef struct mlx_image
-{
-	const uint32_t	width; //The width of the image.
-	const uint32_t	height; //The height of the image.
-	uint8_t*		pixels; //The literal pixel data.
-	mlx_instance_t*	instances; //instance carrying the X, Y and Z location data.
-	size_t			count; //The element count of the instances array.
-	bool			enabled; //If true the image is drawn onto the screen, else it's not.
-	void*			context; //Abstracted OpenGL data.
-}		mlx_image_t;
-
-// might be useful for managing multiple instances of sprites / repeating elmts
-// An image instance can be summarized as just a simple x, y & z coordinate.
- * NOTE: To change the z value, use mlx_set_instance_depth!
-typedef struct mlx_instance
-{
-	int32_t	x; //The x location.
-	int32_t	y; //The y location.
-	int32_t	z; //The z depth, controls if the image is on the fore or background
-	bool	enabled; //If true, the instance is drawn, else it's not.
-}		mlx_instance_t;
-
-
-
-// Base object for disk loaded textures. contains rudementary information about the texture.
-typedef struct mlx_texture
-{
-	uint32_t	width; //The width of the texture.
-	uint32_t	height; //The height of the texture.
-	uint8_t		bytes_per_pixel; //The literal pixel data.
-	uint8_t*	pixels; //The amount of bytes in a pixel, always 4.
-}		mlx_texture_t;
-
-// Struct containing data regarding an XPM image.
-typedef struct xpm
-{
-	mlx_texture_t	texture; //The texture data of the XPM.
-	int32_t			color_count; //The amount of colors available.
-	int32_t			cpp; //The amount of characters per pixel.
-	char			mode; //The color mode, either (c)olor or (m)onochrome.
-}		xpm_t;
-
-
-********************************************************************************
-*******************************************************************************/
