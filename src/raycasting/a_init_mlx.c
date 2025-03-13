@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   a_init_mlx.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:53:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/11 16:35:32 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/13 21:00:08 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	init_mlx(t_data *data)
 	init_player(data);
 	init_doors(data);
 	data->mlx = mlx_init(WIDTH, HEIGHT, "CUB3D", true);
-	// mlx_get_monitor_size(0, &data->mlx->width, &data->mlx->height);
-	// mlx_set_window_size(data->mlx, data->mlx->width, data->mlx->height);
+	mlx_get_monitor_size(0, &data->mlx->width, &data->mlx->height);
+	mlx_set_window_size(data->mlx, data->mlx->width, data->mlx->height);
 	data->img = mlx_new_image(data->mlx, data->mlx->width, data->mlx->height);
 }
 

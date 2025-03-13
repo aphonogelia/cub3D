@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 11:56:14 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/11 12:08:49 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/13 20:03:19 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,23 @@ void		load_textures(t_data *data)
 	data->textures[EAST] = load_png(data, data->input.ea);
 	data->textures[DOOR_ORIENT] = load_png(data, "imgs/pillar.png");
 	// convert_textures(data);
+
+    // Print texture dimensions
+    const char *orientations[] = {"NORTH", "SOUTH", "WEST", "EAST", "DOOR"};
+    for (int i = 0; i < 5; i++)
+    {
+        if (data->textures[i])
+        {
+            printf("%s texture dimensions: %d x %d\n", 
+                   orientations[i], 
+                   data->textures[i]->width, 
+                   data->textures[i]->height);
+        }
+        else
+        {
+            printf("%s texture failed to load\n", orientations[i]);
+        }
+    }
 }
 
 //load png texture. if file is missing or corrupted will err msg and return null
@@ -64,3 +81,4 @@ static mlx_texture_t      *load_png(t_data *data, char *path)
     }
     return (texture);
 }
+

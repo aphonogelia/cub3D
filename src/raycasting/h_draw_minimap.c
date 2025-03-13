@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 16:43:52 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/11 17:10:05 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/13 21:12:19 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 void		draw_minimap(t_data *data);
 static void	draw_miniwalls(t_data *data);
-static void	draw_player(t_data *data);
+// static void	draw_player(t_data *data);
 static void	draw_tiles(mlx_image_t *img, t_coord coord, int size, uint32_t col);
 
 void	draw_minimap(t_data *data)
 {
 	draw_miniwalls(data);
-	draw_player(data);
+	// draw_player(data);
 }
-
+/* 
 static void	draw_player(t_data *data)
 {
 	t_coord		coord;
@@ -43,7 +43,7 @@ static void	draw_player(t_data *data)
 		}
 		i++;
 	}
-}
+} */
 
 static void	draw_miniwalls(t_data *data)
 {
