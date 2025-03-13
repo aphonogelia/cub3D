@@ -6,18 +6,17 @@
 #    By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/27 19:14:42 by htharrau          #+#    #+#              #
-#    Updated: 2025/03/12 19:13:51 by htharrau         ###   ########.fr        #
+#    Updated: 2025/03/13 22:08:01 by htharrau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= cub3d
+NAME		= cub3D
+NAME_BONUS	= cub3D_bonus
 
 SRCS_DIR	= src/
-PARSE_DIR	= $(SRCS_DIR)parsing/
-RAYCAST_DIR	= $(SRCS_DIR)raycasting/
-TEXTURE_DIR = $(SRCS_DIR)textures/
-BONUS_DIR 	= $(SRCS_DIR)bonus/
+BONUS_DIR	= src_bonus/
 OBJS_DIR	= obj/
+OBJS_BONUS_DIR	= obj_bonus/
 INCS_DIR	= inc/
 LIBFT_DIR	= libft/
 MLX_DIR		= MLX42/
@@ -25,20 +24,26 @@ MLX_DIR		= MLX42/
 LIBFT		= $(LIBFT_DIR)libft.a
 MLX			= $(MLX_DIR)build/libmlx42.a
 
-SRCS		= $(addprefix $(PARSE_DIR), parser.c  trim_right.c trim_left.c \
-				valid_map.c valid_chars.c parse_elements.c  utils_parse.c) \
-			  $(addprefix $(RAYCAST_DIR),  a_init_mlx.c  d_draw_ceiling_floor.c \
-			   g_draw_miniray.c  x_helper.c b_loop_hook.c   e_draw_walls.c  \
-			   h_draw_minimap.c  z_cleanup.c c_update_fov.c  f_cast_rays.c  \
-			   l_escape.c) \
-			  $(addprefix $(SRCS_DIR), init.c errors.c main.c debug.c) \
-			  $(addprefix $(TEXTURE_DIR), draft.c textures.c) \
-			  $(addprefix $(BONUS_DIR), mouse.c doors.c)
+SRCS		= $(addprefix $(SRCS_DIR), init.c errors.c main.c) \
+				$(addprefix $(SRCS_DIR)parsing/, parser.c trim_right.c trim_left.c \
+				valid_map.c valid_chars.c parse_elements.c utils_parse.c) \
+				$(addprefix $(SRCS_DIR)raycasting/, a_init_mlx.c d_draw_ceiling_floor.c \
+				x_helper.c b_loop_hook.c e_draw_walls.c z_cleanup.c c_update_fov.c \
+				f_cast_rays.c l_escape.c i_textures.c)
+	   
+SRCS_BONUS = $(addprefix $(BONUS_DIR), init.c errors.c main.c debug.c) \
+				$(addprefix $(BONUS_DIR)other/, doors.c mouse.c) \
+				$(addprefix $(BONUS_DIR)parsing/, parser.c trim_right.c trim_left.c \
+				valid_map.c valid_chars.c parse_elements.c utils_parse.c) \
+				$(addprefix $(BONUS_DIR)raycasting/, a_init_mlx.c d_draw_ceiling_floor.c \
+				x_helper.c b_loop_hook.c e_draw_walls.c z_cleanup.c c_update_fov.c \
+				f_cast_rays.c l_escape.c g_draw_miniray.c h_draw_minimap.c i_textures.c)
 
 OBJS		= $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
+OBJS_BONUS	= $(addprefix $(OBJS_BONUS_DIR), $(SRCS_BONUS:.c=.o))
 
 CC 			= cc
-CFLAGS 		= -Wall -Wextra -Werror -I$(MLX_DIR)/include -I$(LIBFT_DIR) -I$(INCS_DIR)
+CFLAGS 		= -Wall -Wextra -Werror -I$(MLX_DIR)/include -I$(LIBFT_DIR) -I$(INCS_DIR) -fsanitize=address
 LDFLAGS 	= -L$(LIBFT_DIR) -L$(MLX_DIR)/build -lft -lmlx42  -ldl -lglfw -pthread -lm
 ##LDFLAGS 	= -L$(LIBFT_DIR) -L$(MLX_DIR)/build  -ldl -lglfw -pthread -lm
 ##gcc main.c ... libmlx42.a -Iinclude -ldl -lglfw -pthread -lm
@@ -52,7 +57,17 @@ $(NAME):		$(OBJS) $(LIBFT) $(MLX)
 				$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LDFLAGS)
 				echo "$(MAGENTA)\n\n ██████╗██╗   ██╗██████╗ ██████╗ ██████╗\n██╔════╝██║   ██║██╔══██╗╚════██╗██╔══██╗\n██║     ██║   ██║██████╔╝ █████╔╝██║  ██║\n██║     ██║   ██║██╔══██╗ ╚═══██╗██║  ██║\n╚██████╗╚██████╔╝██████╔╝██████╔╝██████╔╝\n ╚═════╝ ╚═════╝ ╚═════╝ ╚═════╝ ╚═════╝ \n$(DEFAULT)"
 
+bonus:			$(NAME_BONUS)
+
+$(NAME_BONUS):	$(OBJS_BONUS) $(LIBFT) $(MLX)
+				$(CC) $(CFLAGS) $(OBJS_BONUS) -o $(NAME_BONUS) $(LDFLAGS)
+				echo "$(RED)\n\n ██████╗██╗   ██╗██████╗ ██████╗ ██████╗\n██╔════╝██║   ██║██╔══██╗╚════██╗██╔══██╗\n██║     ██║   ██║██████╔╝ █████╔╝██║  ██║\n██║     ██║   ██║██╔══██╗ ╚═══██╗██║  ██║\n╚██████╗╚██████╔╝██████╔╝██████╔╝██████╔╝\n ╚═════╝ ╚═════╝ ╚═════╝ ╚═════╝ ╚═════╝ \n$(DEFAULT)"
+
 $(OBJS_DIR)%.o: %.c
+				@mkdir -p $(dir $@)
+				$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJS_BONUS_DIR)%.o: %.c
 				@mkdir -p $(dir $@)
 				$(CC) $(CFLAGS) -c $< -o $@
 
@@ -66,27 +81,25 @@ $(MLX):
 				echo "$(MAGENTA)Minilibx created$(DEFAULT)"
 
 clean:
-				$(MAKE) -C $(LIBFT_DIR) clean
-				echo "$(YELLOW)Libft cleaned$(DEFAULT)"
+				rm -rf $(OBJS_DIR)
+				rm -rf $(OBJS_BONUS_DIR)
+				make --no-print-directory -C $(LIBFT_DIR) clean
 				rm -rf $(MLX_DIR)/build
-				echo "$(YELLOW)Minilibx cleaned$(DEFAULT)"
-				rm -rf $(OBJS_DIR)/
 				echo "$(YELLOW)Object files cleaned$(DEFAULT)"
 
 fclean:			clean
 				$(MAKE) -C $(LIBFT_DIR) fclean
 				rm -f $(NAME)
+				rm -f $(NAME_BONUS)
 				echo "$(ORANGE)Executable cleaned$(DEFAULT)"
 
 re:				fclean all
 
 
-debug:			CFLAGS += -fsanitize=address -fno-omit-frame-pointer -g
-debug:			re
-
 help:
 				@echo "Available targets:"
 				@echo "  all     : Build the project"
+				@echo "  bonus   : Build the bonus project"
 				@echo "  clean   : Remove object files"
 				@echo "  fclean  : Remove all generated files"
 				@echo "  re      : Rebuild the project"

@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:58:59 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/13 22:01:35 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/13 21:11:29 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,11 @@ static void	update_play_door(t_data *data)
 		data->player.x = updated.x;
 	if (tile(data, data->player.x, updated.y) == false)
 		data->player.y = updated.y;
+	if (mlx_is_key_down(data->mlx, MLX_KEY_E))
+	{
+		doors_interaction(&data->player, data->doors, data->input.doors_nbr);
+		data->flag_refresh = true;
+	}
 }
 
 // we move according to our angle

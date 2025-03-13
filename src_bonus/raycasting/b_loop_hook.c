@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 22:43:01 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/13 21:41:23 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/13 21:08:49 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	hoop_func(void *param)
 	{
 		draw_ceiling_floor(data);
 		draw_walls(data);
+		draw_minimap(data);
 		data->flag_refresh = false;
 	}
 }
