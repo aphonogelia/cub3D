@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 10:40:14 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/13 10:25:23 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/13 16:30:33 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,15 @@ void	draw_walls(t_data *data)
 // Wall orientation
 static void	wall_orient(t_data *data, t_ray *ray)
 {
-	if (ray->distance < 0)
+	if (ray->corrected_distance < 0)
 	{
 		ray->distance *= -1;
+		ray->corrected_distance *= -1;
 		if (ray->step_x > 0)
 			ray->wall_orient = EAST;
 		else 
 			ray->wall_orient = WEST;
-		ray->wall_x = data->player.y + ray->distance * ray->sin_angle;
+		ray->wall_x = data->player.y + ray->corrected_distance * ray->sin_angle;
 		ray->wall_x -= floor(ray->wall_x);
 	}
 	else
@@ -62,7 +63,7 @@ static void	wall_orient(t_data *data, t_ray *ray)
 			ray->wall_orient = SOUTH;
 		else 
 			ray->wall_orient = NORTH;
-		ray->wall_x = data->player.x + ray->distance * ray->cos_angle;
+		ray->wall_x = data->player.x + ray->corrected_distance * ray->cos_angle;
 		ray->wall_x -= floor(ray->wall_x);
 	}
 }
@@ -75,29 +76,29 @@ static void	draw_vertical(t_data *data, t_ray *ray, int u)
 	int			height;
 	int			ord_top;
 	int			ord_bottom;
-	// t_texture	texture;
+	t_texture	texture;
 
 	height = data->mlx->height;
-	ray->line_length = (int)(height / ray->distance * ray->cos_angle_diff * WALL_SIZE);
+	ray->line_length = (int)((height * WALL_SIZE) / ray->corrected_distance);
 	set_ords(&ord_top, &ord_bottom, data, ray);
-	// //get appropriate texture for wall orientation
-	// texture.png = data->textures[ray->wall_orient]; // can be NULL if no tex was uploaded unsucssesfully
-	// //calculate the x-coordinate on the texture
-	// texture.tex_x = calc_texture_x(ray, texture.png);
+	//get appropriate texture for wall orientation
+	texture.png = data->textures[ray->wall_orient]; // can be NULL if no tex was uploaded unsucssesfully
+	//calculate the x-coordinate on the texture
+	texture.tex_x = calc_texture_x(ray, texture.png);
 	v = ord_top;
 	while (v < ord_bottom)
 	{
-		// if (texture.png)
-		// {
-			//calculate y-coordinate on the texture
-			// texture.tex_y = (v - ord_top) * \
-			// texture.png->height / ray->line_length;
-			//sample the color from the texture
-			// texture.color = sample_color(&texture);
-			//apply the sampled color to the pixel
-		// 	mlx_put_pixel(data->img, u, v, texture.color);
-		// }
-		// else
+		if (texture.png)
+		{
+			// calculate y-coordinate on the texture
+			texture.tex_y = (v - ord_top) * \
+			texture.png->height / ray->line_length;
+			// sample the color from the texture
+			texture.color = sample_color(&texture);
+			// apply the sampled color to the pixel
+			mlx_put_pixel(data->img, u, v, texture.color);
+		}
+		else
 			mlx_put_pixel(data->img, u, v, use_default_clr(ray->wall_orient));
 		v++;
 	}

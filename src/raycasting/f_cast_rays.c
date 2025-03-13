@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:57:58 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/12 19:54:41 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/13 16:28:23 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	cast_rays(t_data *data, t_ray *ray)
 	calcul_dist_per_unit(ray);
 	init_position_dist(data, ray);
 	ray->distance = find_distance(data, ray);
+	ray->corrected_distance = ray->distance * TILE_SIZE * ray->cos_angle_diff;
 }
 
 // Direction x and y + Distance to the first tile 
