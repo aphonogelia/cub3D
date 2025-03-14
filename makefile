@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+         #
+#    By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/27 19:14:42 by htharrau          #+#    #+#              #
-#    Updated: 2025/03/13 22:08:01 by htharrau         ###   ########.fr        #
+#    Updated: 2025/03/14 14:17:47 by ilazar           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ MLX_DIR		= MLX42/
 LIBFT		= $(LIBFT_DIR)libft.a
 MLX			= $(MLX_DIR)build/libmlx42.a
 
-SRCS		= $(addprefix $(SRCS_DIR), init.c errors.c main.c) \
+SRCS		= $(addprefix $(SRCS_DIR), init.c errors.c main.c welcome.c) \
 				$(addprefix $(SRCS_DIR)parsing/, parser.c trim_right.c trim_left.c \
 				valid_map.c valid_chars.c parse_elements.c utils_parse.c) \
 				$(addprefix $(SRCS_DIR)raycasting/, a_init_mlx.c d_draw_ceiling_floor.c \

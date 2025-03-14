@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/13 22:33:33 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/14 14:35:20 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 # define HEIGHT 600
 
 # define OFFSET 10
-# define TILE_SIZE 8
+# define TILE_SIZE 4
 # define MVT_SPEED 1.2
 # define ROT_SPEED 0.05
 # define FOV 66
@@ -71,7 +71,8 @@
 # define WEST			1
 # define SOUTH			2
 # define EAST			3
-# define DOOR_ORIENT	4
+
+# define DOOR_TEXTURE	4
 
 //Wall default colors
 # define CLR_NORTH	TEAL
@@ -142,7 +143,7 @@ typedef struct s_ray {
 	float	distance;
 	float	corrected_distance;
 	int		line_length;
-	uint	wall_orient; 	//S N E W
+	int	wall_orient; 	//S N E W
 	float	wall_x; 		//exact hit point on the wall
 }		t_ray;
 
@@ -230,7 +231,7 @@ void	close_window2(void *param, int exit_status);
 void	load_textures(t_data *data);
 uint32_t	sample_color(t_texture *texture);
 int		calc_texture_x(t_ray *ray, mlx_texture_t *texture);
-int		use_default_clr(uint wall_orient);
+int		use_default_clr(int wall_orient);
 void	clean_textures(t_data *data);
 
 /******************************************************************************/
@@ -239,6 +240,7 @@ void	clean_textures(t_data *data);
 /******************************************************************************/
 /******************************************************************************/
 
+void    welcome_screen(t_data *data);
 void	print_player(t_player *player);
 void	print_input(t_data *data);
 void	print_data(t_data *data);

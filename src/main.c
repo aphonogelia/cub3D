@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 16:57:54 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/13 22:01:04 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/14 14:26:00 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@ int	main(int ac, char **av)
 	mlx_image_to_window((&data)->mlx, (&data)->img, 0, 0);
 	load_textures(&data);
 	// clean_textures(&data);
-	draw_ceiling_floor(&data);
-	draw_walls(&data);
+	// draw_ceiling_floor(&data);
+	// draw_walls(&data);
+	welcome_screen(&data);
 	mlx_close_hook((&data)->mlx, &close_window, &data);
 	mlx_loop_hook((&data)->mlx, &hoop_func, &data);
 	mlx_key_hook((&data)->mlx, &escape, &data);

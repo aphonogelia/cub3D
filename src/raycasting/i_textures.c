@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   textures.c                                         :+:      :+:    :+:   */
+/*   i_textures.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 15:43:48 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/12 19:40:54 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/14 14:32:51 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ uint32_t	sample_color(t_texture *texture)
 }
 
 //in case of failure to load a texture use default colors
-int	use_default_clr(uint wall_orient)
+int	use_default_clr(int wall_orient)
 {
 	int	clr;
 
@@ -58,13 +58,17 @@ int	use_default_clr(uint wall_orient)
 		clr = CLR_NORTH;
 	if (wall_orient == SOUTH)
 		clr = CLR_SOUTH;
-	if (wall_orient == DOOR_ORIENT)
-		clr = CLR_DOOR;
 	return (clr);
 }
 
 void	clean_textures(t_data *data)
 {
-	if (data->textures)
-		free(data->textures);
+	int	i;
+
+	i = -1;
+	while (++i < 4)
+	{
+		if (data->textures[i])
+			free(data->textures[i]);
+	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 11:56:14 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/13 21:44:19 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/14 14:36:08 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,13 @@ void	init_data(t_data *data)
 
 void	load_textures(t_data *data)
 {
-	data->textures = (mlx_texture_t **) malloc(sizeof(mlx_texture_t *) * 5);
+	data->textures = (mlx_texture_t **) malloc(sizeof(mlx_texture_t *) * 4);
 	if (!data->textures)
 		exit_err(data, "Malloc", MALLOC_ERR);
 	data->textures[NORTH] = load_png(data, data->input.no);
 	data->textures[SOUTH] = load_png(data, data->input.so);
 	data->textures[WEST] = load_png(data, data->input.we);
 	data->textures[EAST] = load_png(data, data->input.ea);
-	data->textures[DOOR_ORIENT] = load_png(data, "imgs/pillar.png");
 }
 
 //load png texture. if file is missing or corrupted will err msg and return null
