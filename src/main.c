@@ -3,15 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 16:57:54 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/14 14:26:00 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/14 15:28:17 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
+void resize_hook(int32_t width, int32_t height, void* param)
+{
+	t_data	*data;
+
+	(void)width;
+	(void)height;
+	data = (t_data *)param;
+	data->flag_refresh = true;
+}
 // mlx_set_setting(MLX_STRETCH_IMAGE, true);
 int	main(int ac, char **av)
 {
@@ -32,11 +41,12 @@ int	main(int ac, char **av)
 	// draw_ceiling_floor(&data);
 	// draw_walls(&data);
 	welcome_screen(&data);
-	mlx_close_hook((&data)->mlx, &close_window, &data);
-	mlx_loop_hook((&data)->mlx, &hoop_func, &data);
-	mlx_key_hook((&data)->mlx, &escape, &data);
-	mlx_loop((&data)->mlx);
-	mlx_terminate((&data)->mlx);
+	mlx_resize_hook(data.mlx, &resize_hook, &data);
+	mlx_close_hook(data.mlx, &close_window, &data);
+	mlx_loop_hook(data.mlx, &hoop_func, &data);
+	mlx_key_hook(data.mlx, &escape, &data);
+	mlx_loop(data.mlx);
+	mlx_terminate(data.mlx);
 	// printf("terminate error\n");
 	clean_textures(&data);
 	clean_parse(&data);
