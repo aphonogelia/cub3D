@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/14 16:01:02 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/14 16:08:25 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,9 +196,7 @@ void	escape(mlx_key_data_t keys, void *param);
 float	degree_to_rad(int nb);
 float	degree_to_rad(int nb);
 void	handle_error(char *error_message, t_data *data);
-void	handle_error2(char *error_message, t_data *data, int exit_status);
 void	close_window(void *param);
-void	close_window2(void *param, int exit_status);
 // float	rad_to_degree(float nb);
 
 /******************************************************************************/
