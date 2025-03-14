@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 12:02:11 by ilazar            #+#    #+#             */
-/*   Updated: 2025/02/19 13:39:39 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/14 18:16:25 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int	parse_elements(char *line, t_data *data, int found_map)
 
 	if (found_map)
 		return (err_msg("The map isn't the last element in the file :/", \
-					FAILURE));
-	status = FAILURE;
+					PARSE_ERR));
+	status = PARSE_ERR;
 	i = 0;
 	while (line[i] == ' ' || line[i] == '\t')
 		i++;

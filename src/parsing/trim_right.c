@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 11:21:11 by ilazar            #+#    #+#             */
-/*   Updated: 2025/02/19 12:50:58 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/14 19:20:47 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ static void	get_rightend(t_data *data)
 	while (data->input.map[++i] != NULL)
 	{
 		len = ft_strlen(data->input.map[i]);
+		if (len == 0)
+			continue ;
 		while (data->input.map[i][len - 1] == ' ')
 			len--;
 		if (max_end < len)

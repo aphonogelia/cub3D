@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 16:31:50 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/10 18:42:44 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/14 18:29:30 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	*valid_first_occurance(char *str)
 	i = 0;
 	while (str[i] == '\t' || str[i] == ' ')
 		i++;
-	if (str[i] == '1' || str[i] == '2')
+	if (str[i] == '1')
 		return (&str[i]);
 	return (NULL);
 }

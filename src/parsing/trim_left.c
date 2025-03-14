@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 13:01:22 by inbar             #+#    #+#             */
-/*   Updated: 2025/03/10 18:44:06 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/14 19:20:10 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,16 @@ int	trim_leftend(t_data *data)
 	i = -1;
 	while (data->input.map[++i] != NULL)
 	{
-		len = ft_strlen(data->input.map[i]) - 1;
+		len = ft_strlen(data->input.map[i]);
+		if (data->input.map[i][len - 1] == 10)
+			len--;
 		tmp = ft_substr(data->input.map[i], min_start, len - min_start);
 		if (tmp == NULL)
 			return (MALLOC_ERR);
 		free(data->input.map[i]);
 		data->input.map[i] = ft_strdup(tmp);
 		if (data->input.map[i] == NULL)
-			return (MALLOC_ERR);
+		return (MALLOC_ERR);
 		free(tmp);
 	}
 	data->input.h_map = i;
@@ -72,7 +74,7 @@ static int	get_min_start(t_data *data, int *min_start, int i)
 			return (PARSE_ERR);
 		start = line_start - data->input.map[i];
 		if (start < *min_start)
-			*min_start = start;
+				*min_start = start;
 	}
 	return (SUCCESS);
 }
