@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+         #
+#    By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/27 19:14:42 by htharrau          #+#    #+#              #
-#    Updated: 2025/03/14 15:48:18 by htharrau         ###   ########.fr        #
+#    Updated: 2025/03/14 17:10:14 by ilazar           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ SRCS_BONUS = $(addprefix $(BONUS_DIR), init.c errors.c main.c debug.c) \
 OBJS		= $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 OBJS_BONUS	= $(addprefix $(OBJS_BONUS_DIR), $(SRCS_BONUS:.c=.o))
 
+#-fsanitize=address
 CC 			= cc
 CFLAGS 		= -Wall -Wextra -Werror -I$(MLX_DIR)/include -I$(LIBFT_DIR) -I$(INCS_DIR) -fsanitize=address
 CFLAGS_BONUS = -Wall -Wextra -Werror -I$(MLX_DIR)/include -I$(LIBFT_DIR) -I$(INCS_BONUS_DIR) -fsanitize=address

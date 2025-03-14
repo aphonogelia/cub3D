@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   l_escape.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 15:10:25 by htharrau          #+#    #+#             */
-/*   Updated: 2025/02/17 13:19:00 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/14 17:35:02 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,20 @@ The keydata struct is automatically passed when calling
 // typedef void (*mlx_keyfunc)(mlx_key_data_t keydata, void* param);
 	*/
 
-void	escape(mlx_key_data_t keys, void *param)
+// Handle welcome screen dismissal and handles ESC
+void	escape_handle(mlx_key_data_t keys, void *param)
 {
 	t_data	*data;
 
 	data = (t_data *)param;
+    if (data->screen.is_welcome && keys.action == MLX_PRESS)
+	{
+		if (keys.key == MLX_KEY_ESCAPE)
+			mlx_close_window(data->mlx);
+        mlx_delete_image(data->mlx, data->screen.welcome_img);
+        data->screen.is_welcome = false;
+        return;
+    }
 	if (keys.key == MLX_KEY_ESCAPE && keys.action == MLX_PRESS)
 		mlx_close_window(data->mlx);
 }

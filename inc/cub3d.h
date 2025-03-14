@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/14 16:08:25 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/14 17:35:24 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,12 +97,18 @@ typedef struct s_player {
 	float	angle_r;
 }		t_player;
 
+typedef struct s_screen {
+	mlx_image_t		*welcome_img;
+	bool			is_welcome;
+}		t_screen;
+
 typedef struct s_data {
 	mlx_t			*mlx;
 	mlx_image_t		*img;
 	t_input			input;
 	t_player		player;
 	mlx_texture_t	**textures;
+	t_screen		screen;
 	bool			flag_refresh;
 
 }		t_data;
@@ -192,7 +198,7 @@ void	draw_walls(t_data *data);
 void	cast_rays(t_data *data, t_ray *ray);
 void	draw_miniray(t_data *data, t_ray *ray);
 void	draw_minimap(t_data *data);
-void	escape(mlx_key_data_t keys, void *param);
+void	escape_handle(mlx_key_data_t keys, void *param);
 float	degree_to_rad(int nb);
 float	degree_to_rad(int nb);
 void	handle_error(char *error_message, t_data *data);

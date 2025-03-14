@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   i_textures.c                                       :+:      :+:    :+:   */
+/*   g_textures.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 15:43:48 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/14 14:32:51 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/14 17:17:22 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,13 @@ void	clean_textures(t_data *data)
 	int	i;
 
 	i = -1;
-	while (++i < 4)
+	if (data->textures)
 	{
-		if (data->textures[i])
-			free(data->textures[i]);
+		while (++i < 4)
+		{
+			if (data->textures[i])
+				free(data->textures[i]);
+		}
+		free(data->textures);
 	}
 }

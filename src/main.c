@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 16:57:54 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/14 16:10:14 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/14 17:37:28 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void resize_hook(int32_t width, int32_t height, void* param)
 	data = (t_data *)param;
 	data->flag_refresh = true;
 }
+
 // mlx_set_setting(MLX_STRETCH_IMAGE, true);
 int	main(int ac, char **av)
 {
@@ -46,7 +47,7 @@ int	main(int ac, char **av)
 	mlx_resize_hook(data.mlx, &resize_hook, &data);
 	mlx_close_hook(data.mlx, &close_window, &data);
 	mlx_loop_hook(data.mlx, &hoop_func, &data);
-	mlx_key_hook(data.mlx, &escape, &data);
+	mlx_key_hook(data.mlx, &escape_handle, &data);
 	mlx_loop(data.mlx);
 	mlx_terminate(data.mlx);
 	clean_textures(&data);
