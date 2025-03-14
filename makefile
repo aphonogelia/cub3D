@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+         #
+#    By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/27 19:14:42 by htharrau          #+#    #+#              #
-#    Updated: 2025/03/14 14:17:47 by ilazar           ###   ########.fr        #
+#    Updated: 2025/03/14 15:48:18 by htharrau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ BONUS_DIR	= src_bonus/
 OBJS_DIR	= obj/
 OBJS_BONUS_DIR	= obj_bonus/
 INCS_DIR	= inc/
+INCS_BONUS_DIR	= inc_bonus/
 LIBFT_DIR	= libft/
 MLX_DIR		= MLX42/
 
@@ -29,7 +30,7 @@ SRCS		= $(addprefix $(SRCS_DIR), init.c errors.c main.c welcome.c) \
 				valid_map.c valid_chars.c parse_elements.c utils_parse.c) \
 				$(addprefix $(SRCS_DIR)raycasting/, a_init_mlx.c d_draw_ceiling_floor.c \
 				x_helper.c b_loop_hook.c e_draw_walls.c z_cleanup.c c_update_fov.c \
-				f_cast_rays.c l_escape.c i_textures.c)
+				f_cast_rays.c l_escape.c g_textures.c)
 	   
 SRCS_BONUS = $(addprefix $(BONUS_DIR), init.c errors.c main.c debug.c) \
 				$(addprefix $(BONUS_DIR)other/, doors.c mouse.c) \
@@ -44,9 +45,8 @@ OBJS_BONUS	= $(addprefix $(OBJS_BONUS_DIR), $(SRCS_BONUS:.c=.o))
 
 CC 			= cc
 CFLAGS 		= -Wall -Wextra -Werror -I$(MLX_DIR)/include -I$(LIBFT_DIR) -I$(INCS_DIR) -fsanitize=address
+CFLAGS_BONUS = -Wall -Wextra -Werror -I$(MLX_DIR)/include -I$(LIBFT_DIR) -I$(INCS_BONUS_DIR) -fsanitize=address
 LDFLAGS 	= -L$(LIBFT_DIR) -L$(MLX_DIR)/build -lft -lmlx42  -ldl -lglfw -pthread -lm
-##LDFLAGS 	= -L$(LIBFT_DIR) -L$(MLX_DIR)/build  -ldl -lglfw -pthread -lm
-##gcc main.c ... libmlx42.a -Iinclude -ldl -lglfw -pthread -lm
 MAKE		= make --no-print-directory
 
 .SILENT:
@@ -95,7 +95,6 @@ fclean:			clean
 
 re:				fclean all
 
-
 help:
 				@echo "Available targets:"
 				@echo "  all     : Build the project"
@@ -106,7 +105,7 @@ help:
 				@echo "  debug   : Build with address sanitizer"
 
 
-.PHONY:			all clean fclean re debug help
+.PHONY:			all clean fclean re debug help bonus
 
 
 #COLORS
