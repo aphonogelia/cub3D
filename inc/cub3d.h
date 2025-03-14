@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/14 15:42:29 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/14 16:01:02 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,11 @@
 # define HEIGHT 600
 
 # define OFFSET 10
-# define TILE_SIZE 4
+# define TILE_SIZE 8
 # define MVT_SPEED 1.2
 # define ROT_SPEED 0.05
-# define FOV 66
+# define FOV 60
 # define WALL_SIZE 2
-# define MOUSE_SENS 0.002 //mouse sensitivity
-# define INTERACTION_RANGE 8.0f //interaction from doors
-# define MAX_DOORS 25
-
-//map items
-# define WALL '1'
-# define DOOR '2'
 
 //Minimap colors
 # define PLY_COL 	MAGENTA
@@ -64,15 +57,11 @@
 # define FAILURE	1
 # define SUCCESS	0
 
-# define MAX_TEXTURES 	5
-
 //Walls
 # define NORTH			0
 # define WEST			1
 # define SOUTH			2
 # define EAST			3
-
-# define DOOR_TEXTURE	4
 
 //Wall default colors
 # define CLR_NORTH	TEAL
@@ -99,8 +88,7 @@ typedef struct s_input {
 	int		sky;
 	int		play_x;
 	int		play_y;
-	char	cardinal; //player direction
-	int		doors_nbr;
+	char	player_dir;
 }		t_input;
 
 typedef struct s_player {
@@ -109,20 +97,11 @@ typedef struct s_player {
 	float	angle_r;
 }		t_player;
 
-typedef	struct s_door {
-	float	x;
-	float	y;
-	int		open;
-	int		exit_game; //if the door leads to exit the game
-} t_door;
-
-
 typedef struct s_data {
 	mlx_t			*mlx;
 	mlx_image_t		*img;
 	t_input			input;
 	t_player		player;
-	t_door			doors[MAX_DOORS];
 	mlx_texture_t	**textures;
 	bool			flag_refresh;
 
@@ -143,14 +122,14 @@ typedef struct s_ray {
 	float	distance;
 	float	corrected_distance;
 	int		line_length;
-	int	wall_orient; 	//S N E W
-	float	wall_x; 		//exact hit point on the wall
+	int		wall_orient;
+	float	wall_x;
 }		t_ray;
 
 typedef struct s_texture {
 	mlx_texture_t	*png;
-	int				tex_x; //x coordinate on the texture
-	int				tex_y; //y coordinate on the texture
+	int				tex_x;
+	int				tex_y;
 	uint32_t		color;
 }		t_texture;
 
@@ -248,10 +227,5 @@ int		err_msg(char *msg, int err_nr);
 void	print_ray1(t_ray *ray);
 void	print_ray2(t_ray *ray);
 void	exit_err(t_data *data, char *msg, int exit_status);
-
-//BONUS
-void	mouse_callback(double xpos, double ypos, void *param);
-void	init_doors(t_data *data);
-void	doors_interaction(t_player *player, t_door *doors, int doors_nbr);
 
 #endif

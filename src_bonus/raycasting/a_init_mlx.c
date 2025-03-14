@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:53:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/13 21:00:08 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/14 15:55:57 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,7 @@
 
 void			init_mlx(t_data *data);
 static void		init_player(t_data *data);
-static float	calculate_angle(char c);
-
-/* need to rework on image size - resizing when th ewindow is resized 
-void resize_callback(int32_t width, int32_t height, void* param)
-{
-    // Handle the resize event here
-    // width and height are the new dimensions of the window
-}
-// In your main function or initialization code
-mlx_resize_hook(mlx, resize_callback, additional_param);
-*/
+static float	calc_angle(char c);
 
 void	init_mlx(t_data *data)
 {
@@ -40,10 +30,10 @@ static void	init_player(t_data *data)
 {
 	data->player.x = data->input.play_x * TILE_SIZE + OFFSET;
 	data->player.y = data->input.play_y * TILE_SIZE + OFFSET;
-	data->player.angle_r = degree_to_rad(calculate_angle(data->input.cardinal));
+	data->player.angle_r = degree_to_rad(calc_angle(data->input.player_dir));
 }
 
-static float	calculate_angle(char c)
+static float	calc_angle(char c)
 {
 	if (c == 'N')
 		return (90);

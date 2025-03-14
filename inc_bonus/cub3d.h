@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/14 15:42:43 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/14 15:55:21 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ typedef struct s_input {
 	int		sky;
 	int		play_x;
 	int		play_y;
-	char	cardinal; //player direction
+	char	player_dir; //player direction
 	int		doors_nbr;
 }		t_input;
 
@@ -143,14 +143,14 @@ typedef struct s_ray {
 	float	distance;
 	float	corrected_distance;
 	int		line_length;
-	int	wall_orient; 	//S N E W
-	float	wall_x; 		//exact hit point on the wall
+	int		wall_orient; 
+	float	wall_x;
 }		t_ray;
 
 typedef struct s_texture {
 	mlx_texture_t	*png;
-	int				tex_x; //x coordinate on the texture
-	int				tex_y; //y coordinate on the texture
+	int				tex_x;
+	int				tex_y;
 	uint32_t		color;
 }		t_texture;
 

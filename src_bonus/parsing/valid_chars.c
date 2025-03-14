@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_chars.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 13:20:57 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/10 10:50:25 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/14 15:55:31 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static void	handle_player(t_data *data, int i, int j)
 {
 	data->input.play_x = j;
 	data->input.play_y = i;
-	data->input.cardinal = data->input.map[i][j];
+	data->input.player_dir = data->input.map[i][j];
 	data->input.map[i][j] = '0';
 }
 

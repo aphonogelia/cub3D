@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:57:58 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/13 16:28:23 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/14 15:59:52 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ static void		calcul_dist_per_unit(t_ray *ray);
 static void		init_position_dist(t_data *data, t_ray *ray);
 static float	find_distance(t_data *data, t_ray *ray);
 static bool		wall_check(t_data *data, t_ray *ray);
-static t_door	*get_door_at(t_data *data, t_ray *ray);
 
 void	cast_rays(t_data *data, t_ray *ray)
 {
@@ -100,37 +99,7 @@ static float	find_distance(t_data *data, t_ray *ray)
 
 static bool	wall_check(t_data *data, t_ray *ray)
 {
-	t_door	*door;
-
-	if (data->input.map[ray->map_y][ray->map_x] == WALL)
+	if (data->input.map[ray->map_y][ray->map_x] == '1')
 		return (true);
-	else if (data->input.map[ray->map_y][ray->map_x] == DOOR)
-	{
-		door = get_door_at(data, ray);
-		// if (door && !door->open)
-		//	return yes
-		return (true);
-	}
 	return (false);
-}
-
-//finds appropriate door according to map coords
-static t_door	*get_door_at(t_data *data, t_ray *ray)
-{
-	int	map_x;
-	int	map_y;
-	int	doors_nbr;
-	int	i;
-
-	map_x = ray->map_x;
-	map_y = ray->map_y;
-	doors_nbr = data->input.doors_nbr;
-	i = -1;
-	while (++i < doors_nbr)
-	{
-		if ((int)data->doors[i].x == map_x && \
-		(int)data->doors[i].y == map_y)
-			return (&data->doors[i]);
-	}
-	return (NULL);
 }

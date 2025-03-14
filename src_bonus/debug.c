@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 21:25:58 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/11 10:26:03 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/14 15:55:27 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	print_input(t_data *data)
 	printf("  Ceiling: %#x\n", input.sky);
 	printf("Player:\n");
 	printf("  (x, y): (%d, %d)\n", input.play_x, input.play_y);
-	printf("  Facing: %c\n", input.cardinal);
+	printf("  Facing: %c\n", input.player_dir);
 	printf("\nMap:\n");
 	i = 0;
 	while (i < input.h_map)

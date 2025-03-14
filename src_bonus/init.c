@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 11:56:14 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/13 20:03:19 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/14 15:55:28 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	init_data(t_data *data)
 	data->input.sky = -1;
 	data->input.play_x = -1;
 	data->input.play_y = -1;
-	data->input.cardinal = '0';
+	data->input.player_dir = '0';
 	data->input.doors_nbr = -1;
 	data->player.x = 0;
 	data->player.y = 0;
