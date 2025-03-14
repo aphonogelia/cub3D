@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   e_draw_walls.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 10:40:14 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/14 14:16:13 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/14 17:44:19 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void		draw_walls(t_data *data);
 static void	wall_orient(t_data *data, t_ray *ray);
 static void	draw_vertical(t_data *data, t_ray *ray, int u);
-static void	set_ords(int *ord_top, int *ord_bottom, t_data *data, t_ray *ray);
+static void	set_ords(int *ord_top, int *tex_start, int *ord_bottom, t_data *data, t_ray *ray);
 
 // STEP: FROM ANGLE + (+1/2)FOV_R TO ANGLE - (-1/2)FOV_R - 
 // step depending on window size - one ray per pixel
@@ -54,7 +54,6 @@ static void	wall_orient(t_data *data, t_ray *ray)
 		else 
 			ray->wall_orient = WEST;
 		ray->wall_x = data->player.y + ray->corrected_distance * ray->sin_angle;
-		ray->wall_x -= floor(ray->wall_x);
 	}
 	else
 	{
@@ -63,32 +62,32 @@ static void	wall_orient(t_data *data, t_ray *ray)
 		else 
 			ray->wall_orient = NORTH;
 		ray->wall_x = data->player.x + ray->corrected_distance * ray->cos_angle;
-		ray->wall_x -= floor(ray->wall_x);
 	}
+	ray->wall_x -= floor(ray->wall_x);
 }
 
-static void draw_vertical(t_data *data, t_ray *ray, int u)
+static void	draw_vertical(t_data *data, t_ray *ray, int u)
 {
-	int v;
-	int height;
-	int ord_top;
-	int ord_bottom;
-	t_texture texture;
+	int			v;
+	int			height;
+	int			ord_top;
+	int			ord_bottom;
+	int			text_top;
+	float		text_pos;
+	t_texture	texture;
 
 	height = data->mlx->height;
 	ray->line_length = (int)((height * WALL_SIZE) / ray->corrected_distance);
-	set_ords(&ord_top, &ord_bottom, data, ray);
-	//get appropriate texture for wall orientation
-	texture.png = data->textures[ray->wall_orient]; // can be NULL if no tex was uploaded unsucssesfully
-	//calculate the x-coordinate on the texture
+	set_ords(&ord_top, &text_top, &ord_bottom, data, ray);
+	texture.png = data->textures[ray->wall_orient];
 	texture.tex_x = calc_texture_x(ray, texture.png);
 	v = ord_top;
 	while (v < ord_bottom)
 	{
 		if (texture.png)
 		{
-			// calculate y-coordinate on the texture
-			texture.tex_y = (v - ord_top) * texture.png->height / ray->line_length;
+			text_pos = (float)(v - ord_top + text_top) / ray->line_length;
+			texture.tex_y = (int)(text_pos * texture.png->height);
 			texture.color = sample_color(&texture);
 			mlx_put_pixel(data->img, u, v, texture.color);
 		}
@@ -99,14 +98,18 @@ static void draw_vertical(t_data *data, t_ray *ray, int u)
 }
 
 //setting ord_top and ord_bottom
-static void	set_ords(int *ord_top, int *ord_bottom, t_data *data, t_ray *ray)
+static void	set_ords(int *ord_top, int *text_top, int *ord_bottom, t_data *data, t_ray *ray)
 {
 	int	height;
 
 	height = data->mlx->height;
 	*ord_top = (height - ray->line_length) / 2;
+	*text_top = 0;
 	if (*ord_top < 0)
+	{
+		*text_top = -*ord_top;
 		*ord_top = 0;
+	}
 	*ord_bottom = (height + ray->line_length) / 2;
 	if (*ord_bottom >= height)
 		*ord_bottom = height - 1;
