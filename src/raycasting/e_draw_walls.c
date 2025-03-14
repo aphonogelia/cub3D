@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 10:40:14 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/14 17:44:19 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/14 17:48:09 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void		draw_walls(t_data *data);
 static void	wall_orient(t_data *data, t_ray *ray);
 static void	draw_vertical(t_data *data, t_ray *ray, int u);
-static void	set_ords(int *ord_top, int *tex_start, int *ord_bottom, t_data *data, t_ray *ray);
+static void	set_ords(int *ord_top, int *text_top, int *ord_bottom, t_data *data, t_ray *ray);
 
 // STEP: FROM ANGLE + (+1/2)FOV_R TO ANGLE - (-1/2)FOV_R - 
 // step depending on window size - one ray per pixel
