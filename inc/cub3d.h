@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/14 17:35:24 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/14 20:10:02 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define CUB3D_H
 
 # define WHITE 0xFFFFFFFF
-# define BLACK 0x000000FF
+# define BLACK 0xFF000000
 # define RED 0xFF0000FF
 # define GREEN 0x00FF00FF
 # define BLUE 0x0000FFFF
@@ -98,8 +98,11 @@ typedef struct s_player {
 }		t_player;
 
 typedef struct s_screen {
+	mlx_texture_t* 	texture;
 	mlx_image_t		*welcome_img;
+	mlx_image_t 	*background;
 	bool			is_welcome;
+	
 }		t_screen;
 
 typedef struct s_data {
@@ -160,7 +163,7 @@ typedef struct s_mvt {
 int		parse_elements(char *line, t_data *data, int found_map);
 void	init_data(t_data *data);
 int		parser(char *file_name, t_data *data);
-// char	*get_next_line2(int fd);
+int	save_map(int fd, t_data *data, char **line, int *found_map);
 
 //trim right
 int		trim_lines(t_data *data);
@@ -224,6 +227,7 @@ void	clean_textures(t_data *data);
 /******************************************************************************/
 
 void	welcome_screen(t_data *data);
+void    draw_on_screen(t_data *data, int32_t height, int32_t width);
 void	print_player(t_player *player);
 void	print_input(t_data *data);
 void	print_data(t_data *data);

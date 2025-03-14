@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 16:57:54 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/14 17:37:28 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/14 20:46:03 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,22 @@ void resize_hook(int32_t width, int32_t height, void* param)
 	(void)width;
 	(void)height;
 	data = (t_data *)param;
-	data->flag_refresh = true;
+
+	// if (data->screen.is_welcome)
+	// {
+    //     mlx_delete_image(data->mlx, data->screen.welcome_img);
+        
+    //     data->screen.welcome_img = mlx_new_image(data->mlx, width, height);
+    //     if (!data->screen.welcome_img)
+    //         exit_err(data, "Failed to create resized welcome screen", FAILURE);
+        
+	// 	draw_on_screen(data, height, width);
+			
+	// 	if (mlx_image_to_window(data->mlx, data->screen.welcome_img, 0, 0) < 0)
+	// 		exit_err(data, "Failed to put resized welcome screen to window", FAILURE);
+    // }
+    // else
+		data->flag_refresh = true;
 }
 
 // mlx_set_setting(MLX_STRETCH_IMAGE, true);
@@ -40,9 +55,7 @@ int	main(int ac, char **av)
 	
 	welcome_screen(&data);
 	
-	
 	load_textures(&data);
-	
 	
 	mlx_resize_hook(data.mlx, &resize_hook, &data);
 	mlx_close_hook(data.mlx, &close_window, &data);
