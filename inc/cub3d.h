@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: inbar <inbar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/14 20:10:02 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/15 14:51:31 by inbar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,6 +227,7 @@ void	clean_textures(t_data *data);
 /******************************************************************************/
 
 void	welcome_screen(t_data *data);
+void init_welcome_screen(t_data *data);
 void    draw_on_screen(t_data *data, int32_t height, int32_t width);
 void	print_player(t_player *player);
 void	print_input(t_data *data);

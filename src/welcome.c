@@ -3,16 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   welcome.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: inbar <inbar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 14:13:05 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/14 20:19:52 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/15 14:53:59 by inbar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 void           welcome_screen(t_data *data);
+
+    void init_welcome_screen(t_data *data)
+{
+    mlx_texture_t* tex = mlx_load_png("imgs/fab.png");
+    if (!tex)
+        exit_err(data, "Failed to load welcome texture", FAILURE);
+
+    // Create background image (black)
+    data->screen.background = mlx_new_image(data->mlx, data->mlx->width, data->mlx->height);
+    
+    // Manually fill background with black pixels
+    for (int y = 0; y < data->mlx->height; y++)
+        for (int x = 0; x < data->mlx->width; x++)
+            mlx_put_pixel(data->screen.background, x, y, 0x000000FF);
+
+    // Create welcome image with original texture dimensions
+    data->screen.welcome_img = mlx_texture_to_image(data->mlx, tex);
+    
+    // Center positioning
+    int pos_x = (data->mlx->width - tex->width) / 2;
+    int pos_y = (data->mlx->height - tex->height) / 2;
+    
+    // Display images
+    mlx_image_to_window(data->mlx, data->screen.background, 0, 0);
+    mlx_image_to_window(data->mlx, data->screen.welcome_img, pos_x, pos_y);
+    
+    data->screen.is_welcome = true;
+    mlx_delete_texture(tex);
+}
 
 void welcome_screen(t_data *data)
 {
