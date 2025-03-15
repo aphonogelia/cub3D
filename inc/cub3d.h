@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/15 15:32:09 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/15 16:43:06 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@
 
 # define OFFSET 10
 # define TILE_SIZE 8
-# define MVT_SPEED 1.2
-# define ROT_SPEED 0.05
+# define MVT_SPEED 1
+# define ROT_SPEED 0.04
 # define FOV 60
 # define WALL_SIZE 2
 
@@ -72,7 +72,7 @@
 
 # include <math.h>
 # include <time.h>
-#include <fcntl.h>
+# include <fcntl.h>
 # include <linux/input-event-codes.h>
 # include "../libft/libft.h"
 # include "../MLX42/include/MLX42/MLX42.h"
@@ -99,11 +99,10 @@ typedef struct s_player {
 }		t_player;
 
 typedef struct s_screen {
-	mlx_texture_t* 	texture;
+	mlx_texture_t	*texture;
 	mlx_image_t		*welcome_img;
-	mlx_image_t 	*background;
+	mlx_image_t		*background;
 	bool			is_welcome;
-	
 }		t_screen;
 
 typedef struct s_data {
@@ -118,6 +117,8 @@ typedef struct s_data {
 }		t_data;
 
 typedef struct s_ray {
+	float	curr_angle;
+	float	step;
 	float	cos_angle;
 	float	sin_angle;
 	float	cos_angle_diff;
@@ -130,7 +131,7 @@ typedef struct s_ray {
 	int		step_x;
 	int		step_y;
 	float	distance;
-	float	corrected_distance;
+	float	corr_dist;
 	int		line_length;
 	int		wall_orient;
 	float	wall_x;
@@ -202,14 +203,12 @@ void	update_player(t_data *data);
 void	draw_ceiling_floor(t_data *data);
 void	draw_walls(t_data *data);
 void	cast_rays(t_data *data, t_ray *ray);
-void	draw_miniray(t_data *data, t_ray *ray);
-void	draw_minimap(t_data *data);
 void	escape_handle(mlx_key_data_t keys, void *param);
 float	degree_to_rad(int nb);
 float	degree_to_rad(int nb);
 void	handle_error(char *error_message, t_data *data);
 void	close_window(void *param);
-// float	rad_to_degree(float nb);
+void	resize_hook(int32_t width, int32_t height, void *param);
 
 /******************************************************************************/
 /******************************************************************************/
@@ -230,7 +229,7 @@ void	clean_textures(t_data *data);
 /******************************************************************************/
 
 void	welcome_screen(t_data *data);
-void    draw_on_screen(t_data *data, int32_t height, int32_t width);
+void	draw_on_screen(t_data *data, int32_t height, int32_t width);
 void	print_player(t_player *player);
 void	print_input(t_data *data);
 void	print_data(t_data *data);

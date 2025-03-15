@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/14 15:55:21 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/15 15:52:12 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,7 @@ typedef struct s_ray {
 	int		step_x;
 	int		step_y;
 	float	distance;
-	float	corrected_distance;
+	float	corr_dist;
 	int		line_length;
 	int		wall_orient; 
 	float	wall_x;
