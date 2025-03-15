@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   welcome.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inbar <inbar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 14:13:05 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/15 15:12:08 by inbar            ###   ########.fr       */
+/*   Updated: 2025/03/15 16:20:14 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void welcome_screen(t_data *data)
     int             x;
     int             y;
     
-    tex = mlx_load_png("imgs/fab.png");
+    tex = mlx_load_png("imgs/cube.png");
     if (!tex)
         exit_err(data, "Failed to load welcome texture", FAILURE);
     data->screen.background = mlx_new_image(data->mlx, data->mlx->width, data->mlx->height);
