@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   welcome.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: inbar <inbar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 14:13:05 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/14 20:19:52 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/15 15:12:08 by inbar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,46 +16,28 @@ void           welcome_screen(t_data *data);
 
 void welcome_screen(t_data *data)
 {
-    int32_t        width;
-    int32_t        height;
+    mlx_texture_t   *tex;
+    int             pos_x;
+    int             pos_y;
+    int             x;
+    int             y;
     
-    data->screen.texture = mlx_load_png("imgs/fab.png");
-    if (!data->screen.texture)
-        exit_err(data, "Failed to load welcome screen", FAILURE);
-    width = data->mlx->width;
-    height = data->mlx->height;
-    data->screen.welcome_img = mlx_new_image(data->mlx, width, height);
-    if (!data->screen.welcome_img)
-        exit_err(data, "Failed to create welcome screen", FAILURE);
-    draw_on_screen(data, height, width);
-    
-    data->screen.is_welcome = true;
-    mlx_delete_texture(data->screen.texture);
-}
-
-void    draw_on_screen(t_data *data, int32_t height, int32_t width)
-{
-    uint8_t *pixels;
-    uint32_t tex_x;
-    uint32_t tex_y;
-    int32_t  y;
-    int32_t  x;
-    
-    pixels = data->screen.welcome_img->pixels;
-    y = 0;
-    while (y < height)
+    tex = mlx_load_png("imgs/fab.png");
+    if (!tex)
+        exit_err(data, "Failed to load welcome texture", FAILURE);
+    data->screen.background = mlx_new_image(data->mlx, data->mlx->width, data->mlx->height);
+    y = -1;
+    while (++y < data->mlx->height)
     {
-        x = 0;
-        while (x < width)
-        {
-            tex_x = (x * data->screen.texture->width) / width;
-            tex_y = (y * data->screen.texture->height) / height;
-            *((uint32_t*)pixels + y * width + x) =  \
-            *((uint32_t*)data->screen.texture->pixels + tex_y * data->screen.texture->width + tex_x);
-            x++;
-        }
-        y++;
+        x = -1;
+        while (++x < data->mlx->width)
+            mlx_put_pixel(data->screen.background, x, y, 0x000000FF);
     }
-    if (mlx_image_to_window(data->mlx, data->screen.welcome_img, 0, 0) < 0)
-        exit_err(data, "Failed to put image to window", FAILURE);
+    data->screen.welcome_img = mlx_texture_to_image(data->mlx, tex);
+    pos_x = (data->mlx->width - tex->width) / 2;
+    pos_y = (data->mlx->height - tex->height) / 2;
+    mlx_image_to_window(data->mlx, data->screen.background, 0, 0);
+    mlx_image_to_window(data->mlx, data->screen.welcome_img, pos_x, pos_y);
+    data->screen.is_welcome = true;
+    mlx_delete_texture(tex);
 }
