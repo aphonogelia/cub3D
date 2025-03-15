@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_chars.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: inbar <inbar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 13:20:57 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/14 19:21:29 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/15 14:38:53 by inbar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	valid_chars(t_data *data, int i, int j)
 		j = -1;
 		while (data->input.map[i][++j] != '\0')
 		{
-			// printf("c: %c\n", c);
 			c = data->input.map[i][j];
 			if (is_player(c))
 			{

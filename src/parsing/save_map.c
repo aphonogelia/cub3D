@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   save_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: inbar <inbar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 18:44:44 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/14 19:28:12 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/15 14:36:53 by inbar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	save_map(int fd, t_data *data, char **line, int *found_map)
 		if (!*line)
 			break ;
 		status = invalid_line_start(*line);
-		if (status != SUCCESS)
+		if (status != SUCCESS || (status == SUCCESS && line_empty(*line)))
 			break ;
 		map = add_line_to_arr(map, *line, &length);
 	}
