@@ -6,7 +6,7 @@
 /*   By: inbar <inbar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 16:57:54 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/15 14:59:49 by inbar            ###   ########.fr       */
+/*   Updated: 2025/03/15 15:09:41 by inbar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	main(int ac, char **av)
 	
 	mlx_image_to_window(data.mlx, data.img, 0, 0);
 	
-	init_welcome_screen(&data);
+	welcome_screen(&data);
 	
 	load_textures(&data);
 	
