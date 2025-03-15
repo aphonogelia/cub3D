@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:57:58 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/15 16:16:51 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/15 18:05:42 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,19 +72,6 @@ static void	init_position_dist(t_data *data, t_ray *ray)
 		ray->dist_y = (ray->map_y + 1 - y) * ray->hypo_y;
 	else 
 		ray->dist_y = (y - ray->map_y) * ray->hypo_y;
-	if (ray->curr_angle < data->player.angle_r - ray->step 
-		&& ray->curr_angle > data->player.angle_r + ray->step)
-	{
-		printf("\n--- Position/Dist Debug ---\n");
-		printf("Player pos: X=%.2f Y=%.2f\n", data->player.x, data->player.y);
-		printf("Map coord: X=%d Y=%d\n", ray->map_x, ray->map_y);
-		printf("Step dir: X=%d Y=%d\n", ray->step_x, ray->step_y);
-		printf("Init distances: X=%.3f Y=%.3f\n", ray->dist_x, ray->dist_y);
-		printf("Grid calc: X=%.2f Y=%.2f (TILE=%d OFFSET=%d)\n", 
-			x, y, TILE_SIZE, OFFSET);
-		printf("Hypo vals: X=%.3f Y=%.3f\n", ray->hypo_x, ray->hypo_y);
-		printf("---------------------------\n\n");
-	}
 }
 
 static float	find_distance(t_data *data, t_ray *ray)

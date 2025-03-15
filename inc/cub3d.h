@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/15 17:20:19 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/15 18:04:34 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@
 # define HEIGHT 600
 
 # define OFFSET 10
-# define TILE_SIZE 8
+# define TILE_SIZE 10
 # define MVT_SPEED 1
 # define ROT_SPEED 0.04
-# define FOV 60
+# define FOV 66
 # define WALL_SIZE 2
 
 //Minimap colors

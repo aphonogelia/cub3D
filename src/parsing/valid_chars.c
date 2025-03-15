@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_chars.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inbar <inbar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 13:20:57 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/15 14:38:53 by inbar            ###   ########.fr       */
+/*   Updated: 2025/03/15 18:06:07 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	valid_chars(t_data *data, int i, int j)
 			{
 				if (data->input.play_x != -1)
 					return (err_msg("Multiple players in map :/", PARSE_ERR));
-                handle_player(data, i, j);
+				handle_player(data, i, j);
 				continue ;
 			}
 			if (!is_valid_char(c))

@@ -6,28 +6,11 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 16:57:54 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/15 17:22:43 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/15 17:40:09 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
-
-void resize_hook(int32_t width, int32_t height, void* param)
-{
-	t_data	*data;
-
-	data = (t_data *)param;
-	if (data->screen.is_welcome)
-    {
-        mlx_resize_image(data->screen.background, width, height);
-        data->screen.welcome_img->instances[0].x = \
-		(width - data->screen.welcome_img->width) / 2;
-        data->screen.welcome_img->instances[0].y = \
-		 (height - data->screen.welcome_img->height) / 2;
-    }
-	else
-		data->flag_refresh = true;
-}
 
 // mlx_set_setting(MLX_STRETCH_IMAGE, true);
 int	main(int ac, char **av)

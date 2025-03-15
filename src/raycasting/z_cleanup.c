@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   z_cleanup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 20:47:34 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/14 16:08:17 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/15 18:05:54 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,3 @@ void	close_window(void *param)
 	ft_printf("Exiting program...\n");
 	exit(1);
 }
-
