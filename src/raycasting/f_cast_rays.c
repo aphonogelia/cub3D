@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:57:58 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/14 15:59:52 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/15 15:34:27 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static void		direction(t_ray *ray);
 static void		calcul_dist_per_unit(t_ray *ray);
 static void		init_position_dist(t_data *data, t_ray *ray);
 static float	find_distance(t_data *data, t_ray *ray);
-static bool		wall_check(t_data *data, t_ray *ray);
 
 void	cast_rays(t_data *data, t_ray *ray)
 {
@@ -83,7 +82,7 @@ static float	find_distance(t_data *data, t_ray *ray)
 			ray->map_x += ray->step_x;
 		else 
 			ray->map_y += ray->step_y;
-		if (wall_check(data, ray) == true)
+		if (data->input.map[ray->map_y][ray->map_x] == '1')
 		{
 			if (ray->dist_x < ray->dist_y)
 				return (-ray->dist_x);
@@ -95,11 +94,4 @@ static float	find_distance(t_data *data, t_ray *ray)
 		else 
 			ray->dist_y += ray->hypo_y;
 	}
-}
-
-static bool	wall_check(t_data *data, t_ray *ray)
-{
-	if (data->input.map[ray->map_y][ray->map_x] == '1')
-		return (true);
-	return (false);
 }

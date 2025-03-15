@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   l_escape.c                                         :+:      :+:    :+:   */
+/*   m_resize_hook.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/02 15:10:25 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/15 15:35:13 by htharrau         ###   ########.fr       */
+/*   Created: 2025/03/14 16:32:23 by htharrau          #+#    #+#             */
+/*   Updated: 2025/03/14 16:32:40 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-// Handle welcome screen dismissal and handles ESC
-void	escape_handle(mlx_key_data_t keys, void *param)
+void	resize_hook(int32_t width, int32_t height, void *param)
 {
 	t_data	*data;
 
+	(void)width;
+	(void)height;
 	data = (t_data *)param;
-	if (data->screen.is_welcome && keys.action == MLX_PRESS)
-	{
-		if (keys.key == MLX_KEY_ESCAPE)
-			mlx_close_window(data->mlx);
-		mlx_delete_image(data->mlx, data->screen.welcome_img);
-		// mlx_delete_texture(data->screen.texture);
-		data->screen.is_welcome = false;
-		return ;
-	}
-	if (keys.key == MLX_KEY_ESCAPE && keys.action == MLX_PRESS)
-		mlx_close_window(data->mlx);
+	data->flag_refresh = true;
 }

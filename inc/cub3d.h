@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/14 20:10:02 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/15 15:32:09 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@
 
 # include <math.h>
 # include <time.h>
+#include <fcntl.h>
 # include <linux/input-event-codes.h>
 # include "../libft/libft.h"
 # include "../MLX42/include/MLX42/MLX42.h"
@@ -140,6 +141,8 @@ typedef struct s_texture {
 	int				tex_x;
 	int				tex_y;
 	uint32_t		color;
+	int				text_top;
+	float			text_pos;
 }		t_texture;
 
 typedef struct s_coord {
@@ -163,7 +166,7 @@ typedef struct s_mvt {
 int		parse_elements(char *line, t_data *data, int found_map);
 void	init_data(t_data *data);
 int		parser(char *file_name, t_data *data);
-int	save_map(int fd, t_data *data, char **line, int *found_map);
+int		save_map(int fd, t_data *data, char **line, int *found_map);
 
 //trim right
 int		trim_lines(t_data *data);
