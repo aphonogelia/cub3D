@@ -3,19 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   save_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inbar <inbar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 18:44:44 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/15 14:36:53 by inbar            ###   ########.fr       */
+/*   Updated: 2025/03/17 18:07:08 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-int	save_map(int fd, t_data *data, char **line, int *found_map);
+int			save_map(int fd, t_data *data, char **line, int *found_map);
 static int	invalid_line_start(char *line);
 static char	**add_line_to_arr(char **map, char *line, int *length);
-
 
 // save the map to an array
 // make sure that there isn't invalid text under the map
@@ -52,8 +51,8 @@ static int	invalid_line_start(char *line)
 {
 	if (!valid_first_occurance(line))
 	{
-			if (!line_empty(line))
-				return (err_msg("Invalid map :/", PARSE_ERR));
+		if (!line_empty(line))
+			return (err_msg("Invalid map :/", PARSE_ERR));
 	}
 	return (SUCCESS);
 }

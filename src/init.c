@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 11:56:14 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/14 19:25:45 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/17 18:08:54 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	init_data(t_data *data)
 
 void	load_textures(t_data *data)
 {
-	data->textures = (mlx_texture_t **) malloc(sizeof(mlx_texture_t *) * 4);
+	data->textures = (mlx_texture_t **)malloc(sizeof(mlx_texture_t *) * 4);
 	if (!data->textures)
 		exit_err(data, "Malloc", MALLOC_ERR);
 	data->textures[NORTH] = load_png(data, data->input.no);
@@ -47,7 +47,8 @@ void	load_textures(t_data *data)
 	data->textures[EAST] = load_png(data, data->input.ea);
 }
 
-//load png texture. if file is missing or corrupted will err msg and return null
+// load png texture.
+// if file is missing or corrupted will err msg and return null
 static mlx_texture_t	*load_png(t_data *data, char *path)
 {
 	mlx_texture_t	*texture;
@@ -56,7 +57,7 @@ static mlx_texture_t	*load_png(t_data *data, char *path)
 	texture = mlx_load_png(path);
 	if (!texture)
 	{
-		ft_printf("Failed to load texture: %s\n", path);
+		printf("Failed to load texture: %s\n", path);
 		return (NULL);
 	}
 	return (texture);

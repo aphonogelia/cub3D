@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+         #
+#    By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/27 19:14:42 by htharrau          #+#    #+#              #
-#    Updated: 2025/03/15 15:45:34 by htharrau         ###   ########.fr        #
+#    Updated: 2025/03/17 18:13:15 by ilazar           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,8 @@ LIBFT		= $(LIBFT_DIR)libft.a
 MLX			= $(MLX_DIR)build/libmlx42.a
 
 SRCS		= $(addprefix $(SRCS_DIR), init.c errors.c main.c welcome.c) \
-				$(addprefix $(SRCS_DIR)parsing/, parser.c trim_right.c trim_left.c \
-				valid_map.c valid_chars.c parse_elements.c utils_parse.c save_map.c) \
+				$(addprefix $(SRCS_DIR)parsing/, a_parser.c e_trim_right.c d_trim_left.c \
+				g_valid_map.c f_valid_chars.c b_parse_elements.c h_utils_parse.c c_save_map.c) \
 				$(addprefix $(SRCS_DIR)raycasting/, a_init_mlx.c d_draw_ceiling_floor.c \
 				x_helper.c b_loop_hook.c e_draw_walls.c z_cleanup.c c_update_fov.c \
 				m_resize_hook.c f_cast_rays.c l_escape.c g_textures.c)

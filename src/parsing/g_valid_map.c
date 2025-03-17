@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 12:44:10 by inbar             #+#    #+#             */
-/*   Updated: 2025/03/14 18:48:43 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/17 18:07:19 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ static int	check_zero(t_data *data, int row, int col);
 static int	check_top_bottom(t_data *data);
 static int	is_wall(t_data *data, int row, int col);
 
-
-//returns SUCCESS if map is according to rules
+// returns SUCCESS if map is according to rules
 int	valid_map(t_data *data, int status)
 {
 	int		i;
@@ -48,8 +47,8 @@ int	valid_map(t_data *data, int status)
 	return (status);
 }
 
-//if col is not 0 -> leftside must be 1 or ' '
-//if row isnt last row -> line down must be 1 or ' '
+// if col is not 0 -> leftside must be 1 or ' '
+// if row isnt last row -> line down must be 1 or ' '
 static int	check_space(t_data *data, int row, int col)
 {
 	char	**map;
@@ -98,7 +97,7 @@ static int	check_zero(t_data *data, int row, int col)
 	return (SUCCESS);
 }
 
-//returns 1 if both top and bottom lines of the map contain only '1's or spaces
+// returns 1 if both top and bottom lines of the map contain only '1's or spaces
 static int	check_top_bottom(t_data *data)
 {
 	int	j;
@@ -114,14 +113,13 @@ static int	check_top_bottom(t_data *data)
 	bottom = data->input.h_map - 1;
 	while (data->input.map[bottom][++j] != '\0')
 	{
-		if (!is_wall(data, bottom, j)
-			&& data->input.map[bottom][j] != ' ')
+		if (!is_wall(data, bottom, j) && data->input.map[bottom][j] != ' ')
 			return (err_msg("Map contains open walls :/", PARSE_ERR));
 	}
 	return (SUCCESS);
 }
 
-//returns 1 if value in map should be treated as a wall
+// returns 1 if value in map should be treated as a wall
 static int	is_wall(t_data *data, int row, int col)
 {
 	if (data->input.map[row][col] == '1')

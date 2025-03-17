@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 16:31:50 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/14 18:29:30 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/17 18:06:12 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_isspace(char c)
 	return (0);
 }
 
-//returns 1 if line contains only spaces and tabs
+// returns 1 if line contains only spaces and tabs
 int	line_empty(char *line)
 {
 	int	i;
@@ -45,8 +45,8 @@ int	line_empty(char *line)
 	return (1);
 }
 
-//returns 1 if first occurance of the string is a valid map char
-//ignores tabs and spaces
+// returns 1 if first occurance of the string is a valid map char
+// ignores tabs and spaces
 char	*valid_first_occurance(char *str)
 {
 	int	i;

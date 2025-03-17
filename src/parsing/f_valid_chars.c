@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   valid_chars.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 13:20:57 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/15 18:06:07 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/17 18:06:14 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-static void		handle_player(t_data *data, int i, int j);
-static int		is_player(char c);
-static int		is_valid_char(char c);
+static void	handle_player(t_data *data, int i, int j);
+static int	is_player(char c);
+static int	is_valid_char(char c);
 
-//extracts player position and direction, returns error if found invalid char
-//bc of extracting player's position, should happen after trimming map lines
+// extracts player position and direction, returns error if found invalid char
+// bc of extracting player's position, should happen after trimming map lines
 int	valid_chars(t_data *data, int i, int j)
 {
 	char	c;
@@ -52,7 +52,7 @@ static int	is_valid_char(char c)
 	return (0);
 }
 
-//extract player's info and change it to '0'
+// extract player's info and change it to '0'
 static void	handle_player(t_data *data, int i, int j)
 {
 	data->input.play_x = j;
@@ -61,7 +61,7 @@ static void	handle_player(t_data *data, int i, int j)
 	data->input.map[i][j] = '0';
 }
 
-//returns 1 if char is a player char
+// returns 1 if char is a player char
 static int	is_player(char c)
 {
 	if (c == 'N' || c == 'S' || c == 'W' || c == 'E')

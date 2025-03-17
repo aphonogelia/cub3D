@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   trim_left.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inbar <inbar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 13:01:22 by inbar             #+#    #+#             */
-/*   Updated: 2025/03/15 14:38:13 by inbar            ###   ########.fr       */
+/*   Updated: 2025/03/17 18:06:07 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	get_min_start(t_data *data, int *min_start, int i);
 
 int	trim_lines(t_data *data)
 {
-	int		status;
+	int	status;
 
 	status = trim_leftend(data);
 	if (status == SUCCESS)
@@ -24,9 +24,9 @@ int	trim_lines(t_data *data)
 	return (status);
 }
 
-//trims all spaces from the left and right sides of the map, trims \n
-//saves map height
-//may return malloc err or parse err
+// trims all spaces from the left and right sides of the map, trims \n
+// saves map height
+// may return malloc err or parse err
 int	trim_leftend(t_data *data)
 {
 	int		min_start;
@@ -49,14 +49,14 @@ int	trim_leftend(t_data *data)
 		free(data->input.map[i]);
 		data->input.map[i] = ft_strdup(tmp);
 		if (data->input.map[i] == NULL)
-		return (MALLOC_ERR);
+			return (MALLOC_ERR);
 		free(tmp);
 	}
 	data->input.h_map = i;
 	return (SUCCESS);
 }
 
-//find the leftmost start of the lines in the map array
+// find the leftmost start of the lines in the map array
 static int	get_min_start(t_data *data, int *min_start, int i)
 {
 	int		start;
@@ -74,7 +74,7 @@ static int	get_min_start(t_data *data, int *min_start, int i)
 			return (PARSE_ERR);
 		start = line_start - data->input.map[i];
 		if (start < *min_start)
-				*min_start = start;
+			*min_start = start;
 	}
 	return (SUCCESS);
 }
