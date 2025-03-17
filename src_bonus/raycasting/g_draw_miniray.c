@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   g_draw_miniray.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 20:37:40 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/10 23:44:25 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/17 18:40:24 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cub3d.h"
+#include "../../inc_bonus/cub3d.h"
 
 void	draw_miniray(t_data *data, t_ray *ray)
 {

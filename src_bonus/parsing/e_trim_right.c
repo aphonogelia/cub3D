@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   trim_right.c                                       :+:      :+:    :+:   */
+/*   e_trim_right.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 11:21:11 by ilazar            #+#    #+#             */
-/*   Updated: 2025/02/19 12:50:58 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/17 18:38:53 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cub3d.h"
+#include "../../inc_bonus/cub3d.h"
 
 static char	*shorten_line(t_data *data, int i, int len);
 static char	*extend_line(t_data *data, int i, int len);
@@ -59,6 +59,8 @@ static void	get_rightend(t_data *data)
 	while (data->input.map[++i] != NULL)
 	{
 		len = ft_strlen(data->input.map[i]);
+		if (len == 0)
+			continue ;
 		while (data->input.map[i][len - 1] == ' ')
 			len--;
 		if (max_end < len)

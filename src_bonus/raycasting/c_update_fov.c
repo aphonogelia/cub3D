@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   c_update_fov.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:58:59 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/13 21:11:29 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/17 18:40:06 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cub3d.h"
+#include "../../inc_bonus/cub3d.h"
 
-void		update_fov(t_data	*data);
+void		update_fov(t_data *data);
 static void	update_angle(t_data *data);
 static void	update_play_door(t_data *data);
 static void	calculate_deltas(t_data *data, t_coord *delta);
 static void	normalization(float *x, float *y);
 
-void	update_fov(t_data	*data)
+void	update_fov(t_data *data)
 {
 	update_angle(data);
 	update_play_door(data);
@@ -40,8 +40,8 @@ static void	update_angle(t_data *data)
 	data->player.angle_r = fmod(data->player.angle_r + 2 * M_PI, 2 * M_PI);
 }
 
-// we calculate the new position. CTRL: speed * 2. We update the positions only 
-// if it is not encountering a wall. 
+// we calculate the new position. CTRL: speed * 2. We update the positions only
+// if it is not encountering a wall.
 static void	update_play_door(t_data *data)
 {
 	t_coord	updated;
@@ -49,8 +49,8 @@ static void	update_play_door(t_data *data)
 	float	speed;
 
 	speed = MVT_SPEED;
-	if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT_CONTROL) || 
-		mlx_is_key_down(data->mlx, MLX_KEY_LEFT_CONTROL))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT_CONTROL)
+		|| mlx_is_key_down(data->mlx, MLX_KEY_LEFT_CONTROL))
 		speed *= 2;
 	updated.x = data->player.x;
 	updated.y = data->player.y;
@@ -69,8 +69,8 @@ static void	update_play_door(t_data *data)
 }
 
 // we move according to our angle
-// Without scaling, the player might move faster when pressing multiple keys 
-// simultaneously (e.g., moving diagonally with W and D), because the combined 
+// Without scaling, the player might move faster when pressing multiple keys
+// simultaneously (e.g., moving diagonally with W and D), because the combined
 // deltas will result in a larger magnitude than moving in a single direction.
 static void	calculate_deltas(t_data *data, t_coord *delta)
 {
@@ -90,7 +90,7 @@ static void	calculate_deltas(t_data *data, t_coord *delta)
 	i = 0;
 	while (i < 4)
 	{
-		if (mlx_is_key_down(data->mlx, mvt[i].key)) 
+		if (mlx_is_key_down(data->mlx, mvt[i].key))
 		{
 			delta->x += mvt[i].delta_x;
 			delta->y += mvt[i].delta_y;

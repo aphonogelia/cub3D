@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_elements.c                                   :+:      :+:    :+:   */
+/*   b_parse_elements.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 12:02:11 by ilazar            #+#    #+#             */
-/*   Updated: 2025/02/19 13:39:39 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/17 18:38:42 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cub3d.h"
+#include "../../inc_bonus/cub3d.h"
 
 static int	get_elem_path(char *line, char **element);
 static int	get_clr_elem(char *line, int *element);
 static int	get_clr_component(char *line, int *i, int *comp);
 
-//when an element is found it will be validated and stored in data.
-//if element is invalid returns failure
+// when an element is found it will be validated and stored in data.
+// if element is invalid returns failure
 int	parse_elements(char *line, t_data *data, int found_map)
 {
 	int	status;
 	int	i;
 
 	if (found_map)
-		return (err_msg("The map isn't the last element in the file :/", \
-					FAILURE));
-	status = FAILURE;
+		return (err_msg("The map isn't the last element in the file :/",
+				PARSE_ERR));
+	status = PARSE_ERR;
 	i = 0;
 	while (line[i] == ' ' || line[i] == '\t')
 		i++;
@@ -45,8 +45,8 @@ int	parse_elements(char *line, t_data *data, int found_map)
 	return (status);
 }
 
-//saves paths for NO SU WE EA
-//doesn't check if path exists - will be checked before loading the texture
+// saves paths for NO SU WE EA
+// doesn't check if path exists - will be checked before loading the texture
 static int	get_elem_path(char *line, char **element)
 {
 	int	start;
@@ -75,7 +75,7 @@ static int	get_elem_path(char *line, char **element)
 	return (SUCCESS);
 }
 
-//saves Floor or Ceiling color elements
+// saves Floor or Ceiling color elements
 static int	get_clr_elem(char *line, int *element)
 {
 	int	i;
@@ -100,7 +100,7 @@ static int	get_clr_elem(char *line, int *element)
 	return (SUCCESS);
 }
 
-//gets the R G or B component or a color
+// gets the R G or B component or a color
 static int	get_clr_component(char *line, int *i, int *comp)
 {
 	*comp = 0;

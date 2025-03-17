@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_parse.c                                      :+:      :+:    :+:   */
+/*   h_utils_parse.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 16:31:50 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/10 18:42:44 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/17 18:39:12 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cub3d.h"
+#include "../../inc_bonus/cub3d.h"
 
 void	free_2d_char(char **arr)
 {
@@ -29,7 +29,7 @@ int	ft_isspace(char c)
 	return (0);
 }
 
-//returns 1 if line contains only spaces and tabs
+// returns 1 if line contains only spaces and tabs
 int	line_empty(char *line)
 {
 	int	i;
@@ -45,8 +45,8 @@ int	line_empty(char *line)
 	return (1);
 }
 
-//returns 1 if first occurance of the string is a valid map char
-//ignores tabs and spaces
+// returns 1 if first occurance of the string is a valid map char
+// ignores tabs and spaces
 char	*valid_first_occurance(char *str)
 {
 	int	i;

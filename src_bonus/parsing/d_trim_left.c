@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   trim_left.c                                        :+:      :+:    :+:   */
+/*   d_trim_left.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 13:01:22 by inbar             #+#    #+#             */
-/*   Updated: 2025/03/10 18:44:06 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/17 18:38:50 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cub3d.h"
+#include "../../inc_bonus/cub3d.h"
 
 static int	get_min_start(t_data *data, int *min_start, int i);
 
 int	trim_lines(t_data *data)
 {
-	int		status;
+	int	status;
 
 	status = trim_leftend(data);
 	if (status == SUCCESS)
@@ -24,9 +24,9 @@ int	trim_lines(t_data *data)
 	return (status);
 }
 
-//trims all spaces from the left and right sides of the map, trims \n
-//saves map height
-//may return malloc err or parse err
+// trims all spaces from the left and right sides of the map, trims \n
+// saves map height
+// may return malloc err or parse err
 int	trim_leftend(t_data *data)
 {
 	int		min_start;
@@ -40,7 +40,9 @@ int	trim_leftend(t_data *data)
 	i = -1;
 	while (data->input.map[++i] != NULL)
 	{
-		len = ft_strlen(data->input.map[i]) - 1;
+		len = ft_strlen(data->input.map[i]);
+		if (data->input.map[i][len - 1] == 10)
+			len--;
 		tmp = ft_substr(data->input.map[i], min_start, len - min_start);
 		if (tmp == NULL)
 			return (MALLOC_ERR);
@@ -54,7 +56,7 @@ int	trim_leftend(t_data *data)
 	return (SUCCESS);
 }
 
-//find the leftmost start of the lines in the map array
+// find the leftmost start of the lines in the map array
 static int	get_min_start(t_data *data, int *min_start, int i)
 {
 	int		start;

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   d_draw_ceiling_floor.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 20:30:47 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/10 23:41:51 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/17 18:40:13 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cub3d.h"
+#include "../../inc_bonus/cub3d.h"
 
 void	draw_ceiling_floor(t_data *data);
 

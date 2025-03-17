@@ -6,11 +6,11 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 17:14:14 by ilazar            #+#    #+#             */
-/*   Updated: 2025/02/21 12:55:43 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/17 18:38:28 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3d.h"
+#include "../../inc_bonus/cub3d.h"
 
 int	err_msg(char *msg, int exit_status)
 {

@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   valid_chars.c                                      :+:      :+:    :+:   */
+/*   f_valid_chars.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 13:20:57 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/14 15:55:31 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/17 18:43:44 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cub3d.h"
+#include "../../inc_bonus/cub3d.h"
 
-static void		handle_player(t_data *data, int i, int j);
-static int		is_player(char c);
-static int		is_valid_char(char c);
-static	void	handle_doors(t_data *data, int i, int j);
+static void	handle_player(t_data *data, int i, int j);
+static int	is_player(char c);
+static int	is_valid_char(char c);
+static void	handle_doors(t_data *data, int i, int j);
 
-//extracts player position and direction, returns error if found invalid char
-//bc of extracting player's position, should happen after trimming map lines
+// extracts player position and direction, returns error if found invalid char
+// bc of extracting player's position, should happen after trimming map lines
 int	valid_chars(t_data *data, int i, int j)
 {
 	char	c;
 
-	i = 1;
+	i = -1;
 	while (data->input.map[++i] != NULL)
 	{
 		j = -1;
@@ -34,7 +34,7 @@ int	valid_chars(t_data *data, int i, int j)
 			{
 				if (data->input.play_x != -1)
 					return (err_msg("Multiple players in map :/", PARSE_ERR));
-                handle_player(data, i, j);
+				handle_player(data, i, j);
 				continue ;
 			}
 			if (!is_valid_char(c))
@@ -58,10 +58,9 @@ static void	handle_doors(t_data *data, int i, int j)
 {
 	if (data->input.map[i][j] != '2')
 		return ;
-		
 }
 
-//extract player's info and change it to '0'
+// extract player's info and change it to '0'
 static void	handle_player(t_data *data, int i, int j)
 {
 	data->input.play_x = j;
@@ -70,7 +69,7 @@ static void	handle_player(t_data *data, int i, int j)
 	data->input.map[i][j] = '0';
 }
 
-//returns 1 if char is a player char
+// returns 1 if char is a player char
 static int	is_player(char c)
 {
 	if (c == 'N' || c == 'S' || c == 'W' || c == 'E')

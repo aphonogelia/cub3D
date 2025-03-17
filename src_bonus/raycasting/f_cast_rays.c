@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   f_cast_rays.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:57:58 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/15 15:52:12 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/17 18:40:21 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cub3d.h"
+#include "../../inc_bonus/cub3d.h"
 
 void			cast_rays(t_data *data, t_ray *ray);
 static void		direction(t_ray *ray);
@@ -29,16 +29,16 @@ void	cast_rays(t_data *data, t_ray *ray)
 	ray->corr_dist = ray->distance * TILE_SIZE * ray->cos_angle_diff;
 }
 
-// Direction x and y + Distance to the first tile 
+// Direction x and y + Distance to the first tile
 static void	direction(t_ray *ray)
 {
-	if (ray->cos_angle > 0) 
+	if (ray->cos_angle > 0)
 		ray->step_x = 1;
-	else 
+	else
 		ray->step_x = -1;
-	if (ray->sin_angle < 0) 
+	if (ray->sin_angle < 0)
 		ray->step_y = 1;
-	else 
+	else
 		ray->step_y = -1;
 }
 
@@ -56,7 +56,7 @@ static void	calcul_dist_per_unit(t_ray *ray)
 		ray->hypo_y = fabsf(1 / ray->sin_angle);
 }
 
-// INIT POSITION - in int for the DDA + FIRST DISTANCE 
+// INIT POSITION - in int for the DDA + FIRST DISTANCE
 static void	init_position_dist(t_data *data, t_ray *ray)
 {
 	float	x;
@@ -66,34 +66,34 @@ static void	init_position_dist(t_data *data, t_ray *ray)
 	ray->map_y = (int)((data->player.y - OFFSET) / TILE_SIZE);
 	x = ((data->player.x - OFFSET) / TILE_SIZE);
 	y = ((data->player.y - OFFSET) / TILE_SIZE);
-	if (ray->step_x > 0) 
+	if (ray->step_x > 0)
 		ray->dist_x = (ray->map_x + 1 - x) * ray->hypo_x;
-	else 
+	else
 		ray->dist_x = (x - ray->map_x) * ray->hypo_x;
-	if (ray->step_y > 0) 
+	if (ray->step_y > 0)
 		ray->dist_y = (ray->map_y + 1 - y) * ray->hypo_y;
-	else 
+	else
 		ray->dist_y = (y - ray->map_y) * ray->hypo_y;
 }
 
 static float	find_distance(t_data *data, t_ray *ray)
 {
-	while (42) 
+	while (42)
 	{
 		if (ray->dist_x < ray->dist_y)
 			ray->map_x += ray->step_x;
-		else 
+		else
 			ray->map_y += ray->step_y;
 		if (wall_check(data, ray) == true)
 		{
 			if (ray->dist_x < ray->dist_y)
 				return (-ray->dist_x);
-			else 
+			else
 				return (ray->dist_y);
 		}
 		if (ray->dist_x < ray->dist_y)
 			ray->dist_x += ray->hypo_x;
-		else 
+		else
 			ray->dist_y += ray->hypo_y;
 	}
 }
@@ -114,7 +114,7 @@ static bool	wall_check(t_data *data, t_ray *ray)
 	return (false);
 }
 
-//finds appropriate door according to map coords
+// finds appropriate door according to map coords
 static t_door	*get_door_at(t_data *data, t_ray *ray)
 {
 	int	map_x;
@@ -128,8 +128,7 @@ static t_door	*get_door_at(t_data *data, t_ray *ray)
 	i = -1;
 	while (++i < doors_nbr)
 	{
-		if ((int)data->doors[i].x == map_x && \
-		(int)data->doors[i].y == map_y)
+		if ((int)data->doors[i].x == map_x && (int)data->doors[i].y == map_y)
 			return (&data->doors[i]);
 	}
 	return (NULL);

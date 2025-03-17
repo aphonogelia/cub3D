@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 21:25:58 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/14 15:55:27 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/17 18:38:33 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cub3d.h"
+#include "../../inc_bonus/cub3d.h"
 
 static void	print_doors(t_data *data);
 
@@ -23,9 +23,9 @@ void	print_player(t_player *player)
 
 void	print_input(t_data *data)
 {
-	int	i;
+	int		i;
 	t_input	input;
-	
+
 	input = data->input;
 	printf("\n=== INPUT INFO ===\n");
 	printf("Map Dimensions: %d x %d\n", input.w_map, input.h_map);
@@ -60,7 +60,7 @@ void	print_data(t_data *data)
 
 static void	print_doors(t_data *data)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	printf("\n=== DOORS ===\n");

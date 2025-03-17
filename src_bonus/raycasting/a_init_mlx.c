@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   a_init_mlx.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:53:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/14 15:55:57 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/17 18:39:56 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cub3d.h"
+#include "../../inc_bonus/cub3d.h"
 
 void			init_mlx(t_data *data);
 static void		init_player(t_data *data);
@@ -41,6 +41,6 @@ static float	calc_angle(char c)
 		return (180);
 	else if (c == 'S')
 		return (270);
-	else 
+	else
 		return (0);
 }

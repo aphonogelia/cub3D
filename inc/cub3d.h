@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/17 18:13:51 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/17 18:51:14 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@
 # define MVT_SPEED 1
 # define ROT_SPEED 0.04
 # define FOV 66
-# define WALL_SIZE 2
+# define WALL_SIZE 3
 
 // Minimap colors
 # define PLY_COL MAGENTA

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   h_draw_minimap.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 16:43:52 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/13 21:12:19 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/17 18:40:28 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cub3d.h"
+#include "../../inc_bonus/cub3d.h"
 
 void		draw_minimap(t_data *data);
 static void	draw_miniwalls(t_data *data);
@@ -22,12 +22,15 @@ void	draw_minimap(t_data *data)
 	draw_miniwalls(data);
 	// draw_player(data);
 }
-/* 
+/*
 static void	draw_player(t_data *data)
 {
 	t_coord		coord;
 	uint32_t	i;
 	uint32_t	j;
+	t_coord		coord;
+	int			x;
+	int			y;
 
 	coord.x = data->player.x;
 	coord.y = data->player.y;
@@ -44,13 +47,8 @@ static void	draw_player(t_data *data)
 		i++;
 	}
 } */
-
 static void	draw_miniwalls(t_data *data)
 {
-	t_coord	coord;
-	int		x;
-	int		y;
-
 	y = 0;
 	while (y < data->input.h_map)
 	{

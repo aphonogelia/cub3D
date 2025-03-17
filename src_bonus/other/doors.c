@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   doors.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 17:14:07 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/11 17:54:51 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/17 18:42:33 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../inc_bonus/cub3d.h"
 
 static void		save_door(t_data *data, int row, int col, int door_nbr);
 static int		is_exit_door(t_data *data, int row, int col);
@@ -53,33 +53,33 @@ static void	save_door(t_data *data, int row, int col, int door_nbr)
 
 static int	is_exit_door(t_data *data, int row, int col)
 {
-	if (row == 0) //first row
-		return 1;
+	if (row == 0) // first row
+		return (1);
 	if (data->input.map[row - 1][col] == ' ')
-		return 1;
-	if (row == data->input.h_map - 1) //last row
-		return 1;
-	if (data->input.map[row + 1][col] == ' ') //row down
-		return 1;
-	if (col == 0) //first collum
-		return 1;
-	if (data->input.map[row][col - 1] == ' ') //left collum
-		return 1;
-	if (data->input.map[row][col + 1] == ' ' ||
-		data->input.map[row][col + 1] == '\0')
-		return 1;
-	return 0;
+		return (1);
+	if (row == data->input.h_map - 1) // last row
+		return (1);
+	if (data->input.map[row + 1][col] == ' ') // row down
+		return (1);
+	if (col == 0) // first collum
+		return (1);
+	if (data->input.map[row][col - 1] == ' ') // left collum
+		return (1);
+	if (data->input.map[row][col + 1] == ' ' || data->input.map[row][col
+		+ 1] == '\0')
+		return (1);
+	return (0);
 }
 
-static float distance_to_door(t_player *player, t_door *doors, int i)
+static float	distance_to_door(t_player *player, t_door *doors, int i)
 {
-	return (sqrtf((player->x - doors[i].x) * (player->x - doors[i].x) + \
-			(player->y - doors[i].y) * (player->y - doors[i].y)));
+	return (sqrtf((player->x - doors[i].x) * (player->x - doors[i].x)
+			+ (player->y - doors[i].y) * (player->y - doors[i].y)));
 }
 
 void	doors_interaction(t_player *player, t_door *doors, int doors_nbr)
 {
-	int	i;
+	int		i;
 	float	door_vec_x;
 	float	door_vec_y;
 	float	distance;
@@ -100,11 +100,11 @@ void	doors_interaction(t_player *player, t_door *doors, int doors_nbr)
 				distance = 1;
 			door_vec_x = door_vec_x / distance;
 			door_vec_y = door_vec_y / distance;
-			facing_door = (cosf(player->angle_r) * door_vec_x) - \
-							(sinf(player->angle_r) * door_vec_y);
+			facing_door = (cosf(player->angle_r) * door_vec_x)
+				- (sinf(player->angle_r) * door_vec_y);
 			// printf("facing door (%f)\n", facing_door);
-			if (facing_door > 0.6f) //theshold for facing door
-			{	
+			if (facing_door > 0.6f) // theshold for facing door
+			{
 				printf("door open\n");
 				doors[i].open = !doors[i].open;
 				if (doors[i].exit_game == 1)
