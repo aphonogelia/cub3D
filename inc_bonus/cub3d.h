@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/18 12:17:55 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/18 21:38:29 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -221,8 +221,8 @@ void				cast_rays(t_data *data, t_ray *ray);
 void				draw_miniray(t_data *data, t_ray *ray);
 void				draw_minimap(t_data *data);
 void				escape_handle(mlx_key_data_t keys, void *param);
-float				degree_to_rad(int nb);
-float				degree_to_rad(int nb);
+float				deg_to_rad(int nb);
+float				deg_to_rad(int nb);
 void				resize_hook(int32_t width, int32_t height, void *param);
 void				handle_error(char *error_message, t_data *data);
 void				handle_error2(char *error_message, t_data *data,

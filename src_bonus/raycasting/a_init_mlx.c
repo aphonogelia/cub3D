@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   a_init_mlx.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:53:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/17 18:39:56 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/18 21:38:29 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	init_player(t_data *data)
 {
 	data->player.x = data->input.play_x * TILE_SIZE + OFFSET;
 	data->player.y = data->input.play_y * TILE_SIZE + OFFSET;
-	data->player.angle_r = degree_to_rad(calc_angle(data->input.player_dir));
+	data->player.angle_r = deg_to_rad(calc_angle(data->input.player_dir));
 }
 
 static float	calc_angle(char c)

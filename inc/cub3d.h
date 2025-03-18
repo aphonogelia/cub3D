@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/18 11:37:51 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/18 21:52:04 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@
 # define HEIGHT 600
 
 # define OFFSET 10
-# define TILE_SIZE 10
-# define MVT_SPEED 1
-# define ROT_SPEED 0.04
+# define TILE_SIZE 1000000
+# define MVT_SPEED 0.05
+# define ROT_SPEED 0.01
 # define FOV 66
-# define WALL_SIZE 3
+# define WALL_SIZE 2
 
 // Minimap colors
 # define PLY_COL MAGENTA
@@ -104,8 +104,8 @@ typedef struct s_screen
 {
 	mlx_texture_t	*tex;
 	mlx_image_t		*welcome_img;
-	int32_t				orig_w;
-	int32_t				orig_h;
+	int32_t			orig_w;
+	int32_t			orig_h;
 	mlx_image_t		*background;
 	bool			is_welcome;
 }					t_screen;
@@ -142,6 +142,8 @@ typedef struct s_ray
 	int				line_length;
 	int				wall_orient;
 	float			wall_x;
+	float			hit_x;
+	float			hit_y;
 }					t_ray;
 
 typedef struct s_texture
@@ -169,7 +171,7 @@ typedef struct s_mvt
 
 /******************************************************************************/
 /******************************************************************************/
-/*								PARSING											*/
+/*								PARSING									 	  */
 /******************************************************************************/
 /******************************************************************************/
 
@@ -190,7 +192,7 @@ void				clean_parse(t_data *data);
 
 /******************************************************************************/
 /******************************************************************************/
-/*								RAYCASTING										*/
+/*								RAYCASTING								      */
 /******************************************************************************/
 /******************************************************************************/
 
@@ -203,15 +205,15 @@ void				draw_ceiling_floor(t_data *data);
 void				draw_walls(t_data *data);
 void				cast_rays(t_data *data, t_ray *ray);
 void				escape_handle(mlx_key_data_t keys, void *param);
-float				degree_to_rad(int nb);
-float				degree_to_rad(int nb);
+float				deg_to_rad(int nb);
+float				rad_to_degree(float nb);
 void				handle_error(char *error_message, t_data *data);
 void				close_window(void *param);
 void				resize_hook(int32_t width, int32_t height, void *param);
 
 /******************************************************************************/
 /******************************************************************************/
-/*									TEXTURES									*/
+/*									TEXTURES								  */
 /******************************************************************************/
 /******************************************************************************/
 
@@ -223,7 +225,7 @@ void				clean_textures(t_data *data);
 
 /******************************************************************************/
 /******************************************************************************/
-/*									OTHER										*/
+/*									OTHER									  */
 /******************************************************************************/
 /******************************************************************************/
 

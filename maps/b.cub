@@ -1,6 +1,37 @@
-	NO ./textures/north.xpm
-           SO ./textures/south.xpm      
-WE ./textures/west.xpm
-EA 	./textures/east.xpm
-   F    220,100,0
-   C 225,30,0       
+NO imgs/fab.png
+SO imgs/ishta.png
+WE imgs/tiger.png
+EA imgs/tiger2.png   
+
+F 20,22,25
+C 13,14,15   
+
+111
+101
+101
+101
+101
+101
+101
+101
+101
+101
+101
+101
+101
+101
+101
+1N1
+101
+101
+101
+101
+101
+101
+101
+101
+101
+101
+101
+101
+111

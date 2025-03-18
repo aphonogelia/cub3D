@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   e_draw_walls.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 10:40:14 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/17 18:40:17 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/18 21:38:29 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	draw_walls(t_data *data)
 	float	step;
 	int		u;
 
-	curr_angle = data->player.angle_r + degree_to_rad(FOV / 2);
-	step = degree_to_rad(FOV) / data->mlx->width;
+	curr_angle = data->player.angle_r + deg_to_rad(FOV / 2);
+	step = deg_to_rad(FOV) / data->mlx->width;
 	u = 0;
 	while (u < data->mlx->width)
 	{

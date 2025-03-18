@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 10:40:14 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/15 16:14:38 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/18 21:57:41 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ void	draw_walls(t_data *data)
 	t_ray	ray;
 	int		u;
 
-	ray.curr_angle = data->player.angle_r + degree_to_rad(FOV / 2);
-	ray.step = degree_to_rad(FOV) / data->mlx->width;
+	ray.curr_angle = data->player.angle_r + deg_to_rad(FOV / 2);
+	ray.curr_angle = fmodf(ray.curr_angle, 2 * M_PI);
+	ray.step = deg_to_rad(FOV) / data->mlx->width;
 	u = 0;
 	while (u < data->mlx->width)
 	{
@@ -51,7 +52,7 @@ static void	wall_orient(t_data *data, t_ray *ray)
 			ray->wall_orient = EAST;
 		else 
 			ray->wall_orient = WEST;
-		ray->wall_x = data->player.y + ray->corr_dist * ray->sin_angle;
+		ray->wall_x = data->player.y - ray->distance * ray->sin_angle ;
 	}
 	else
 	{
@@ -59,19 +60,24 @@ static void	wall_orient(t_data *data, t_ray *ray)
 			ray->wall_orient = SOUTH;
 		else 
 			ray->wall_orient = NORTH;
-		ray->wall_x = data->player.x + ray->corr_dist * ray->cos_angle;
+		ray->wall_x = data->player.x + ray->distance * ray->cos_angle;
 	}
-	ray->wall_x -= floor(ray->wall_x);
+	ray->wall_x -= floorf(ray->wall_x);
 }
 
-static void	draw_vertical(t_data *data, t_ray *ray, int u)
+/* static void	draw_vertical(t_data *data, t_ray *ray, int u)
 {
 	int			v;
 	int			ord_top;
 	int			ord_bottom;
 	t_texture	t;
+	float		window_ratio;
+	float		wall_height;
 
-	ray->line_length = (int)((data->mlx->height * WALL_SIZE) / ray->corr_dist);
+	window_ratio = (float)data->mlx->width / (float)data->mlx->height;
+	wall_height = (data->mlx->height * TILE_SIZE) / (ray->corr_dist * window_ratio);
+	ray->line_length = (int)(wall_height + 0.5f);
+	// ray->line_length = (int)((data->mlx->height * 2) / ray->corr_dist * window_ratio);
 	t.text_top = set_ords(&ord_top, &ord_bottom, data, ray);
 	t.png = data->textures[ray->wall_orient];
 	t.tex_x = calc_texture_x(ray, t.png);
@@ -80,7 +86,7 @@ static void	draw_vertical(t_data *data, t_ray *ray, int u)
 	{
 		if (t.png)
 		{
-			t.text_pos = (float)(v - ord_top + t.text_top) / ray->line_length;
+			t.text_pos = (float)(v - ord_top + t.text_top) / wall_height;
 			t.tex_y = (int)(t.text_pos * t.png->height);
 			t.color = sample_color(&t);
 			mlx_put_pixel(data->img, u, v, t.color);
@@ -89,7 +95,49 @@ static void	draw_vertical(t_data *data, t_ray *ray, int u)
 			mlx_put_pixel(data->img, u, v, use_default_clr(ray->wall_orient));
 		v++;
 	}
+} */
+
+Horizontal FOV = 2 * arctan(tan(Vertical FOV / 2) * aspect ratio)
+
+
+static void draw_vertical(t_data *data, t_ray *ray, int u)
+{
+    int         v;
+    int         ord_top;
+    int         ord_bottom;
+    t_texture   t;
+    float       wall_height;
+    float       scale_factor;
+
+    // Calculate the scale factor based on the window width
+    scale_factor = (float)data->mlx->width / (TILE_SIZE * FOV);
+
+    // Calculate wall height using the scale factor
+    wall_height = (TILE_SIZE * scale_factor) / ray->corr_dist;
+
+    // Set line length for drawing
+    ray->line_length = (int)(wall_height + 0.5f);
+
+    t.text_top = set_ords(&ord_top, &ord_bottom, data, ray);
+    t.png = data->textures[ray->wall_orient];
+    t.tex_x = calc_texture_x(ray, t.png);
+
+    v = ord_top;
+    while (v < ord_bottom)
+    {
+        if (t.png)
+        {
+            t.text_pos = (float)(v - ord_top + t.text_top) / wall_height;
+            t.tex_y = (int)(t.text_pos * t.png->height) % t.png->height;
+            t.color = sample_color(&t);
+            mlx_put_pixel(data->img, u, v, t.color);
+        }
+        else
+            mlx_put_pixel(data->img, u, v, use_default_clr(ray->wall_orient));
+        v++;
+    }
 }
+
 
 //setting ord_top and ord_bottom
 static int	set_ords(int *ord_top, int *ord_bottom, t_data *data, t_ray *ray)

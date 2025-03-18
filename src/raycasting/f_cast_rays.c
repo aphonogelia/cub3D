@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:57:58 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/15 18:05:42 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/18 20:06:56 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	cast_rays(t_data *data, t_ray *ray)
 	calcul_dist_per_unit(ray);
 	init_position_dist(data, ray);
 	ray->distance = find_distance(data, ray);
-	ray->corr_dist = ray->distance * TILE_SIZE * ray->cos_angle_diff;
+	ray->corr_dist = ray->distance * ray->cos_angle_diff;
 }
 
 // Direction x and y + Distance to the first tile 
@@ -60,10 +60,10 @@ static void	init_position_dist(t_data *data, t_ray *ray)
 	float	x;
 	float	y;
 
-	ray->map_x = (int)((data->player.x - OFFSET) / TILE_SIZE);
-	ray->map_y = (int)((data->player.y - OFFSET) / TILE_SIZE);
-	x = ((data->player.x - OFFSET) / TILE_SIZE);
-	y = ((data->player.y - OFFSET) / TILE_SIZE);
+	ray->map_x = (int)data->player.x;
+	ray->map_y = (int)data->player.y;
+	x = data->player.x;
+	y = data->player.y;
 	if (ray->step_x > 0) 
 		ray->dist_x = (ray->map_x + 1 - x) * ray->hypo_x;
 	else 

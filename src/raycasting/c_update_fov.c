@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:58:59 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/14 15:38:16 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/18 21:37:51 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,11 +108,12 @@ static bool	tile(t_data *data, float x, float y)
 	int	map_x;
 	int	map_y;
 
-	map_x = (int)((x - OFFSET) / TILE_SIZE);
-	map_y = (int)((y - OFFSET) / TILE_SIZE);
+	map_x = (int)x;
+	map_y = (int)y;
 	if (map_x > data->input.w_map 
-		|| map_y > data->input.h_map
-		|| map_x < 0 || map_y < 0)
+		|| map_y > data->input.h_map 
+		|| map_x < 0 
+		|| map_y < 0)
 		return (true);
 	if (data->input.map[map_y][map_x] == '1')
 		return (true);
