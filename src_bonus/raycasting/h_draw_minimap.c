@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 16:43:52 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/17 18:40:28 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/18 12:24:45 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,9 @@ static void	draw_player(t_data *data)
 		}
 		i++;
 	}
-} */
+}
+*/
+
 static void	draw_miniwalls(t_data *data)
 {
 	y = 0;
