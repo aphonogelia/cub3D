@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 10:40:14 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/18 21:57:41 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/18 22:02:52 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,19 +65,17 @@ static void	wall_orient(t_data *data, t_ray *ray)
 	ray->wall_x -= floorf(ray->wall_x);
 }
 
-/* static void	draw_vertical(t_data *data, t_ray *ray, int u)
+static void	draw_vertical(t_data *data, t_ray *ray, int u)
 {
 	int			v;
 	int			ord_top;
 	int			ord_bottom;
 	t_texture	t;
 	float		window_ratio;
-	float		wall_height;
 
 	window_ratio = (float)data->mlx->width / (float)data->mlx->height;
-	wall_height = (data->mlx->height * TILE_SIZE) / (ray->corr_dist * window_ratio);
-	ray->line_length = (int)(wall_height + 0.5f);
-	// ray->line_length = (int)((data->mlx->height * 2) / ray->corr_dist * window_ratio);
+	// ray->line_length = (int)((data->mlx->height * 12) / (ray->corr_dist * window_ratio) + 0.5f);
+	ray->line_length = (int)((data->mlx->height * 2) / ray->corr_dist);
 	t.text_top = set_ords(&ord_top, &ord_bottom, data, ray);
 	t.png = data->textures[ray->wall_orient];
 	t.tex_x = calc_texture_x(ray, t.png);
@@ -86,7 +84,7 @@ static void	wall_orient(t_data *data, t_ray *ray)
 	{
 		if (t.png)
 		{
-			t.text_pos = (float)(v - ord_top + t.text_top) / wall_height;
+			t.text_pos = (float)(v - ord_top + t.text_top) / ray->line_length;
 			t.tex_y = (int)(t.text_pos * t.png->height);
 			t.color = sample_color(&t);
 			mlx_put_pixel(data->img, u, v, t.color);
@@ -95,9 +93,9 @@ static void	wall_orient(t_data *data, t_ray *ray)
 			mlx_put_pixel(data->img, u, v, use_default_clr(ray->wall_orient));
 		v++;
 	}
-} */
+}
 
-Horizontal FOV = 2 * arctan(tan(Vertical FOV / 2) * aspect ratio)
+/* Horizontal FOV = 2 * arctan(tan(Vertical FOV / 2) * aspect ratio)
 
 
 static void draw_vertical(t_data *data, t_ray *ray, int u)
@@ -136,7 +134,7 @@ static void draw_vertical(t_data *data, t_ray *ray, int u)
             mlx_put_pixel(data->img, u, v, use_default_clr(ray->wall_orient));
         v++;
     }
-}
+} */
 
 
 //setting ord_top and ord_bottom
