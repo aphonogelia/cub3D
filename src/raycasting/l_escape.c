@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   l_escape.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 15:10:25 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/15 18:05:50 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/18 10:43:55 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	escape_handle(mlx_key_data_t keys, void *param)
 		mlx_delete_image(data->mlx, data->screen.welcome_img);
 		mlx_delete_image(data->mlx, data->screen.background);
 		data->screen.is_welcome = false;
+		data->flag_refresh = true;
 		return ;
 	}
 	if (keys.key == MLX_KEY_ESCAPE && keys.action == MLX_PRESS)
