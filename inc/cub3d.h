@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/17 18:51:14 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/18 11:37:51 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,10 @@ typedef struct s_player
 
 typedef struct s_screen
 {
-	mlx_texture_t	*texture;
+	mlx_texture_t	*tex;
 	mlx_image_t		*welcome_img;
+	int32_t				orig_w;
+	int32_t				orig_h;
 	mlx_image_t		*background;
 	bool			is_welcome;
 }					t_screen;

@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 15:10:25 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/18 10:43:55 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/18 11:38:56 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	escape_handle(mlx_key_data_t keys, void *param)
 			mlx_close_window(data->mlx);
 		mlx_delete_image(data->mlx, data->screen.welcome_img);
 		mlx_delete_image(data->mlx, data->screen.background);
+		mlx_delete_texture(data->screen.tex);
 		data->screen.is_welcome = false;
 		data->flag_refresh = true;
 		return ;
