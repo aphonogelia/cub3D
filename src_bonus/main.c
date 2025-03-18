@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 16:57:54 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/17 18:38:24 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/18 12:17:27 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ int	main(int ac, char **av)
 	// print_input(&data.input);
 	init_mlx(&data);
 	mlx_image_to_window((&data)->mlx, (&data)->img, 0, 0);
+	welcome_screen(&data);
 	load_textures(&data);
+	mlx_resize_hook(data.mlx, &resize_hook, &data);
 	// clean_textures(&data);
 	draw_ceiling_floor(&data);
 	draw_walls(&data);
@@ -35,7 +37,7 @@ int	main(int ac, char **av)
 	print_data(&data);
 	// mlx_close_hook((&data)->mlx, &close_window, &data);
 	mlx_loop_hook((&data)->mlx, &hoop_func, &data);
-	mlx_key_hook((&data)->mlx, &escape, &data);
+	mlx_key_hook((&data)->mlx, &escape_handle, &data);
 	mlx_cursor_hook((&data)->mlx, &mouse_callback, &data);
 	mlx_loop((&data)->mlx);
 	mlx_terminate((&data)->mlx);
