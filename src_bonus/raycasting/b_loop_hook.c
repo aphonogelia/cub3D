@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 22:43:01 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/18 12:14:52 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/18 12:31:14 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	hoop_func(void *param)
 		{
 			draw_ceiling_floor(data);
 			draw_walls(data);
+			draw_minimap(data);
+			// draw_player(data);
 			data->flag_refresh = false;
 		}
 	}

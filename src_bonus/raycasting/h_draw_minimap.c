@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 16:43:52 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/18 12:24:45 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/18 12:31:51 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void		draw_minimap(t_data *data);
 static void	draw_miniwalls(t_data *data);
-// static void	draw_player(t_data *data);
+static void	draw_player(t_data *data);
 static void	draw_tiles(mlx_image_t *img, t_coord coord, int size, uint32_t col);
 
 void	draw_minimap(t_data *data)
