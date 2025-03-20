@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:58:59 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/18 21:37:51 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/20 22:00:43 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void		update_angle(t_data *data);
 void		update_player(t_data *data);
 static void	calculate_deltas(t_data *data, t_coord *delta);
 static void	normalization(float *x, float *y);
+static bool	close_wall(t_data *data, float x, float y);
 static bool	tile(t_data *data, float x, float y);
 
 // update the angle, stays between 0 and 2pi (fmod : float modulo)
@@ -51,9 +52,9 @@ void	update_player(t_data *data)
 	calculate_deltas(data, &delta);
 	updated.x += speed * delta.x;
 	updated.y += speed * delta.y;
-	if (tile(data, updated.x, data->player.y) == false)
+	if (close_wall(data, updated.x, data->player.y) == false)
 		data->player.x = updated.x;
-	if (tile(data, data->player.x, updated.y) == false)
+	if (close_wall(data, data->player.x, updated.y) == false)
 		data->player.y = updated.y;
 }
 
@@ -100,6 +101,31 @@ static void	normalization(float *x, float *y)
 		*x /= scale;
 		*y /= scale;
 	}
+}
+
+static bool	close_wall(t_data *data, float x, float y)
+{
+	int		i;
+	int		j;
+	float	check_x;
+	float	check_y;
+
+	i = -1;
+	while (i <= 1)
+	{
+		j = -1;
+		while (j <= 1)
+		{
+			check_x = (x + i * PLAYER_SPACE);
+			check_y = (y + j * PLAYER_SPACE);
+			printf("checking x, y = %.2f, %.2f\n", check_x, check_y);
+			if (tile(data, check_x, check_y))
+				return (true);
+			j++;
+		}
+		i++;
+	}
+	return (false);
 }
 
 // we check if there is a tile ->  return TRUE

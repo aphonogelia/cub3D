@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/18 21:38:29 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/20 20:56:01 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@
 
 # define OFFSET 10
 # define TILE_SIZE 4
-# define MVT_SPEED 1.2
-# define ROT_SPEED 0.05
+# define MVT_SPEED 10
+# define ROT_SPEED 0.08
 # define FOV 66
 # define WALL_SIZE 2
-# define MOUSE_SENS 0.002       // mouse sensitivity
+# define MOUSE_SENS 0.01       // mouse sensitivity
 # define INTERACTION_RANGE 8.0f // interaction from doors
 # define MAX_DOORS 25
 

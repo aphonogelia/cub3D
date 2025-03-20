@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:53:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/18 21:40:05 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/20 21:55:51 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,10 @@ void	init_mlx(t_data *data)
 
 static void	init_player(t_data *data)
 {
-	data->player.x = data->input.play_x * 0.5;
-	data->player.y = data->input.play_y * 0.5;
+	data->player.x = data->input.play_x + 0.5;
+	data->player.y = data->input.play_y + 0.5;
 	data->player.angle_r = deg_to_rad(calc_angle(data->input.player_dir));
+	printf("init pos x, y = %.2f, %.2f\n", data->player.x, data->player.y);
 }
 
 static float	calc_angle(char c)
