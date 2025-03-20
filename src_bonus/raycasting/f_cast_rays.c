@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:57:58 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/17 18:40:21 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/20 10:49:04 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,8 @@ static bool	wall_check(t_data *data, t_ray *ray)
 	else if (data->input.map[ray->map_y][ray->map_x] == DOOR)
 	{
 		door = get_door_at(data, ray);
-		// if (door && !door->open)
-		//	return yes
+		if (door && !door->open)
+			return true;
 		return (true);
 	}
 	return (false);

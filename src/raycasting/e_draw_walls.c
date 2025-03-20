@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 10:40:14 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/20 19:15:30 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/20 19:48:31 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,9 @@ static void	draw_vertical(t_data *data, t_ray *ray, int u)
 	int			ord_top;
 	int			ord_bottom;
 	t_texture	t;
-	float		window_ratio;
+	// float		window_ratio;
 
-	window_ratio = (float)data->mlx->width / (float)data->mlx->height;
+	// window_ratio = (float)data->mlx->width / (float)data->mlx->height;
 	// ray->line_length = (int)((data->mlx->height * 12) / (ray->corr_dist * window_ratio) + 0.5f);
 	ray->line_length = (int)((data->mlx->height * 2) / ray->corr_dist);
 	t.text_top = set_ords(&ord_top, &ord_bottom, data, ray);
