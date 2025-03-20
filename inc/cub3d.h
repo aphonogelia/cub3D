@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/18 21:52:04 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/20 19:10:20 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ typedef struct s_data
 typedef struct s_ray
 {
 	float			curr_angle;
-	float			step;
+	float			curr_arctan;
 	float			cos_angle;
 	float			sin_angle;
 	float			cos_angle_diff;

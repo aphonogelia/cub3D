@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 10:40:14 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/18 22:02:52 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/20 19:15:30 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,25 @@ void	draw_walls(t_data *data)
 {
 	t_ray	ray;
 	int		u;
+	float	proj_plane_w;
+	float	proj_plane_d;
+	float	screen_x;
 
-	ray.curr_angle = data->player.angle_r + deg_to_rad(FOV / 2);
-	ray.curr_angle = fmodf(ray.curr_angle, 2 * M_PI);
-	ray.step = deg_to_rad(FOV) / data->mlx->width;
+	proj_plane_d = 1.0f;
+	proj_plane_w = 2.0f * proj_plane_d * tanf(deg_to_rad(FOV / 2));
 	u = 0;
 	while (u < data->mlx->width)
 	{
+		screen_x = 2.0f * u / data->mlx->width - 1.0f; // normalized screen pos between -1 and 1
+		ray.curr_arctan = -atan2f(screen_x * proj_plane_w / 2, proj_plane_d);
+		ray.curr_angle = data->player.angle_r + ray.curr_arctan;
+		ray.curr_angle = fmodf(ray.curr_angle, 2 * M_PI);
 		ray.cos_angle = cosf(ray.curr_angle);
 		ray.sin_angle = sinf(ray.curr_angle);
 		ray.cos_angle_diff = fabsf(cosf(ray.curr_angle - data->player.angle_r));
 		cast_rays(data, &ray);
 		wall_orient(data, &ray);
 		draw_vertical(data, &ray, u);
-		ray.curr_angle -= ray.step;
 		u++;
 	}
 }
