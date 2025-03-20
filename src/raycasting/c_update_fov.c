@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:58:59 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/20 22:00:43 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/20 22:11:58 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,6 @@ static bool	close_wall(t_data *data, float x, float y)
 		{
 			check_x = (x + i * PLAYER_SPACE);
 			check_y = (y + j * PLAYER_SPACE);
-			printf("checking x, y = %.2f, %.2f\n", check_x, check_y);
 			if (tile(data, check_x, check_y))
 				return (true);
 			j++;
