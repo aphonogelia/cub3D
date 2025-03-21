@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 11:56:14 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/17 18:39:42 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/21 16:52:06 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ void	load_textures(t_data *data)
 	}
 }
 
-// load png texture. if file is missing or corrupted will err msg and return null
+// load png texture. 
+// if file is missing or corrupted will err msg and return null
 static mlx_texture_t	*load_png(t_data *data, char *path)
 {
 	mlx_texture_t	*texture;

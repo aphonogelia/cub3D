@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:58:59 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/21 16:09:20 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/21 16:45:35 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	update_player(t_data *data)
 	calculate_deltas(data, &delta);
 	updated.x += speed * delta.x;
 	updated.y += speed * delta.y;
+	printf("%.2f, %.2f\n", updated.x, updated.y);
 	if (close_wall(data, updated.x, data->player.y) == false)
 		data->player.x = updated.x;
 	if (close_wall(data, data->player.x, updated.y) == false)

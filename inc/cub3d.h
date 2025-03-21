@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/21 16:10:44 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/21 16:20:01 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define PINK 0xFFC0CBFF
 # define LIME 0x00FF00FF
 # define TEAL 0x008080FF
-# define NAVY 0x000080FF
+# define NAVY 0x00008000
 
 # define M_PI 3.14159265358979323846
 # define MAX_DIST 1e5
@@ -41,15 +41,15 @@
 # define MVT_SPEED 0.07
 # define ROT_SPEED 0.055
 # define FOV 66
-# define PLAYER_SPACE 0.35
+# define PLAYER_SPACE 0.15
 
 // Minimap colors
-# define PLY_COL MAGENTA
-# define TILE_COL BROWN
-# define FLOOR_COL PINK
-# define DOOR_COL PURPLE
+# define PLY_COL NAVY
+# define TILE_COL NAVY
+# define FLOOR_COL NAVY
+# define DOOR_COL NAVY
 # define BACK_COL NAVY
-# define RAY_COL LIME
+# define RAY_COL NAVY
 
 // status states
 # define PARSE_ERR 3
