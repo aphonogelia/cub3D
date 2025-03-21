@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 10:40:14 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/21 16:15:20 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/21 18:02:30 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	draw_walls(t_data *data)
 		cast_rays(data, &ray);
 		wall_orient(data, &ray);
 		draw_vertical(data, &ray, u);
-		draw_miniray(data, &ray);
+		// draw_miniray(data, &ray);
 		u++;
 	}
 }
