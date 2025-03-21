@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 10:40:14 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/20 22:18:31 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/21 13:03:53 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,14 +100,13 @@ static void	draw_vertical(t_data *data, t_ray *ray, int u)
 
 static int	calc_wall_height(t_data *data, t_ray *ray)
 {
-	float		vertical_fov;
+	float		vert_fov;
 	float		window_ratio;
 	float		wall_height;
 
 	window_ratio = (float)data->mlx->width / (float)data->mlx->height;
-	vertical_fov = 2 * atan(tan(deg_to_rad(FOV / 2)) / window_ratio);
-	wall_height = (1.0f / ray->corr_dist) 
-		* (data->mlx->height / (2 * tan(vertical_fov / 2)));
+	vert_fov = 2 * atan(tan(deg_to_rad(FOV / 2)) / window_ratio);
+	wall_height = data->mlx->height / (2 * ray->corr_dist * tan(vert_fov / 2));
 	return ((int)(wall_height));
 }
 

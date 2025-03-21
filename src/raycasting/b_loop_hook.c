@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   b_loop_hook.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 22:43:01 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/14 20:21:55 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/21 15:48:07 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
 void	hoop_func(void *param);
-void	clear_image(t_data *data);
 
 void	hoop_func(void *param)
 {

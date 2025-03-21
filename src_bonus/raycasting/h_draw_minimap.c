@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   h_draw_minimap.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 16:43:52 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/18 12:31:51 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/21 15:52:54 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,14 @@ static void	draw_tiles(mlx_image_t *img, t_coord coord, int size, uint32_t col);
 void	draw_minimap(t_data *data)
 {
 	draw_miniwalls(data);
-	// draw_player(data);
+	draw_player(data);
 }
-/*
+
 static void	draw_player(t_data *data)
 {
 	t_coord		coord;
 	uint32_t	i;
 	uint32_t	j;
-	t_coord		coord;
-	int			x;
-	int			y;
 
 	coord.x = data->player.x;
 	coord.y = data->player.y;
@@ -47,10 +44,14 @@ static void	draw_player(t_data *data)
 		i++;
 	}
 }
-*/
 
 static void	draw_miniwalls(t_data *data)
 {
+	int		x;
+	int		y;
+	t_coord	coord;
+
+	x = 0;
 	y = 0;
 	while (y < data->input.h_map)
 	{

@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/20 22:09:36 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/21 16:10:44 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,6 +201,7 @@ void				init_mlx(t_data *data);
 void				hoop_func(void *param);
 void				update_angle(t_data *data);
 void				update_player(t_data *data);
+bool				close_wall(t_data *data, float x, float y);
 void				draw_ceiling_floor(t_data *data);
 void				draw_walls(t_data *data);
 void				cast_rays(t_data *data, t_ray *ray);

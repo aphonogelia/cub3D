@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/20 20:56:01 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/21 16:12:43 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@
 # define MOUSE_SENS 0.01       // mouse sensitivity
 # define INTERACTION_RANGE 8.0f // interaction from doors
 # define MAX_DOORS 25
+# define PLAYER_SPACE 0.35
 
 // map items
 # define WALL '1'
@@ -144,6 +145,8 @@ typedef struct s_data
 
 typedef struct s_ray
 {
+	float			curr_angle;
+	float			curr_arctan;
 	float			cos_angle;
 	float			sin_angle;
 	float			cos_angle_diff;
@@ -160,6 +163,8 @@ typedef struct s_ray
 	int				line_length;
 	int				wall_orient;
 	float			wall_x;
+	float			hit_x;
+	float			hit_y;
 }					t_ray;
 
 typedef struct s_texture
@@ -168,6 +173,8 @@ typedef struct s_texture
 	int				tex_x;
 	int				tex_y;
 	uint32_t		color;
+	int				text_top;
+	float			text_pos;
 }					t_texture;
 
 typedef struct s_coord
@@ -213,11 +220,12 @@ void				clean_parse(t_data *data);
 // HELENE
 void				init_mlx(t_data *data);
 void				hoop_func(void *param);
-void				update_angle(t_data *data);
-void				update_player(t_data *data);
+void				update_fov(t_data *data);
+bool				close_wall(t_data *data, float x, float y);
 void				draw_ceiling_floor(t_data *data);
 void				draw_walls(t_data *data);
 void				cast_rays(t_data *data, t_ray *ray);
+bool				wall_check(t_data *data, t_ray *ray);
 void				draw_miniray(t_data *data, t_ray *ray);
 void				draw_minimap(t_data *data);
 void				escape_handle(mlx_key_data_t keys, void *param);

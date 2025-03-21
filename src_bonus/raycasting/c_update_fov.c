@@ -1,13 +1,31 @@
-#include "../../inc/cub3d.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   c_update_fov.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/21 15:36:24 by htharrau          #+#    #+#             */
+/*   Updated: 2025/03/21 15:51:03 by htharrau         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void		update_angle(t_data *data);
-void		update_player(t_data *data);
+#include "../../inc_bonus/cub3d.h"
+
+void		update_fov(t_data *data);
+static void	update_angle(t_data *data);
+static void	update_player(t_data *data);
 static void	calculate_deltas(t_data *data, t_coord *delta);
 static void	normalization(float *x, float *y);
-static bool	tile(t_data *data, float x, float y);
+
+void	update_fov(t_data *data)
+{
+	update_angle(data);
+	update_player(data);
+}
 
 // update the angle, stays between 0 and 2pi (fmod : float modulo)
-void	update_angle(t_data *data)
+static void	update_angle(t_data *data)
 {
 	if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT))
 	{
@@ -24,7 +42,7 @@ void	update_angle(t_data *data)
 
 // we calculate the new position. CTRL: speed * 2. We update the positions only
 // if it is not encountering a wall.
-void	update_player(t_data *data)
+static void	update_player(t_data *data)
 {
 	t_coord	updated;
 	t_coord	delta;
@@ -39,9 +57,9 @@ void	update_player(t_data *data)
 	calculate_deltas(data, &delta);
 	updated.x += speed * delta.x;
 	updated.y += speed * delta.y;
-	if (tile(data, updated.x, data->player.y) == false)
+	if (close_wall(data, updated.x, data->player.y) == false)
 		data->player.x = updated.x;
-	if (tile(data, data->player.x, updated.y) == false)
+	if (close_wall(data, data->player.x, updated.y) == false)
 		data->player.y = updated.y;
 }
 
@@ -88,20 +106,4 @@ static void	normalization(float *x, float *y)
 		*x /= scale;
 		*y /= scale;
 	}
-}
-
-// we check if there is a tile ->  return TRUE
-static bool	tile(t_data *data, float x, float y)
-{
-	int	map_x;
-	int	map_y;
-
-	map_x = (int)((x - OFFSET) / TILE_SIZE);
-	map_y = (int)((y - OFFSET) / TILE_SIZE);
-	if (map_x > data->input.w_map || map_y > data->input.h_map || map_x < 0
-		|| map_y < 0)
-		return (true);
-	if (data->input.map[map_y][map_x] == '1')
-		return (true);
-	return (false);
 }

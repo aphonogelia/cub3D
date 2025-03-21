@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+         #
+#    By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/27 19:14:42 by htharrau          #+#    #+#              #
-#    Updated: 2025/03/17 18:35:52 by ilazar           ###   ########.fr        #
+#    Updated: 2025/03/21 16:10:12 by htharrau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ SRCS		= $(addprefix $(SRCS_DIR), init.c errors.c main.c welcome.c) \
 				g_valid_map.c f_valid_chars.c b_parse_elements.c h_utils_parse.c c_save_map.c) \
 				$(addprefix $(SRCS_DIR)raycasting/, a_init_mlx.c d_draw_ceiling_floor.c \
 				x_helper.c b_loop_hook.c e_draw_walls.c z_cleanup.c c_update_fov.c \
-				m_resize_hook.c f_cast_rays.c l_escape.c g_textures.c)
+				m_resize_hook.c f_cast_rays.c l_escape.c g_textures.c c_update_fov_utils.c)
 	   
 SRCS_BONUS = $(addprefix $(BONUS_DIR), init.c errors.c main.c debug.c) \
 				$(addprefix $(BONUS_DIR)other/, doors.c mouse.c) \
@@ -38,7 +38,8 @@ SRCS_BONUS = $(addprefix $(BONUS_DIR), init.c errors.c main.c debug.c) \
 				g_valid_map.c f_valid_chars.c b_parse_elements.c h_utils_parse.c c_save_map.c) \
 				$(addprefix $(BONUS_DIR)raycasting/, a_init_mlx.c d_draw_ceiling_floor.c \
 				x_helper.c b_loop_hook.c e_draw_walls.c z_cleanup.c c_update_fov.c \
-				f_cast_rays.c l_escape.c g_draw_miniray.c h_draw_minimap.c i_textures.c)
+				f_cast_rays.c l_escape.c g_draw_miniray.c h_draw_minimap.c i_textures.c \
+				c_update_fov_utils.c f_cast_rays_utils.c)
 
 OBJS		= $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 OBJS_BONUS	= $(addprefix $(OBJS_BONUS_DIR), $(SRCS_BONUS:.c=.o))
