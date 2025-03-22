@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 16:43:52 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/21 15:52:54 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/22 17:18:10 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,18 @@ static void	draw_tiles(mlx_image_t *img, t_coord coord, int size, uint32_t col);
 
 void	draw_minimap(t_data *data)
 {
+	int	i;
+
 	draw_miniwalls(data);
 	draw_player(data);
+	i = 0;
+	while (i < data->mlx->width)
+	{
+		draw_miniray(data, i);
+		i++;
+	}
+	free(data->miniray);
+	data->miniray = NULL; 
 }
 
 static void	draw_player(t_data *data)
@@ -29,8 +39,8 @@ static void	draw_player(t_data *data)
 	uint32_t	i;
 	uint32_t	j;
 
-	coord.x = data->player.x;
-	coord.y = data->player.y;
+	coord.x = data->player.x * TILE_SIZE + OFFSET;
+	coord.y = data->player.y * TILE_SIZE + OFFSET;
 	i = coord.y - TILE_SIZE / 8;
 	while (i < coord.y + TILE_SIZE / 8)
 	{

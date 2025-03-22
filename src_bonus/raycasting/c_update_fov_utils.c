@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:36:24 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/21 16:46:02 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/22 13:25:14 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,7 @@ bool	close_wall(t_data *data, float x, float y)
 			check_x = (x + i * PLAYER_SPACE);
 			check_y = (y + j * PLAYER_SPACE);
 			if (tile(data, check_x, check_y))
-			{
-				printf("Wall detected at x=%f, y=%f\n", check_x, check_y);
 				return (true);
-			}
 			j++;
 		}
 		i++;

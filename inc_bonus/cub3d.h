@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/21 18:04:10 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/22 17:29:10 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,9 @@
 # define HEIGHT 600
 
 # define OFFSET 10
-# define TILE_SIZE 4
+# define TILE_SIZE 20
 # define MVT_SPEED 0.07
 # define ROT_SPEED 0.055
-
 # define FOV 66
 # define WALL_SIZE 2
 # define MOUSE_SENS 0.01       // mouse sensitivity
@@ -48,15 +47,13 @@
 # define MAX_DOORS 25
 # define PLAYER_SPACE 0.35
 
-
-
 // map items
 # define WALL '1'
 # define DOOR '2'
 
 // Minimap colors
 # define PLY_COL MAGENTA
-# define TILE_COL BROWN
+# define TILE_COL YELLOW
 # define FLOOR_COL PINK
 # define DOOR_COL PURPLE
 # define BACK_COL NAVY
@@ -133,6 +130,13 @@ typedef struct s_screen
 	bool			is_welcome;
 }					t_screen;
 
+typedef struct s_miniray
+{
+	float			cos_angle;
+	float			sin_angle;
+	float			distance;
+}					t_miniray;
+
 typedef struct s_data
 {
 	mlx_t			*mlx;
@@ -143,6 +147,7 @@ typedef struct s_data
 	t_door			doors[MAX_DOORS];
 	mlx_texture_t	**textures;
 	bool			flag_refresh;
+	t_miniray		*miniray;
 
 }					t_data;
 
@@ -195,7 +200,7 @@ typedef struct s_mvt
 
 /******************************************************************************/
 /******************************************************************************/
-/*								PARSING											*/
+/*								PARSING										*/
 /******************************************************************************/
 /******************************************************************************/
 
@@ -216,7 +221,7 @@ void				clean_parse(t_data *data);
 
 /******************************************************************************/
 /******************************************************************************/
-/*								RAYCASTING										*/
+/*								RAYCASTING									*/
 /******************************************************************************/
 /******************************************************************************/
 
@@ -226,25 +231,25 @@ void				hoop_func(void *param);
 void				update_fov(t_data *data);
 bool				close_wall(t_data *data, float x, float y);
 void				draw_ceiling_floor(t_data *data);
-void				draw_walls(t_data *data);
+int				draw_walls(t_data *data);
 void				cast_rays(t_data *data, t_ray *ray);
 bool				wall_check(t_data *data, t_ray *ray);
-void				draw_miniray(t_data *data, t_ray *ray);
+void				draw_miniray(t_data *data, int u);
+void				save_miniray(t_data *data, t_ray *ray, int u);
 void				draw_minimap(t_data *data);
 void				escape_handle(mlx_key_data_t keys, void *param);
 float				deg_to_rad(int nb);
-float				deg_to_rad(int nb);
+float				rad_to_deg(float nb);
 void				resize_hook(int32_t width, int32_t height, void *param);
 void				handle_error(char *error_message, t_data *data);
 void				handle_error2(char *error_message, t_data *data,
 						int exit_status);
 void				close_window(void *param);
 void				close_window2(void *param, int exit_status);
-// float	rad_to_degree(float nb);
 
 /******************************************************************************/
 /******************************************************************************/
-/*									TEXTURES									*/
+/*									TEXTURES								*/
 /******************************************************************************/
 /******************************************************************************/
 
@@ -256,7 +261,7 @@ void				clean_textures(t_data *data);
 
 /******************************************************************************/
 /******************************************************************************/
-/*									OTHER										*/
+/*									OTHER									*/
 /******************************************************************************/
 /******************************************************************************/
 
