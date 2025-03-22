@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   l_escape.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 15:10:25 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/18 12:15:42 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/22 17:48:53 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cub3d.h"
+#include "../../inc_bonus/cub3d.h"
 
 /* Consider adding collision detection in translation_press to prevent moving
 through walls. The update_play distance (50 units) seems large. Consider using a

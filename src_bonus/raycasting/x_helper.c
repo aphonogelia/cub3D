@@ -6,11 +6,11 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 13:06:11 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/22 14:55:20 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/22 17:48:58 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cub3d.h"
+#include "../../inc_bonus/cub3d.h"
 
 float	deg_to_rad(int nb);
 float	rad_to_deg(float nb);

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   welcome.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 14:13:05 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/18 12:08:05 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/22 17:49:19 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../inc_bonus/cub3d.h"
 
 void		welcome_screen(t_data *data);
 static void	draw_background(t_data *data);

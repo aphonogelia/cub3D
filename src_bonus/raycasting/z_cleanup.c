@@ -6,11 +6,11 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 20:47:34 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/11 17:58:54 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/22 17:49:01 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cub3d.h"
+#include "../../inc_bonus/cub3d.h"
 
 void	handle_error(char *error_message, t_data *data);
 void	handle_error2(char *error_message, t_data *data, int exit_status);

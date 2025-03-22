@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   m_resize_hook.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 16:32:23 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/18 12:11:09 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/22 17:48:56 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cub3d.h"
+#include "../../inc_bonus/cub3d.h"
 
 void			resize_hook(int32_t width, int32_t height, void *param);
 static float	calc_scale(t_data *data, int32_t width, int32_t height);
