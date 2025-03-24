@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   b_loop_hook.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 22:43:01 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/22 17:47:23 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/24 18:54:59 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	hoop_func(void *param)
 	data = (t_data *)param;
 	if ((!data->screen.is_welcome))
 	{
+		check_mouse_inactivity(data);
 		update_fov(data);
 		if (data->flag_refresh == true)
 		{

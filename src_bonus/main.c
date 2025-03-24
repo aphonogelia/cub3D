@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 16:57:54 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/24 17:01:53 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/24 19:33:11 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,11 @@ int	main(int ac, char **av)
 	status = parser(av[1], data);
 	if (status != SUCCESS)
 		return (status);
-	// print_input(&data.input);
 	init_mlx(data);
 	mlx_image_to_window((data)->mlx, (data)->img, 0, 0);
 	welcome_screen(data);
 	load_textures(data);
 	mlx_resize_hook(data->mlx, &resize_hook, data);
-	// clean_textures(&data);
 	draw_ceiling_floor(data);
 	draw_walls(data);
 	draw_minimap(data);

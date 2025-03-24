@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 11:56:14 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/21 16:52:06 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/24 19:31:18 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,16 @@ void	init_data(t_data *data)
 	data->player.y = 0;
 	data->player.angle_r = 0;
 	data->textures = NULL;
+	data->mouse.first_call = true;
+	data->mouse.last_x = -1;
 }
 
 void	load_textures(t_data *data)
 {
+	int			i;
 	const char	*orientations[] = {"NORTH", "SOUTH", "WEST", "EAST", "DOOR"};
 
+	i = 0;
 	data->textures = (mlx_texture_t **)malloc(sizeof(mlx_texture_t *) * 5);
 	if (!data->textures)
 		exit_err(data, "Malloc", MALLOC_ERR);
@@ -49,9 +53,7 @@ void	load_textures(t_data *data)
 	data->textures[WEST] = load_png(data, data->input.we);
 	data->textures[EAST] = load_png(data, data->input.ea);
 	data->textures[DOOR_TEXTURE] = load_png(data, "imgs/pillar.png");
-	// convert_textures(data);
-	// Print texture dimensions
-	for (int i = 0; i < 5; i++)
+	while (i < 5)
 	{
 		if (data->textures[i])
 		{
@@ -62,10 +64,11 @@ void	load_textures(t_data *data)
 		{
 			printf("%s texture failed to load\n", orientations[i]);
 		}
+		i++;
 	}
 }
 
-// load png texture. 
+// load png texture.
 // if file is missing or corrupted will err msg and return null
 static mlx_texture_t	*load_png(t_data *data, char *path)
 {

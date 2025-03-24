@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/22 17:29:10 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/24 19:25:57 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@
 # define ROT_SPEED 0.055
 # define FOV 66
 # define WALL_SIZE 2
-# define MOUSE_SENS 0.01       // mouse sensitivity
+# define MOUSE_SENS 0.009       // mouse sensitivity
 # define INTERACTION_RANGE 8.0f // interaction from doors
 # define MAX_DOORS 25
 # define PLAYER_SPACE 0.35
@@ -137,6 +137,13 @@ typedef struct s_miniray
 	float			distance;
 }					t_miniray;
 
+typedef struct s_mouse
+{
+	double			last_x;
+	double			cursor_last_moved;
+	bool			first_call;
+}					t_mouse;
+
 typedef struct s_data
 {
 	mlx_t			*mlx;
@@ -144,8 +151,10 @@ typedef struct s_data
 	t_input			input;
 	t_player		player;
 	t_screen		screen;
+	t_mouse			mouse;
 	t_door			doors[MAX_DOORS];
 	mlx_texture_t	**textures;
+
 	bool			flag_refresh;
 	t_miniray		*miniray;
 
@@ -231,7 +240,7 @@ void				hoop_func(void *param);
 void				update_fov(t_data *data);
 bool				close_wall(t_data *data, float x, float y);
 void				draw_ceiling_floor(t_data *data);
-int				draw_walls(t_data *data);
+int					draw_walls(t_data *data);
 void				cast_rays(t_data *data, t_ray *ray);
 bool				wall_check(t_data *data, t_ray *ray);
 void				draw_miniray(t_data *data, int u);
@@ -242,10 +251,7 @@ float				deg_to_rad(int nb);
 float				rad_to_deg(float nb);
 void				resize_hook(int32_t width, int32_t height, void *param);
 void				handle_error(char *error_message, t_data *data);
-void				handle_error2(char *error_message, t_data *data,
-						int exit_status);
 void				close_window(void *param);
-void				close_window2(void *param, int exit_status);
 
 /******************************************************************************/
 /******************************************************************************/
@@ -276,6 +282,7 @@ void				exit_err(t_data *data, char *msg, int exit_status);
 
 // BONUS
 void				mouse_callback(double xpos, double ypos, void *param);
+void				check_mouse_inactivity(t_data *data);
 void				init_doors(t_data *data);
 void				doors_interaction(t_player *player, t_door *doors,
 						int doors_nbr);

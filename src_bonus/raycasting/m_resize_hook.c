@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   m_resize_hook.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 16:32:23 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/22 17:48:56 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/24 19:24:21 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void			resize_hook(int32_t width, int32_t height, void *param);
 static float	calc_scale(t_data *data, int32_t width, int32_t height);
+static void		non_welcome(t_data *data, int32_t width, int32_t height);
 
 void	resize_hook(int32_t width, int32_t height, void *param)
 {
@@ -40,7 +41,7 @@ void	resize_hook(int32_t width, int32_t height, void *param)
 			/ 2, (height - new_h) / 2);
 	}
 	else
-		data->flag_refresh = true;
+		non_welcome(data, width, height);
 }
 
 // calculate the ratio scale of the resizable image
@@ -60,4 +61,11 @@ static float	calc_scale(t_data *data, int32_t width, int32_t height)
 			scale = width_ratio;
 	}
 	return (scale);
+}
+
+static void	non_welcome(t_data *data, int32_t width, int32_t height)
+{
+	data->mlx->width = width;
+	data->mlx->height = height;
+	data->flag_refresh = true;
 }
