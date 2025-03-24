@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/24 19:25:57 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/24 19:40:44 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,12 @@
 # define HEIGHT 600
 
 # define OFFSET 10
-# define TILE_SIZE 20
+# define TILE_SIZE 5
+# define PLAYER_X 100
+# define PLAYER_Y 60
+# define PLAYER_SPACE 0.35
+
+# define FOV 66
 # define MVT_SPEED 0.07
 # define ROT_SPEED 0.055
 # define FOV 66
@@ -45,7 +50,6 @@
 # define MOUSE_SENS 0.009       // mouse sensitivity
 # define INTERACTION_RANGE 8.0f // interaction from doors
 # define MAX_DOORS 25
-# define PLAYER_SPACE 0.35
 
 // map items
 # define WALL '1'
@@ -74,6 +78,7 @@
 # define EAST 3
 
 # define DOOR_TEXTURE 4
+
 
 // Wall default colors
 # define CLR_NORTH TEAL
@@ -110,6 +115,8 @@ typedef struct s_player
 	float			x;
 	float			y;
 	float			angle_r;
+	float			x_offset;
+	float			y_offset;
 }					t_player;
 
 typedef struct s_door
@@ -213,20 +220,20 @@ typedef struct s_mvt
 /******************************************************************************/
 /******************************************************************************/
 
-int					parser(char *file_name, t_data *data);
-int					parse_elements(char *line, t_data *data, int found_map);
-void				init_data(t_data *data);
-int					save_map(int fd, t_data *data, char **line, int *found_map);
-int					trim_lines(t_data *data);
-int					trim_rightend(t_data *data);
-int					trim_leftend(t_data *data);
-int					valid_chars(t_data *data, int i, int j);
-int					valid_map(t_data *data, int status);
-int					ft_isspace(char c);
-void				free_2d_char(char **arr);
-int					line_empty(char *line);
-char				*valid_first_occurance(char *str);
-void				clean_parse(t_data *data);
+int			parser(char *file_name, t_data *data);
+int			parse_elements(char *line, t_data *data, int found_map);
+void		init_data(t_data *data);
+int			save_map(int fd, t_data *data, char **line, int *found_map);
+int			trim_lines(t_data *data);
+int			trim_rightend(t_data *data);
+int			trim_leftend(t_data *data);
+int			valid_chars(t_data *data, int i, int j);
+int			valid_map(t_data *data, int status);
+int			ft_isspace(char c);
+void		free_2d_char(char **arr);
+int			line_empty(char *line);
+char		*valid_first_occurance(char *str);
+void		clean_parse(t_data *data);
 
 /******************************************************************************/
 /******************************************************************************/
@@ -259,11 +266,11 @@ void				close_window(void *param);
 /******************************************************************************/
 /******************************************************************************/
 
-void				load_textures(t_data *data);
-uint32_t			sample_color(t_texture *texture);
-int					calc_texture_x(t_ray *ray, mlx_texture_t *texture);
-int					use_default_clr(int wall_orient);
-void				clean_textures(t_data *data);
+void		load_textures(t_data *data);
+uint32_t	sample_color(t_texture *texture);
+int			calc_texture_x(t_ray *ray, mlx_texture_t *texture);
+int			use_default_clr(int wall_orient);
+void		clean_textures(t_data *data);
 
 /******************************************************************************/
 /******************************************************************************/
@@ -271,14 +278,14 @@ void				clean_textures(t_data *data);
 /******************************************************************************/
 /******************************************************************************/
 
-void				welcome_screen(t_data *data);
-void				print_player(t_player *player);
-void				print_input(t_data *data);
-void				print_data(t_data *data);
-int					err_msg(char *msg, int err_nr);
-void				print_ray1(t_ray *ray);
-void				print_ray2(t_ray *ray);
-void				exit_err(t_data *data, char *msg, int exit_status);
+void		welcome_screen(t_data *data);
+void		print_player(t_player *player);
+void		print_input(t_data *data);
+void		print_data(t_data *data);
+int			err_msg(char *msg, int err_nr);
+void		print_ray1(t_ray *ray);
+void		print_ray2(t_ray *ray);
+void		exit_err(t_data *data, char *msg, int exit_status);
 
 // BONUS
 void				mouse_callback(double xpos, double ypos, void *param);

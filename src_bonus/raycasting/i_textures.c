@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   i_textures.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 15:43:48 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/24 17:04:02 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/24 17:52:35 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ uint32_t	sample_color(t_texture *texture)
 
 	raw_color = ((uint32_t *)texture->png->pixels)[texture->tex_y
 		* texture->png->width + texture->tex_x];
-	color = ((raw_color & 0xFF) << 24) | ((raw_color & 0xFF00) << 8) | ((raw_color & 0xFF0000) >> 8) | ((raw_color & 0xFF000000) >> 24);
+	color = ((raw_color & 0xFF) << 24) | ((raw_color & 0xFF00) << 8) 
+		| ((raw_color & 0xFF0000) >> 8) | ((raw_color & 0xFF000000) >> 24);
 	return (color);
 }
 

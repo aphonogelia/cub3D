@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 16:06:50 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/21 16:07:19 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/24 17:25:06 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 bool			wall_check(t_data *data, t_ray *ray);
 static t_door	*get_door_at(t_data *data, t_ray *ray);
+void			wall_orient(t_data *data, t_ray *ray);
 
 bool	wall_check(t_data *data, t_ray *ray)
 {
@@ -49,4 +50,28 @@ static t_door	*get_door_at(t_data *data, t_ray *ray)
 			return (&data->doors[i]);
 	}
 	return (NULL);
+}
+
+// Wall orientation
+void	wall_orient(t_data *data, t_ray *ray)
+{
+	if (ray->corr_dist < 0)
+	{
+		ray->distance *= -1;
+		ray->corr_dist *= -1;
+		if (ray->step_x > 0)
+			ray->wall_orient = EAST;
+		else 
+			ray->wall_orient = WEST;
+		ray->wall_x = data->player.y - ray->distance * ray->sin_angle ;
+	}
+	else
+	{
+		if (ray->step_y > 0)
+			ray->wall_orient = SOUTH;
+		else 
+			ray->wall_orient = NORTH;
+		ray->wall_x = data->player.x + ray->distance * ray->cos_angle;
+	}
+	ray->wall_x -= floorf(ray->wall_x);
 }

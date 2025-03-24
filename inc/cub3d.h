@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/21 16:20:01 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/24 14:13:24 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@
 # define WIDTH 800
 # define HEIGHT 600
 
-# define OFFSET 10
-# define TILE_SIZE 12
 # define MVT_SPEED 0.07
 # define ROT_SPEED 0.055
 # define FOV 66
