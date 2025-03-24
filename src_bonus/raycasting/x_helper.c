@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 13:06:11 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/22 17:48:58 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/24 17:18:04 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 float	deg_to_rad(int nb);
 float	rad_to_deg(float nb);
+void	put_pixel_minimap(t_data *data, int x, int y, uint32_t color);
 
 float	deg_to_rad(int nb)
 {
@@ -25,22 +26,13 @@ float	rad_to_deg(float nb)
 	return (nb * 180.0 / (M_PI));
 }
 
-// we check if not out of the map (theoritacally not possible as the player has
-// to be surrounded by walls)
-// we check if there is a tile ->  return TRUE
-/*bool	tile(t_data *data, float x, float y)
+void	put_pixel_minimap(t_data *data, int x, int y, uint32_t color)
 {
-	int	map_x;
-	int	map_y;
-
-	map_x = (int)((x - OFFSET) / TILE_SIZE);
-	map_y = (int)((y - OFFSET) / TILE_SIZE);
-	if (map_x > data->input.w_map 
-		|| map_y > data->input.h_map
-		|| map_x < 0 || map_y < 0)
-		return (true);
-	if (data->input.map[map_y][map_x] == '1')
-		return (true);
-	return (false);
+	if (x > OFFSET 
+		&& y > OFFSET 
+		&& x < (PLAYER_X - OFFSET) * 2
+		&& y < (PLAYER_Y - OFFSET) * 2 
+		&& x < data->mlx->width
+		&& y < data->mlx->height)
+		mlx_put_pixel(data->img, x, y, color);
 }
-*/

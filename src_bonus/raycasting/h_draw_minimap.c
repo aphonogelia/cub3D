@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 16:43:52 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/22 17:18:10 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/24 17:04:40 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void		draw_minimap(t_data *data);
 static void	draw_miniwalls(t_data *data);
 static void	draw_player(t_data *data);
-static void	draw_tiles(mlx_image_t *img, t_coord coord, int size, uint32_t col);
+static void	draw_tiles(t_data *data, t_coord coord);
 
 void	draw_minimap(t_data *data)
 {
@@ -35,17 +35,14 @@ void	draw_minimap(t_data *data)
 
 static void	draw_player(t_data *data)
 {
-	t_coord		coord;
 	uint32_t	i;
 	uint32_t	j;
 
-	coord.x = data->player.x * TILE_SIZE + OFFSET;
-	coord.y = data->player.y * TILE_SIZE + OFFSET;
-	i = coord.y - TILE_SIZE / 8;
-	while (i < coord.y + TILE_SIZE / 8)
+	i = PLAYER_Y - TILE_SIZE / 4;
+	while (i < PLAYER_Y + TILE_SIZE / 4)
 	{
-		j = coord.x - TILE_SIZE / 8;
-		while (j < coord.x + TILE_SIZE / 8)
+		j = PLAYER_X - TILE_SIZE / 4;
+		while (j < PLAYER_X + TILE_SIZE / 4)
 		{
 			if (j < data->img->height && i < data->img->width)
 				mlx_put_pixel(data->img, j, i, PLY_COL);
@@ -68,33 +65,28 @@ static void	draw_miniwalls(t_data *data)
 		x = 0;
 		while (x < data->input.w_map)
 		{
-			coord.x = x * TILE_SIZE + OFFSET;
-			coord.y = y * TILE_SIZE + OFFSET;
+			coord.x = (x - data->player.x) * TILE_SIZE + PLAYER_X;
+			coord.y = (y - data->player.y) * TILE_SIZE + PLAYER_Y;
 			if (data->input.map[y][x] == '1')
-				draw_tiles(data->img, coord, TILE_SIZE, TILE_COL);
-			else if (data->input.map[y][x] == '2')
-				draw_tiles(data->img, coord, TILE_SIZE, DOOR_COL);
-			// else if (data->input.map[y][x] == '0' )
-			// 	draw_tiles(data->img, coord, TILE_SIZE, FLOOR_COL);
+				draw_tiles(data, coord);
 			x++;
 		}
 		y++;
 	}
 }
 
-static void	draw_tiles(mlx_image_t *img, t_coord coord, int size, uint32_t col)
+static void	draw_tiles(t_data *data, t_coord coord)
 {
 	uint32_t	i;
 	uint32_t	j;
 
-	i = coord.y;
-	while (i < coord.y + size)
+	i = 0;
+	while (i < TILE_SIZE)
 	{
-		j = coord.x;
-		while (j < coord.x + size)
+		j = 0;
+		while (j < TILE_SIZE)
 		{
-			if (j < img->height && i < img->width)
-				mlx_put_pixel(img, j, i, col);
+			put_pixel_minimap(data, coord.x + j, coord.y + i, TILE_COL);
 			j++;
 		}
 		i++;

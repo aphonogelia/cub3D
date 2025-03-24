@@ -6,14 +6,14 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 10:40:14 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/22 17:40:10 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/24 17:28:42 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc_bonus/cub3d.h"
 
 int			draw_walls(t_data *data);
-static void	wall_orient(t_data *data, t_ray *ray);
+static void	ray_init(t_data *data, t_ray *ray, int u);
 static void	draw_vertical(t_data *data, t_ray *ray, int u);
 static int	calc_wall_height(t_data *data, t_ray *ray);
 static int	set_ords(int *ord_top, int *ord_bottom, t_data *data, t_ray *ray);
@@ -24,25 +24,14 @@ int	draw_walls(t_data *data)
 {
 	t_ray	ray;
 	int		u;
-	float	proj_plane_w;
-	float	proj_plane_d;
-	float	screen_x;
 
-	proj_plane_d = 1.0f;
-	proj_plane_w = 2.0f * proj_plane_d * tanf(deg_to_rad(FOV / 2));
 	u = 0;
 	data->miniray = malloc(data->mlx->width * sizeof(t_miniray));
 	if (data->miniray == NULL) 
 		return (MALLOC_ERR);
 	while (u < data->mlx->width)
 	{
-		screen_x = 2.0f * u / data->mlx->width - 1.0f;
-		ray.curr_arctan = -atan2f(screen_x * proj_plane_w / 2, proj_plane_d);
-		ray.curr_angle = data->player.angle_r + ray.curr_arctan;
-		ray.curr_angle = fmodf(ray.curr_angle, 2 * M_PI);
-		ray.cos_angle = cosf(ray.curr_angle);
-		ray.sin_angle = sinf(ray.curr_angle);
-		ray.cos_angle_diff = fabsf(cosf(ray.curr_angle - data->player.angle_r));
+		ray_init(data, &ray, u);
 		cast_rays(data, &ray);
 		wall_orient(data, &ray);
 		draw_vertical(data, &ray, u);
@@ -52,28 +41,21 @@ int	draw_walls(t_data *data)
 	return (0);
 }
 
-// Wall orientation
-static void	wall_orient(t_data *data, t_ray *ray)
+static void	ray_init(t_data *data, t_ray *ray, int u)
 {
-	if (ray->corr_dist < 0)
-	{
-		ray->distance *= -1;
-		ray->corr_dist *= -1;
-		if (ray->step_x > 0)
-			ray->wall_orient = EAST;
-		else 
-			ray->wall_orient = WEST;
-		ray->wall_x = data->player.y - ray->distance * ray->sin_angle ;
-	}
-	else
-	{
-		if (ray->step_y > 0)
-			ray->wall_orient = SOUTH;
-		else 
-			ray->wall_orient = NORTH;
-		ray->wall_x = data->player.x + ray->distance * ray->cos_angle;
-	}
-	ray->wall_x -= floorf(ray->wall_x);
+	float	proj_plane_w;
+	float	proj_plane_d;
+	float	screen_x;
+
+	proj_plane_d = 1.0f;
+	proj_plane_w = 2.0f * proj_plane_d * tanf(deg_to_rad(FOV / 2));
+	screen_x = 2.0f * u / data->mlx->width - 1.0f;
+	ray->curr_arctan = -atan2f(screen_x * proj_plane_w / 2, proj_plane_d);
+	ray->curr_angle = data->player.angle_r + ray->curr_arctan;
+	ray->curr_angle = fmodf(ray->curr_angle, 2 * M_PI);
+	ray->cos_angle = cosf(ray->curr_angle);
+	ray->sin_angle = sinf(ray->curr_angle);
+	ray->cos_angle_diff = fabsf(cosf(ray->curr_angle - data->player.angle_r));
 }
 
 static void	draw_vertical(t_data *data, t_ray *ray, int u)

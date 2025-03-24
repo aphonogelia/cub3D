@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 20:37:40 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/22 17:39:39 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/24 17:29:17 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ void	draw_miniray(t_data *data, int u)
 	t_miniray	mini;
 
 	mini = data->miniray[u];
-	p1.x = data->player.x * TILE_SIZE + OFFSET;
-	p1.y = data->player.y * TILE_SIZE + OFFSET;
+	p1.x = PLAYER_X;
+	p1.y = PLAYER_Y;
 	p2.x = p1.x + mini.cos_angle * mini.distance * TILE_SIZE;
 	p2.y = p1.y - mini.sin_angle * mini.distance * TILE_SIZE;
 	delta.x = p2.x - p1.x;
@@ -62,7 +62,7 @@ static void	draw_vertical(t_data *data, t_coord *p1, t_coord *p2)
 	y = y1;
 	while (y <= y2)
 	{
-		mlx_put_pixel(data->img, x, y, RAY_COL);
+		put_pixel_minimap(data, x, y, RAY_COL);
 		y++;
 	}
 }
@@ -80,7 +80,7 @@ static void	draw_horizontal(t_data *data, t_coord *p1, t_coord *p2)
 	x = x1;
 	while (x <= x2)
 	{
-		mlx_put_pixel(data->img, x, y, RAY_COL);
+		put_pixel_minimap(data, x, y, RAY_COL);
 		x++;
 	}
 }
@@ -106,7 +106,7 @@ static void	draw_line(t_data *data, t_coord *p1, t_coord *delta)
 			y1 = floor(p1->y);
 		else
 			y1 = ceil(p1->y);
-		mlx_put_pixel(data->img, x1, y1, RAY_COL);
+		put_pixel_minimap(data, x1, y1, RAY_COL);
 		p1->x += delta->x;
 		p1->y += delta->y;
 		i++;

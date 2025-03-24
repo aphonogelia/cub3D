@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:53:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/22 17:40:56 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/24 16:01:00 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	init_mlx(t_data *data)
 	mlx_set_window_size(data->mlx, data->mlx->width, data->mlx->height);
 	data->img = mlx_new_image(data->mlx, data->mlx->width, data->mlx->height);
 	data->miniray = NULL;
+	printf("%.2f, %.2f\n", data->player.x, data->player.y);
 }
 
 static void	init_player(t_data *data)
@@ -32,6 +33,8 @@ static void	init_player(t_data *data)
 	data->player.x = data->input.play_x + 0.5;
 	data->player.y = data->input.play_y + 0.5;
 	printf("%.2f, %.2f\n", data->player.x, data->player.y);
+	data->player.x_offset = PLAYER_X - data->player.x * TILE_SIZE;
+	data->player.y_offset = PLAYER_Y - data->player.y * TILE_SIZE;
 	data->player.angle_r = deg_to_rad(calc_angle(data->input.player_dir));
 }
 
