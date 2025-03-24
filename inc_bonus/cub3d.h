@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/24 19:40:44 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/24 19:49:16 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,7 @@
 # define FOV 66
 # define MVT_SPEED 0.07
 # define ROT_SPEED 0.055
-# define FOV 66
-# define WALL_SIZE 2
-# define MOUSE_SENS 0.009       // mouse sensitivity
+# define MOUSE_SENS 0.01        // mouse sensitivity
 # define INTERACTION_RANGE 8.0f // interaction from doors
 # define MAX_DOORS 25
 
@@ -78,7 +76,6 @@
 # define EAST 3
 
 # define DOOR_TEXTURE 4
-
 
 // Wall default colors
 # define CLR_NORTH TEAL
@@ -161,7 +158,6 @@ typedef struct s_data
 	t_mouse			mouse;
 	t_door			doors[MAX_DOORS];
 	mlx_texture_t	**textures;
-
 	bool			flag_refresh;
 	t_miniray		*miniray;
 
@@ -220,20 +216,20 @@ typedef struct s_mvt
 /******************************************************************************/
 /******************************************************************************/
 
-int			parser(char *file_name, t_data *data);
-int			parse_elements(char *line, t_data *data, int found_map);
-void		init_data(t_data *data);
-int			save_map(int fd, t_data *data, char **line, int *found_map);
-int			trim_lines(t_data *data);
-int			trim_rightend(t_data *data);
-int			trim_leftend(t_data *data);
-int			valid_chars(t_data *data, int i, int j);
-int			valid_map(t_data *data, int status);
-int			ft_isspace(char c);
-void		free_2d_char(char **arr);
-int			line_empty(char *line);
-char		*valid_first_occurance(char *str);
-void		clean_parse(t_data *data);
+int					parser(char *file_name, t_data *data);
+int					parse_elements(char *line, t_data *data, int found_map);
+void				init_data(t_data *data);
+int					save_map(int fd, t_data *data, char **line, int *found_map);
+int					trim_lines(t_data *data);
+int					trim_rightend(t_data *data);
+int					trim_leftend(t_data *data);
+int					valid_chars(t_data *data, int i, int j);
+int					valid_map(t_data *data, int status);
+int					ft_isspace(char c);
+void				free_2d_char(char **arr);
+int					line_empty(char *line);
+char				*valid_first_occurance(char *str);
+void				clean_parse(t_data *data);
 
 /******************************************************************************/
 /******************************************************************************/
@@ -249,6 +245,7 @@ bool				close_wall(t_data *data, float x, float y);
 void				draw_ceiling_floor(t_data *data);
 int					draw_walls(t_data *data);
 void				cast_rays(t_data *data, t_ray *ray);
+void				wall_orient(t_data *data, t_ray *ray);
 bool				wall_check(t_data *data, t_ray *ray);
 void				draw_miniray(t_data *data, int u);
 void				save_miniray(t_data *data, t_ray *ray, int u);
@@ -256,6 +253,8 @@ void				draw_minimap(t_data *data);
 void				escape_handle(mlx_key_data_t keys, void *param);
 float				deg_to_rad(int nb);
 float				rad_to_deg(float nb);
+void				put_pixel_minimap(t_data *data, int x, int y,
+						uint32_t color);
 void				resize_hook(int32_t width, int32_t height, void *param);
 void				handle_error(char *error_message, t_data *data);
 void				close_window(void *param);
@@ -266,11 +265,11 @@ void				close_window(void *param);
 /******************************************************************************/
 /******************************************************************************/
 
-void		load_textures(t_data *data);
-uint32_t	sample_color(t_texture *texture);
-int			calc_texture_x(t_ray *ray, mlx_texture_t *texture);
-int			use_default_clr(int wall_orient);
-void		clean_textures(t_data *data);
+void				load_textures(t_data *data);
+uint32_t			sample_color(t_texture *texture);
+int					calc_texture_x(t_ray *ray, mlx_texture_t *texture);
+int					use_default_clr(int wall_orient);
+void				clean_textures(t_data *data);
 
 /******************************************************************************/
 /******************************************************************************/
@@ -278,20 +277,20 @@ void		clean_textures(t_data *data);
 /******************************************************************************/
 /******************************************************************************/
 
-void		welcome_screen(t_data *data);
-void		print_player(t_player *player);
-void		print_input(t_data *data);
-void		print_data(t_data *data);
-int			err_msg(char *msg, int err_nr);
-void		print_ray1(t_ray *ray);
-void		print_ray2(t_ray *ray);
-void		exit_err(t_data *data, char *msg, int exit_status);
+void				welcome_screen(t_data *data);
+void				print_player(t_player *player);
+void				print_input(t_data *data);
+void				print_data(t_data *data);
+int					err_msg(char *msg, int err_nr);
+void				print_ray1(t_ray *ray);
+void				print_ray2(t_ray *ray);
+void				exit_err(t_data *data, char *msg, int exit_status);
 
 // BONUS
 void				mouse_callback(double xpos, double ypos, void *param);
-void				check_mouse_inactivity(t_data *data);
 void				init_doors(t_data *data);
 void				doors_interaction(t_player *player, t_door *doors,
 						int doors_nbr);
+void				check_mouse_inactivity(t_data *data);
 
 #endif
