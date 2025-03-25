@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 15:10:25 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/25 05:02:25 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/25 15:09:38 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,9 @@ void	keys_handle(mlx_key_data_t keys, void *param)
 	if (keys.key == MLX_KEY_ESCAPE && keys.action == MLX_PRESS)
 		mlx_close_window(data->mlx);
 	else if (keys.key == MLX_KEY_E && keys.action == MLX_PRESS)
+	{
+		// data->flag_refresh = true;
 		doors_interaction(data);
+		data->flag_refresh = true;
+	}
 }

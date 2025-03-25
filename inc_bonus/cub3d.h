@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/25 07:18:35 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/25 14:50:37 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,6 @@
 # define MVT_SPEED 0.07
 # define ROT_SPEED 0.055
 # define MOUSE_SENS 0.01    // mouse sensitivity
-# define DOOR_MAX_RANGE 2.5f 	// doors interacation distance
-# define DOOR_MIN_RANGE 0.6f 	// doors interacation distance
-# define DOOR_FACING 0.6f	// doors interacation angle
 # define MAX_DOORS 25
 
 // map items
@@ -292,6 +289,7 @@ void				welcome_screen(t_data *data);
 void				mouse_callback(double xpos, double ypos, void *param);
 void				init_doors(t_data *data);
 t_door				*get_door_at(t_data *data, int map_x, int map_y);
+bool door_zone(t_door *door, float x, float y);
 void 				doors_interaction(t_data *data);
 void				check_mouse_inactivity(t_data *data);
 
