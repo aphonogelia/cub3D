@@ -6,12 +6,12 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/25 17:37:12 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/25 19:04:24 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUB3D_BONUS_H
+# define CUB3D_BONUS_H
 
 # define WHITE 0xFFFFFFFF
 # define BLACK 0x000000FF

@@ -6,11 +6,11 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 10:40:14 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/24 17:28:42 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/25 19:11:59 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc_bonus/cub3d.h"
+#include "../../inc_bonus/cub3d_bonus.h"
 
 int			draw_walls(t_data *data);
 static void	ray_init(t_data *data, t_ray *ray, int u);

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   doors.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 17:14:07 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/24 19:28:41 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/25 19:13:17 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc_bonus/cub3d.h"
+#include "../../inc_bonus/cub3d_bonus.h"
 
 static void		save_door(t_data *data, int row, int col, int door_nbr);
 static int		is_exit_door(t_data *data, int row, int col);

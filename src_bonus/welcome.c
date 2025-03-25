@@ -6,11 +6,11 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 14:13:05 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/22 17:49:19 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/25 19:11:15 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc_bonus/cub3d.h"
+#include "../../inc_bonus/cub3d_bonus.h"
 
 void		welcome_screen(t_data *data);
 static void	draw_background(t_data *data);

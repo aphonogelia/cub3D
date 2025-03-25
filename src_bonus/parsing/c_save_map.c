@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   c_save_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 18:44:44 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/17 18:38:47 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/25 19:12:26 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc_bonus/cub3d.h"
+#include "../../inc_bonus/cub3d_bonus.h"
 
 int			save_map(int fd, t_data *data, char **line, int *found_map);
 static int	invalid_line_start(char *line);

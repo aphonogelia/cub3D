@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   e_trim_right.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 11:21:11 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/17 18:38:53 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/25 19:12:31 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc_bonus/cub3d.h"
+#include "../../inc_bonus/cub3d_bonus.h"
 
 static char	*shorten_line(t_data *data, int i, int len);
 static char	*extend_line(t_data *data, int i, int len);

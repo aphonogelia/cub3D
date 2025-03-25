@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   g_valid_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 12:44:10 by inbar             #+#    #+#             */
-/*   Updated: 2025/03/17 18:39:07 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/25 19:12:36 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc_bonus/cub3d.h"
+#include "../../inc_bonus/cub3d_bonus.h"
 
 static int	check_space(t_data *data, int row, int col);
 static int	check_zero(t_data *data, int row, int col);

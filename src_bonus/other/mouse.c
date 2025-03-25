@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mouse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 15:51:29 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/24 19:18:47 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/25 19:13:24 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc_bonus/cub3d.h"
+#include "../../inc_bonus/cub3d_bonus.h"
 
 void			mouse_callback(double xpos, double ypos, void *param);
 void			check_mouse_inactivity(t_data *data);

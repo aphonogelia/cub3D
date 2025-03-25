@@ -6,11 +6,11 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 16:06:50 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/24 17:25:06 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/25 19:11:56 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc_bonus/cub3d.h"
+#include "../../inc_bonus/cub3d_bonus.h"
 
 bool			wall_check(t_data *data, t_ray *ray);
 static t_door	*get_door_at(t_data *data, t_ray *ray);

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   h_utils_parse.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 16:31:50 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/17 18:39:12 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/25 19:12:38 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc_bonus/cub3d.h"
+#include "../../inc_bonus/cub3d_bonus.h"
 
 void	free_2d_char(char **arr)
 {

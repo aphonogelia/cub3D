@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   f_valid_chars.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 13:20:57 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/17 18:43:44 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/25 19:12:33 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc_bonus/cub3d.h"
+#include "../../inc_bonus/cub3d_bonus.h"
 
 static void	handle_player(t_data *data, int i, int j);
 static int	is_player(char c);

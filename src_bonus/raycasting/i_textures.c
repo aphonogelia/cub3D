@@ -6,11 +6,11 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 15:43:48 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/24 17:52:35 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/25 19:11:44 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc_bonus/cub3d.h"
+#include "../../inc_bonus/cub3d_bonus.h"
 
 // calculate the x-coordinate on the texture
 int	calc_texture_x(t_ray *ray, mlx_texture_t *texture)

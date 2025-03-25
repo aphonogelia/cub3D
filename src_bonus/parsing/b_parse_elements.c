@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   b_parse_elements.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 12:02:11 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/17 18:38:42 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/25 19:12:25 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc_bonus/cub3d.h"
+#include "../../inc_bonus/cub3d_bonus.h"
 
 static int	get_elem_path(char *line, char **element);
 static int	get_clr_elem(char *line, int *element);

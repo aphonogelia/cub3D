@@ -6,11 +6,11 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 20:37:40 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/25 17:34:24 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/25 19:11:50 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc_bonus/cub3d.h"
+#include "../../inc_bonus/cub3d_bonus.h"
 
 typedef struct s_line{
 	int	dx;

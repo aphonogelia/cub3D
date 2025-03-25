@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   b_loop_hook.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 22:43:01 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/24 18:54:59 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/25 19:12:11 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc_bonus/cub3d.h"
+#include "../../inc_bonus/cub3d_bonus.h"
 
 void	hoop_func(void *param);
 

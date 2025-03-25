@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 21:25:58 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/17 18:38:33 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/25 19:14:10 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc_bonus/cub3d.h"
+#include "../../inc_bonus/cub3d_bonus.h"
 
 static void	print_doors(t_data *data);
 
@@ -60,7 +60,7 @@ void	print_data(t_data *data)
 
 static void	print_doors(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	printf("\n=== DOORS ===\n");

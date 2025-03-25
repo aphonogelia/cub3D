@@ -6,11 +6,11 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 16:43:52 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/25 13:21:26 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/25 19:11:47 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc_bonus/cub3d.h"
+#include "../../inc_bonus/cub3d_bonus.h"
 
 void		draw_minimap(t_data *data);
 static void	draw_miniwalls(t_data *data);

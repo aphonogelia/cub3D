@@ -6,11 +6,11 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 15:10:25 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/22 17:48:53 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/25 19:11:41 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc_bonus/cub3d.h"
+#include "../../inc_bonus/cub3d_bonus.h"
 
 /* Consider adding collision detection in translation_press to prevent moving
 through walls. The update_play distance (50 units) seems large. Consider using a

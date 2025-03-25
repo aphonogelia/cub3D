@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   a_init_mlx.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:53:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/24 19:41:06 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/25 19:12:14 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc_bonus/cub3d.h"
+#include "../../inc_bonus/cub3d_bonus.h"
 
 void			init_mlx(t_data *data);
 static void		init_player(t_data *data);

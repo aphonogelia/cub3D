@@ -6,11 +6,11 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:36:24 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/21 15:51:03 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/25 19:12:04 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc_bonus/cub3d.h"
+#include "../../inc_bonus/cub3d_bonus.h"
 
 void		update_fov(t_data *data);
 static void	update_angle(t_data *data);

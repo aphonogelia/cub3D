@@ -6,11 +6,11 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:36:24 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/22 13:25:14 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/25 19:12:08 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc_bonus/cub3d.h"
+#include "../../inc_bonus/cub3d_bonus.h"
 
 bool		close_wall(t_data *data, float x, float y);
 static bool	tile(t_data *data, float x, float y);

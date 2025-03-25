@@ -6,11 +6,11 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:57:58 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/21 16:14:27 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/25 19:11:53 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc_bonus/cub3d.h"
+#include "../../inc_bonus/cub3d_bonus.h"
 
 void			cast_rays(t_data *data, t_ray *ray);
 static void		direction(t_ray *ray);

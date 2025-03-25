@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   a_parser.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 18:18:37 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/17 18:55:58 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/25 19:12:22 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc_bonus/cub3d.h"
+#include "../../inc_bonus/cub3d_bonus.h"
 
 static int	valid_map_file(char *name, int *fd);
 static int	elements_finder(int fd, t_data *data, int status);

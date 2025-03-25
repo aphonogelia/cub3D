@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   d_trim_left.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 13:01:22 by inbar             #+#    #+#             */
-/*   Updated: 2025/03/17 18:38:50 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/25 19:12:29 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc_bonus/cub3d.h"
+#include "../../inc_bonus/cub3d_bonus.h"
 
 static int	get_min_start(t_data *data, int *min_start, int i);
 
