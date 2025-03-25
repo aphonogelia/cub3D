@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 16:43:52 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/24 17:04:40 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/25 13:21:26 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@ static void	draw_player(t_data *data)
 	uint32_t	i;
 	uint32_t	j;
 
-	i = PLAYER_Y - TILE_SIZE / 4;
-	while (i < PLAYER_Y + TILE_SIZE / 4)
+	i = PLAYER_Y - TILE_SIZE / 2;
+	while (i < PLAYER_Y + TILE_SIZE / 2)
 	{
-		j = PLAYER_X - TILE_SIZE / 4;
-		while (j < PLAYER_X + TILE_SIZE / 4)
+		j = PLAYER_X - TILE_SIZE / 2;
+		while (j < PLAYER_X + TILE_SIZE / 2)
 		{
 			if (j < data->img->height && i < data->img->width)
-				mlx_put_pixel(data->img, j, i, PLY_COL);
+				mlx_put_pixel(data->img, j, i, PLAYER_COL);
 			j++;
 		}
 		i++;

@@ -1,7 +1,7 @@
-NO img/MARBFAC2.xpm
-WE img/SKULWALL.xpm
-SO img/MARBFACE.xpm
-EA img/SKULWAL3.xpm
+NO imgs/wall_ardoise.png
+WE imgs/wall_brick_blue.png
+SO imgs/wall_bricks.png
+EA imgs/wall_brick_white.png
 
 C 135,206,235     
 F  63,155,11

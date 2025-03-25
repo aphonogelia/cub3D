@@ -1,11 +1,11 @@
-C 135,206,235     
-F  63,155,11
+C 50,50,50     
+F  10,10,10
 
 
-NO imgs/abadun-min-holes.png
-SO imgs/pia.png
-WE imgs/fab.png
-EA imgs/ishta.png 
+NO imgs/wall_coquelicot.png
+SO imgs/marble-yellow.png
+WE imgs/wall_flower_yellow.png
+EA imgs/wall_natural_yellow.png 
 
 
         1111111111111111111111111

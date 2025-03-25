@@ -1,12 +1,11 @@
 
-NO imgs/eagle.png
-SO imgs/colorstone.png
-WE imgs/mossy.png
-EA imgs/redbrick.png
+NO imgs/wall_flower_yellow.png
+WE imgs/wall_metal_yellow.png
+SO imgs/wall_coquelicot.png
+EA imgs/wall_natural_yellow.png
 
-
-F 63,155,11
-C 135,206,235
+F 20,22,25
+C 13,14,15  
 
 
 

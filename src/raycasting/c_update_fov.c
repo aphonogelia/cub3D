@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:58:59 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/21 16:45:35 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/25 16:37:35 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void		update_angle(t_data *data);
 void		update_player(t_data *data);
 static void	calculate_deltas(t_data *data, t_coord *delta);
 static void	normalization(float *x, float *y);
+static bool	tile(t_data *data, float x, float y);
 
 // update the angle, stays between 0 and 2pi (fmod : float modulo)
 void	update_angle(t_data *data)
@@ -50,10 +51,9 @@ void	update_player(t_data *data)
 	calculate_deltas(data, &delta);
 	updated.x += speed * delta.x;
 	updated.y += speed * delta.y;
-	printf("%.2f, %.2f\n", updated.x, updated.y);
-	if (close_wall(data, updated.x, data->player.y) == false)
+	if (tile(data, updated.x, data->player.y) == false)
 		data->player.x = updated.x;
-	if (close_wall(data, data->player.x, updated.y) == false)
+	if (tile(data, data->player.x, updated.y) == false)
 		data->player.y = updated.y;
 }
 
@@ -100,4 +100,22 @@ static void	normalization(float *x, float *y)
 		*x /= scale;
 		*y /= scale;
 	}
+}
+
+// we check if there is a tile ->  return TRUE
+static bool	tile(t_data *data, float x, float y)
+{
+	int	map_x;
+	int	map_y;
+
+	map_x = (int)x;
+	map_y = (int)y;
+	if (map_x > data->input.w_map 
+		|| map_y > data->input.h_map 
+		|| map_x < 0
+		|| map_y < 0)
+		return (true);
+	if (data->input.map[map_y][map_x] == '1')
+		return (true);
+	return (false);
 }

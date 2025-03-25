@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/24 17:25:28 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/25 17:13:43 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,44 @@
 # define LIME 0x00FF00FF
 # define TEAL 0x008080FF
 # define NAVY 0x000080FF
+# define LAVENDER 0xE6E6FAFF
+# define PEACH 0xFFDAB9FF
+# define MINT 0x98FF98FF
+# define CORAL 0xFF7F50FF
+# define TURQUOISE 0x40E0D0FF
+# define SALMON 0xFA8072FF
+# define PERIWINKLE 0xCCCCFFFF
+# define MAUVE 0xE0B0FFFF
+# define SAGE 0xBCECACFF
+# define LILAC 0xC8A2C8FF
+# define APRICOT 0xFFB347FF
+# define SKY_BLUE 0x87CEEBFF
+# define BLUSH 0xFFB6C1FF
+# define SEAFOAM 0x98FB98FF
+# define ROSE 0xFFB3BAFF
+# define LEMON 0xFFFACD8F
+# define BLUSH_TRANSLUCENT 0xFFB6C180 // Approximately 50% translucent
+
+// Minimap
+# define PLAYER_COL CORAL
+# define TILE_COL ROSE
+# define RAY_COL MAGENTA
+# define OFFSET 5
+# define TILE_SIZE 7
+# define PLAYER_X 200
+# define PLAYER_Y 80
+# define PLAYER_SPACE 0.35
+
+# define FLOOR_COL LEMON
+# define DOOR_COL PURPLE
+# define BACK_COL NAVY
+
+// Wall default colors
+# define CLR_NORTH MINT
+# define CLR_WEST SAGE
+# define CLR_SOUTH LILAC
+# define CLR_EAST APRICOT
+# define CLR_DOOR BROWN
 
 # define M_PI 3.14159265358979323846
 # define MAX_DIST 1e5
@@ -36,30 +74,16 @@
 # define WIDTH 800
 # define HEIGHT 600
 
-# define OFFSET 10
-# define TILE_SIZE 5
-# define PLAYER_X 100
-# define PLAYER_Y 60
-# define PLAYER_SPACE 0.35
-
 # define FOV 66
 # define MVT_SPEED 0.07
 # define ROT_SPEED 0.055
-# define MOUSE_SENS 0.01       // mouse sensitivity
-# define INTERACTION_RANGE 8.0f // interaction from doors
+# define MOUSE_SENS 0.01 
+# define INTERACTION_RANGE 8.0f
 # define MAX_DOORS 25
 
 // map items
 # define WALL '1'
 # define DOOR '2'
-
-// Minimap colors
-# define PLY_COL MAGENTA
-# define TILE_COL YELLOW
-# define FLOOR_COL PINK
-# define DOOR_COL PURPLE
-# define BACK_COL NAVY
-# define RAY_COL LIME
 
 // status states
 # define PARSE_ERR 3
@@ -76,14 +100,6 @@
 # define EAST 3
 
 # define DOOR_TEXTURE 4
-
-
-// Wall default colors
-# define CLR_NORTH TEAL
-# define CLR_WEST ORANGE
-# define CLR_SOUTH PURPLE
-# define CLR_EAST GRAY
-# define CLR_DOOR BROWN
 
 # include "../MLX42/include/MLX42/MLX42.h"
 # include "../libft/libft.h"
