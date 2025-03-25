@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/25 14:50:37 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/25 15:59:55 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -238,6 +238,7 @@ void				clean_parse(t_data *data);
 
 // HELENE
 void				init_mlx(t_data *data);
+void			init_player(t_data *data);
 void				hoop_func(void *param);
 void				update_fov(t_data *data);
 bool				close_wall(t_data *data, float x, float y);
@@ -285,7 +286,7 @@ void				print_ray1(t_ray *ray);
 void				print_ray2(t_ray *ray);
 void				exit_err(t_data *data, char *msg, int exit_status);
 
-void				welcome_screen(t_data *data);
+void				welcome_screen(t_data *data, char *path);
 void				mouse_callback(double xpos, double ypos, void *param);
 void				init_doors(t_data *data);
 t_door				*get_door_at(t_data *data, int map_x, int map_y);

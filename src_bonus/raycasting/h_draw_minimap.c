@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   h_draw_minimap.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 16:43:52 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/24 17:04:40 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/25 15:50:47 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void		draw_minimap(t_data *data);
 static void	draw_miniwalls(t_data *data);
 static void	draw_player(t_data *data);
-static void	draw_tiles(t_data *data, t_coord coord);
+static void	draw_tiles(t_data *data, t_coord coord, int color);
 
 void	draw_minimap(t_data *data)
 {
@@ -67,15 +67,17 @@ static void	draw_miniwalls(t_data *data)
 		{
 			coord.x = (x - data->player.x) * TILE_SIZE + PLAYER_X;
 			coord.y = (y - data->player.y) * TILE_SIZE + PLAYER_Y;
-			if (data->input.map[y][x] == '1')
-				draw_tiles(data, coord);
+			if (data->input.map[y][x] == WALL)
+				draw_tiles(data, coord, TILE_COL);
+			else if (data->input.map[y][x] == DOOR)
+				draw_tiles(data, coord, DOOR_COL);
 			x++;
 		}
 		y++;
 	}
 }
 
-static void	draw_tiles(t_data *data, t_coord coord)
+static void	draw_tiles(t_data *data, t_coord coord, int color)
 {
 	uint32_t	i;
 	uint32_t	j;
@@ -86,7 +88,7 @@ static void	draw_tiles(t_data *data, t_coord coord)
 		j = 0;
 		while (j < TILE_SIZE)
 		{
-			put_pixel_minimap(data, coord.x + j, coord.y + i, TILE_COL);
+			put_pixel_minimap(data, coord.x + j, coord.y + i, color);
 			j++;
 		}
 		i++;

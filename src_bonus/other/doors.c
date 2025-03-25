@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 17:14:07 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/25 15:44:23 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/25 16:06:23 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void 	doors_interaction(t_data *data);
 static void	doors_hook(t_player *player, t_door *doors, int doors_nbr, t_data *data);
 static float	distance_to_door(t_player *player, t_door door);
+static void	close_all_doors(t_door *doors, int doors_nbr);
 // static float	angle_to_door(t_player *player, t_door door);
 
 
@@ -26,12 +27,6 @@ void 	doors_interaction(t_data *data)
 		// data->flag_refresh = true;
 	}
 }
-
-void	exit_door(t_data *data)
-{
-	mlx_close_window(data->mlx);
-}
-
 
 static void	doors_hook(t_player *player, t_door *doors, int doors_nbr, t_data *data)
 {
@@ -55,10 +50,14 @@ static void	doors_hook(t_player *player, t_door *doors, int doors_nbr, t_data *d
 		else if (!doors[i].open && dis_to_door < 2.5f)
 		{
 			printf("door open\n");
-			doors[i].open = !doors[i].open;
 			// data->flag_refresh = true;
 			if (doors[i].exit_game == 1)
-				exit_door(data);
+			{
+				welcome_screen(data, "imgs/cube.png");
+				init_player(data);
+				close_all_doors(doors, doors_nbr);
+			} else 
+				doors[i].open = !doors[i].open;
 			break ;
 		}
 	}
@@ -73,6 +72,15 @@ static float	distance_to_door(t_player *player, t_door door)
 	y = door.y + 0.5;
 	return (sqrtf((player->x - x) * (player->x - x)
 			+ (player->y - y) * (player->y - y)));
+}
+
+static void	close_all_doors(t_door *doors, int doors_nbr)
+{
+	int		i;
+
+	i = -1;
+	while (++i <= doors_nbr)
+		doors[i].open = 0;
 }
 
 //mouse

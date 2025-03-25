@@ -6,14 +6,14 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:53:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/25 15:10:42 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/25 16:00:28 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc_bonus/cub3d.h"
 
 void			init_mlx(t_data *data);
-static void		init_player(t_data *data);
+void			init_player(t_data *data);
 static float	calc_angle(char c);
 
 void	init_mlx(t_data *data)
@@ -28,7 +28,7 @@ void	init_mlx(t_data *data)
 	printf("%.2f, %.2f\n", data->player.x, data->player.y);
 }
 
-static void	init_player(t_data *data)
+void	init_player(t_data *data)
 {
 	data->player.x = data->input.play_x + 0.5;
 	data->player.y = data->input.play_y + 0.5;
