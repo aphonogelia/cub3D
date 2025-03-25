@@ -6,13 +6,13 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 21:25:58 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/17 18:38:33 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/25 05:20:41 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc_bonus/cub3d.h"
 
-static void	print_doors(t_data *data);
+
 
 void	print_player(t_player *player)
 {
@@ -58,7 +58,7 @@ void	print_data(t_data *data)
 	print_player(&data->player);
 }
 
-static void	print_doors(t_data *data)
+void	print_doors(t_data *data)
 {
 	int i;
 
@@ -67,6 +67,10 @@ static void	print_doors(t_data *data)
 	while (i <= data->input.doors_nbr)
 	{
 		printf("Door ( %f, %f )", data->doors[i].x, data->doors[i].y);
+		if (data->doors[i].open)
+			printf(" open");
+		else
+			printf(" closed");
 		if (data->doors[i].exit_game)
 			printf(" Exit door\n");
 		else

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   e_draw_walls.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 10:40:14 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/24 17:28:42 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/25 06:54:17 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ static void	ray_init(t_data *data, t_ray *ray, int u)
 	float	proj_plane_d;
 	float	screen_x;
 
+	ray->wall_orient = NO_ORIENT;
 	proj_plane_d = 1.0f;
 	proj_plane_w = 2.0f * proj_plane_d * tanf(deg_to_rad(FOV / 2));
 	screen_x = 2.0f * u / data->mlx->width - 1.0f;

@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 22:43:01 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/24 18:54:59 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/25 05:17:06 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	hoop_func(void *param)
 	{
 		check_mouse_inactivity(data);
 		update_fov(data);
-		if (data->flag_refresh == true)
+		// if (data->flag_refresh == true)
 		{
 			draw_ceiling_floor(data);
 			draw_walls(data);

@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 16:57:54 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/24 19:33:11 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/25 04:56:57 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main(int ac, char **av)
 	print_data(data);
 	// mlx_close_hook((&data)->mlx, &close_window, &data);
 	mlx_loop_hook((data)->mlx, &hoop_func, data);
-	mlx_key_hook((data)->mlx, &escape_handle, data);
+	mlx_key_hook((data)->mlx, &keys_handle, data);
 	mlx_cursor_hook((data)->mlx, &mouse_callback, data);
 	mlx_loop((data)->mlx);
 	mlx_terminate((data)->mlx);

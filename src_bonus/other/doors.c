@@ -6,79 +6,33 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 17:14:07 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/24 19:28:41 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/25 07:26:31 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc_bonus/cub3d.h"
 
-static void		save_door(t_data *data, int row, int col, int door_nbr);
-static int		is_exit_door(t_data *data, int row, int col);
+void 	doors_interaction(t_data *data);
+static void	doors_hook(t_player *player, t_door *doors, int doors_nbr, t_data *data);
+static float	distance_to_door(t_player *player, t_door *doors, int i);
 
-void	init_doors(t_data *data)
+
+void 	doors_interaction(t_data *data)
 {
-	int	j;
-	int	doors_nbr;
-	int	i;
-
-	i = 0;
-	doors_nbr = -1;
-	while (i < data->input.h_map)
+	// if (mlx_is_key_down(data->mlx, MLX_KEY_E))
 	{
-		j = 0;
-		while (data->input.map[i][j] != '\0')
-		{
-			if (data->input.map[i][j] == '2')
-			{
-				doors_nbr++;
-				if (doors_nbr > MAX_DOORS - 1)
-					handle_error("Doors exceed maximum\n", data);
-						// should check if closes correctly
-				save_door(data, i, j, doors_nbr);
-			}
-			j++;
-		}
-		i++;
+		doors_hook(&data->player, data->doors, data->input.doors_nbr, data);
+		data->flag_refresh = true;
 	}
-	data->input.doors_nbr = doors_nbr;
 }
 
-static void	save_door(t_data *data, int row, int col, int door_nbr)
+void	exit_door(t_data *data)
 {
-	// printf("save door nbr %d\n", door_nbr);
-	data->doors[door_nbr].x = col * TILE_SIZE + OFFSET + TILE_SIZE / 2;
-	data->doors[door_nbr].y = row * TILE_SIZE + OFFSET + TILE_SIZE / 2;
-	data->doors[door_nbr].open = 0;
-	data->doors[door_nbr].exit_game = is_exit_door(data, row, col);
+	mlx_close_window(data->mlx);
 }
 
-static int	is_exit_door(t_data *data, int row, int col)
-{
-	if (row == 0) // first row
-		return (1);
-	if (data->input.map[row - 1][col] == ' ')
-		return (1);
-	if (row == data->input.h_map - 1) // last row
-		return (1);
-	if (data->input.map[row + 1][col] == ' ') // row down
-		return (1);
-	if (col == 0) // first collum
-		return (1);
-	if (data->input.map[row][col - 1] == ' ') // left collum
-		return (1);
-	if (data->input.map[row][col + 1] == ' ' || data->input.map[row][col
-		+ 1] == '\0')
-		return (1);
-	return (0);
-}
 
-static float	distance_to_door(t_player *player, t_door *doors, int i)
-{
-	return (sqrtf((player->x - doors[i].x) * (player->x - doors[i].x)
-			+ (player->y - doors[i].y) * (player->y - doors[i].y)));
-}
-
-void	doors_interaction(t_player *player, t_door *doors, int doors_nbr)
+static void	doors_hook(t_player *player, t_door *doors, int doors_nbr, t_data *data)
 {
 	int		i;
 	float	door_vec_x;
@@ -89,11 +43,12 @@ void	doors_interaction(t_player *player, t_door *doors, int doors_nbr)
 	i = -1;
 	while (++i <= doors_nbr)
 	{
-		// printf("Player position: (%f, %f)\n", player->x, player->y);
-		// printf("Door %d position: (%f, %f)\n", i, doors[i].x, doors[i].y);
+		printf("Player position: (%f, %f)\n", player->x, player->y);
+		printf("Door %d position: (%f, %f)\n", i, doors[i].x, doors[i].y);
 		// printf("Distance to door %d: %f\n", i, distance_to_door(player,
 		// doors, i));
-		if (distance_to_door(player, doors, i) < INTERACTION_RANGE)
+		if (distance_to_door(player, doors, i) < DOOR_MAX_RANGE &&
+		distance_to_door(player, doors, i) > DOOR_MIN_RANGE)
 		{
 			door_vec_x = doors[i].x - player->x;
 			door_vec_y = doors[i].y - player->y;
@@ -104,15 +59,28 @@ void	doors_interaction(t_player *player, t_door *doors, int doors_nbr)
 			door_vec_y = door_vec_y / distance;
 			facing_door = (cosf(player->angle_r) * door_vec_x)
 				- (sinf(player->angle_r) * door_vec_y);
-			// printf("facing door (%f)\n", facing_door);
-			if (facing_door > 0.6f) // theshold for facing door
+			printf("facing door (%f)\n", facing_door);
+			if (facing_door > DOOR_FACING) // theshold for facing door
 			{
 				printf("door open\n");
 				doors[i].open = !doors[i].open;
+				data->flag_refresh = true;
 				if (doors[i].exit_game == 1)
-					printf("exit game\n");
+					exit_door(data);
+					// printf("exit game\n");
 				break ;
 			}
 		}
 	}
 }
+
+static float	distance_to_door(t_player *player, t_door *doors, int i)
+{
+	return (sqrtf((player->x - doors[i].x) * (player->x - doors[i].x)
+			+ (player->y - doors[i].y) * (player->y - doors[i].y)));
+}
+
+
+//player is locked inside door
+//refresh flag
+//end screen
