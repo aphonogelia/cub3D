@@ -6,7 +6,7 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/25 17:13:43 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/25 17:37:12 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,6 +158,13 @@ typedef struct s_miniray
 	float			distance;
 }					t_miniray;
 
+typedef struct s_mouse
+{
+	double			last_x;
+	double			cursor_last_moved;
+	bool			first_call;
+}					t_mouse;
+
 typedef struct s_data
 {
 	mlx_t			*mlx;
@@ -165,6 +172,7 @@ typedef struct s_data
 	t_input			input;
 	t_player		player;
 	t_screen		screen;
+	t_mouse			mouse;
 	t_door			doors[MAX_DOORS];
 	mlx_texture_t	**textures;
 	bool			flag_refresh;
@@ -225,20 +233,20 @@ typedef struct s_mvt
 /******************************************************************************/
 /******************************************************************************/
 
-int			parser(char *file_name, t_data *data);
-int			parse_elements(char *line, t_data *data, int found_map);
-void		init_data(t_data *data);
-int			save_map(int fd, t_data *data, char **line, int *found_map);
-int			trim_lines(t_data *data);
-int			trim_rightend(t_data *data);
-int			trim_leftend(t_data *data);
-int			valid_chars(t_data *data, int i, int j);
-int			valid_map(t_data *data, int status);
-int			ft_isspace(char c);
-void		free_2d_char(char **arr);
-int			line_empty(char *line);
-char		*valid_first_occurance(char *str);
-void		clean_parse(t_data *data);
+int					parser(char *file_name, t_data *data);
+int					parse_elements(char *line, t_data *data, int found_map);
+void				init_data(t_data *data);
+int					save_map(int fd, t_data *data, char **line, int *found_map);
+int					trim_lines(t_data *data);
+int					trim_rightend(t_data *data);
+int					trim_leftend(t_data *data);
+int					valid_chars(t_data *data, int i, int j);
+int					valid_map(t_data *data, int status);
+int					ft_isspace(char c);
+void				free_2d_char(char **arr);
+int					line_empty(char *line);
+char				*valid_first_occurance(char *str);
+void				clean_parse(t_data *data);
 
 /******************************************************************************/
 /******************************************************************************/
@@ -247,28 +255,26 @@ void		clean_parse(t_data *data);
 /******************************************************************************/
 
 // HELENE
-void		init_mlx(t_data *data);
-void		hoop_func(void *param);
-void		update_fov(t_data *data);
-bool		close_wall(t_data *data, float x, float y);
-void		draw_ceiling_floor(t_data *data);
-int			draw_walls(t_data *data);
-void		cast_rays(t_data *data, t_ray *ray);
-void		wall_orient(t_data *data, t_ray *ray);
-bool		wall_check(t_data *data, t_ray *ray);
-void		draw_miniray(t_data *data, int u);
-void		save_miniray(t_data *data, t_ray *ray, int u);
-void		draw_minimap(t_data *data);
-void		escape_handle(mlx_key_data_t keys, void *param);
-float		deg_to_rad(int nb);
-float		rad_to_deg(float nb);
-void		put_pixel_minimap(t_data *data, int x, int y, uint32_t color);
-void		resize_hook(int32_t width, int32_t height, void *param);
-void		handle_error(char *error_message, t_data *data);
-void		handle_error2(char *error_message, t_data *data,
-				int exit_status);
-void		close_window(void *param);
-void		close_window2(void *param, int exit_status);
+void				init_mlx(t_data *data);
+void				hoop_func(void *param);
+void				update_fov(t_data *data);
+bool				close_wall(t_data *data, float x, float y);
+void				draw_ceiling_floor(t_data *data);
+int					draw_walls(t_data *data);
+void				cast_rays(t_data *data, t_ray *ray);
+void				wall_orient(t_data *data, t_ray *ray);
+bool				wall_check(t_data *data, t_ray *ray);
+void				draw_miniray(t_data *data, int u);
+void				save_miniray(t_data *data, t_ray *ray, int u);
+void				draw_minimap(t_data *data);
+void				escape_handle(mlx_key_data_t keys, void *param);
+float				deg_to_rad(int nb);
+float				rad_to_deg(float nb);
+void				put_pixel_minimap(t_data *data, int x, int y,
+						uint32_t color);
+void				resize_hook(int32_t width, int32_t height, void *param);
+void				handle_error(char *error_message, t_data *data);
+void				close_window(void *param);
 
 /******************************************************************************/
 /******************************************************************************/
@@ -276,11 +282,11 @@ void		close_window2(void *param, int exit_status);
 /******************************************************************************/
 /******************************************************************************/
 
-void		load_textures(t_data *data);
-uint32_t	sample_color(t_texture *texture);
-int			calc_texture_x(t_ray *ray, mlx_texture_t *texture);
-int			use_default_clr(int wall_orient);
-void		clean_textures(t_data *data);
+void				load_textures(t_data *data);
+uint32_t			sample_color(t_texture *texture);
+int					calc_texture_x(t_ray *ray, mlx_texture_t *texture);
+int					use_default_clr(int wall_orient);
+void				clean_textures(t_data *data);
 
 /******************************************************************************/
 /******************************************************************************/
@@ -288,19 +294,20 @@ void		clean_textures(t_data *data);
 /******************************************************************************/
 /******************************************************************************/
 
-void		welcome_screen(t_data *data);
-void		print_player(t_player *player);
-void		print_input(t_data *data);
-void		print_data(t_data *data);
-int			err_msg(char *msg, int err_nr);
-void		print_ray1(t_ray *ray);
-void		print_ray2(t_ray *ray);
-void		exit_err(t_data *data, char *msg, int exit_status);
+void				welcome_screen(t_data *data);
+void				print_player(t_player *player);
+void				print_input(t_data *data);
+void				print_data(t_data *data);
+int					err_msg(char *msg, int err_nr);
+void				print_ray1(t_ray *ray);
+void				print_ray2(t_ray *ray);
+void				exit_err(t_data *data, char *msg, int exit_status);
 
 // BONUS
-void		mouse_callback(double xpos, double ypos, void *param);
-void		init_doors(t_data *data);
-void		doors_interaction(t_player *player, t_door *doors,
-				int doors_nbr);
+void				mouse_callback(double xpos, double ypos, void *param);
+void				init_doors(t_data *data);
+void				doors_interaction(t_player *player, t_door *doors,
+						int doors_nbr);
+void				check_mouse_inactivity(t_data *data);
 
 #endif
