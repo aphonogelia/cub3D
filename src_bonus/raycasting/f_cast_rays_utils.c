@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 16:06:50 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/25 07:21:23 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/25 16:53:58 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 bool			wall_check(t_data *data, t_ray *ray);
 t_door			*get_door_at(t_data *data, int map_x, int map_y);
 void			wall_orient(t_data *data, t_ray *ray);
+static void 	update_door_orient(t_ray *ray, int *door);
 
 bool	wall_check(t_data *data, t_ray *ray)
 {
@@ -42,11 +43,8 @@ t_door	*get_door_at(t_data *data, int map_x, int map_y)
 	int	doors_nbr;
 	int	i;
 
-	// map_x = ray->map_x;
-	// map_y = ray->map_y;
 	doors_nbr = data->input.doors_nbr;
 	i = -1;
-	// printf("mapx: %d mapy: %d\n", map_x, map_y);
 	while (++i <= doors_nbr)
 	{
 		if ((int)data->doors[i].x == map_x && (int)data->doors[i].y == map_y)
@@ -56,13 +54,11 @@ t_door	*get_door_at(t_data *data, int map_x, int map_y)
 }
 
 void wall_orient(t_data *data, t_ray *ray)
-{
-    // t_door *door = get_door_at(data, ray);
-    
-	int door = 0;
-	if (ray->wall_orient == DOOR_TEXTURE)
-		door = 1;
+{ 
+	int door;
 	
+	door = 0;
+	update_door_orient(ray, &door);
 	if (ray->corr_dist < 0)
 	{
 		ray->distance *= -1;
@@ -81,10 +77,14 @@ void wall_orient(t_data *data, t_ray *ray)
 			ray->wall_orient = NORTH;
 		ray->wall_x = data->player.x + ray->distance * ray->cos_angle;
 	}
-	// if (door != NULL)
-	// if (ray->wall_orient == 7)
-	if (door == 1)
-		ray->wall_orient = DOOR_TEXTURE;
+	update_door_orient(ray, &door);
 	ray->wall_x -= floorf(ray->wall_x);
 }
-// */
+
+static void update_door_orient(t_ray *ray, int *door)
+{
+	if (ray->wall_orient == DOOR_TEXTURE)
+		*door = 1;
+	else if (*door == 1)
+		ray->wall_orient = DOOR_TEXTURE;
+}

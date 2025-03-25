@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:36:24 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/25 15:01:52 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/25 16:41:43 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ static void	update_player(t_data *data)
 	calculate_deltas(data, &delta);
 	updated.x += speed * delta.x;
 	updated.y += speed * delta.y;
-	// collision(data, &updated);
 	if (close_wall(data, updated.x, data->player.y) == false)
 		data->player.x = updated.x;
 	if (close_wall(data, data->player.x, updated.y) == false)

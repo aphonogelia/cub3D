@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:53:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/25 16:00:28 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/25 16:30:55 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	init_mlx(t_data *data)
 	init_player(data);
 	init_doors(data);
 	data->mlx = mlx_init(WIDTH, HEIGHT, "CUB3D", true);
-	mlx_get_monitor_size(0, &data->mlx->width, &data->mlx->height);
-	mlx_set_window_size(data->mlx, data->mlx->width, data->mlx->height);
+	// mlx_get_monitor_size(0, &data->mlx->width, &data->mlx->height);
+	// mlx_set_window_size(data->mlx, data->mlx->width, data->mlx->height);
 	data->img = mlx_new_image(data->mlx, data->mlx->width, data->mlx->height);
 	data->miniray = NULL;
 	printf("%.2f, %.2f\n", data->player.x, data->player.y);
