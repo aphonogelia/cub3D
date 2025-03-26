@@ -6,11 +6,11 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 04:33:38 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/25 05:23:33 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/26 12:03:36 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc_bonus/cub3d.h"
+#include "../../inc_bonus/cub3d_bonus.h"
 
 static void		save_door(t_data *data, int row, int col, int door_nbr);
 static int		is_exit_door(t_data *data, int row, int col);

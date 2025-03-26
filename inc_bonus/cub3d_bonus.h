@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/26 11:57:29 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/26 12:02:33 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,28 +74,20 @@
 # define WIDTH 800
 # define HEIGHT 600
 
-<<<<<<< HEAD:inc_bonus/cub3d_bonus.h
-# define FOV 66
-# define MVT_SPEED 0.07
-# define ROT_SPEED 0.055
-# define MOUSE_SENS 0.01 
-# define INTERACTION_RANGE 8.0f
-=======
 # define WELCOME_SCREEN "imgs/cube.png"
 # define END_SCREEN "imgs/cube_end.png"
 # define DR_TEX_PATH "imgs/door1.png"
 
-# define OFFSET 10
-# define TILE_SIZE 5
-# define PLAYER_X 100
-# define PLAYER_Y 60
-# define PLAYER_SPACE 0.35
+// # define OFFSET 10
+// # define TILE_SIZE 5
+// # define PLAYER_X 100
+// # define PLAYER_Y 60
+// # define PLAYER_SPACE 0.35
 
 # define FOV 66
 # define MVT_SPEED 0.07
 # define ROT_SPEED 0.055
 # define MOUSE_SENS 0.01    // mouse sensitivity
->>>>>>> inbar:inc_bonus/cub3d.h
 # define MAX_DOORS 25
 
 // map items
