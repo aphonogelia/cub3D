@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 11:56:14 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/25 19:09:28 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/26 11:54:42 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	init_data(t_data *data)
 void	load_textures(t_data *data)
 {
 	int			i;
-	const char	*orientations[] = {"NORTH", "SOUTH", "WEST", "EAST", "DOOR"};
+	const char	*orientations[] = {"NORTH", "SOUTH", "WEST", "EAST", "DOOR_TEXTURE"};
 
 	i = 0;
 	data->textures = (mlx_texture_t **)malloc(sizeof(mlx_texture_t *) * 5);
@@ -52,7 +52,7 @@ void	load_textures(t_data *data)
 	data->textures[SOUTH] = load_png(data, data->input.so);
 	data->textures[WEST] = load_png(data, data->input.we);
 	data->textures[EAST] = load_png(data, data->input.ea);
-	data->textures[DOOR_TEXTURE] = load_png(data, "imgs/pillar.png");
+	data->textures[DOOR_TEXTURE] = load_png(data, DR_TEX_PATH);
 	while (i < 5)
 	{
 		if (data->textures[i])

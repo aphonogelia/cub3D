@@ -3,26 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   welcome.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 14:13:05 by ilazar            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/03/25 19:11:15 by htharrau         ###   ########.fr       */
+=======
+/*   Updated: 2025/03/25 15:55:36 by ilazar           ###   ########.fr       */
+>>>>>>> inbar
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc_bonus/cub3d_bonus.h"
 
-void		welcome_screen(t_data *data);
+void		welcome_screen(t_data *data, char *path);
 static void	draw_background(t_data *data);
 
-void	welcome_screen(t_data *data)
+void	welcome_screen(t_data *data , char *path)
 {
 	int	pos_x;
 	int	pos_y;
 
-	data->screen.tex = mlx_load_png("imgs/cube.png");
+	data->screen.tex = mlx_load_png(path);
 	if (!data->screen.tex)
-		exit_err(data, "Failed to load welcome texture", FAILURE);
+		exit_err(data, "Failed to load screen texture", FAILURE);
 	draw_background(data);
 	data->screen.welcome_img = mlx_texture_to_image(data->mlx,
 			data->screen.tex);
@@ -35,7 +39,7 @@ void	welcome_screen(t_data *data)
 	data->screen.is_welcome = true;
 }
 
-static void	draw_background(t_data *data)
+void	draw_background(t_data *data)
 {
 	int	x;
 	int	y;

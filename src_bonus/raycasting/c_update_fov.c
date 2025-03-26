@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c_update_fov.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:36:24 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/25 19:12:04 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/26 11:56:48 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,40 @@ static void	update_angle(t_data *data)
 	}
 	data->player.angle_r = fmod(data->player.angle_r + 2 * M_PI, 2 * M_PI);
 }
+
+// static void collision(t_data *data, t_coord	*updated)
+// {
+//     // ... (existing code for calculating updated position) ...
+
+//     bool can_move_x = !close_wall(data, updated->x, data->player.y);
+//     bool can_move_y = !close_wall(data, data->player.x, updated->y);
+
+//     // Check if the player is in a door zone
+//     t_door *current_door = get_door_at(data, (int)data->player.x, (int)data->player.y);
+//     if (current_door && door_zone(data, current_door, data->player.x, data->player.y))
+//     {
+//         // Allow movement parallel to the door
+//         if (current_door->x == (int)data->player.x)
+//         {
+//             // Door is vertical, allow Y movement
+//             data->player.y = updated->y;
+//         }
+//         else
+//         {
+//             // Door is horizontal, allow X movement
+//             data->player.x = updated->x;
+//         }
+//     }
+//     else
+//     {
+//         // Normal movement logic
+//         if (can_move_x) data->player.x = updated->x;
+//         if (can_move_y) data->player.y = updated->y;
+//     }
+
+//     if (can_move_x || can_move_y)
+//         data->flag_refresh = true;
+// }
 
 // we calculate the new position. CTRL: speed * 2. We update the positions only
 // if it is not encountering a wall.

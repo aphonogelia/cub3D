@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 15:51:29 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/25 19:13:24 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/26 11:56:11 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,45 @@ static double	define_sens(t_data *data, double xpos);
 static void		player_angle(t_data *data, double xpos, double sens);
 static int		prepare_callback(t_data *data, double xpos);
 
+
+// void mouse_callback(double xpos, double ypos, void *param)
+// {
+//     t_data *data = (t_data *)param;
+//     static bool wrapping = false;
+
+//     if (wrapping)
+//     {
+//         wrapping = false;
+//         data->mouse.last_x = xpos;
+//         return;
+//     }
+
+//     if (xpos <= 10)
+//     {
+//         wrapping = true;
+//         mlx_set_mouse_pos(data->mlx, data->mlx->width - 15, ypos);
+//         data->player.angle_r -= (data->mlx->width - 25) * MOUSE_SENS;
+//         return;
+//     }
+//     if (xpos >= data->mlx->width - 10)
+//     {
+//         wrapping = true;
+//         mlx_set_mouse_pos(data->mlx, 15, ypos);
+//         data->player.angle_r += (data->mlx->width - 25) * MOUSE_SENS;
+//         return;
+//     }
+
+//     // Normal mouse movement handling
+//     double delta_x = xpos - data->mouse.last_x;
+//     data->player.angle_r -= delta_x * MOUSE_SENS;
+//     data->player.angle_r = fmodf(data->player.angle_r, 2 * M_PI);
+//     if (data->player.angle_r < 0)
+//         data->player.angle_r += 2 * M_PI;
+
+//     data->mouse.last_x = xpos;
+//     data->flag_refresh = true;
+// }
+
 void	mouse_callback(double xpos, double ypos, void *param)
 {
 	t_data	*data;
@@ -26,18 +65,23 @@ void	mouse_callback(double xpos, double ypos, void *param)
 	data = (t_data *)param;
 	if (prepare_callback(data, xpos))
 		return ;
-	mlx_set_cursor_mode(data->mlx, MLX_MOUSE_HIDDEN);
+	data->flag_refresh = true;
+	// mlx_set_cursor_mode(data->mlx, MLX_MOUSE_HIDDEN);
 	if (xpos <= 10)
 	{
-		mlx_set_mouse_pos(data->mlx, data->mlx->width - 15, ypos);
+		// printf("Mouse position: %.2f, %.2f\n", xpos, ypos);
+		// mlx_set_mouse_pos(data->mlx, data->mlx->width - 15, ypos);
+		// printf("wrap to: %d, %.2f\n", data->mlx->width - 15, ypos);
 		data->mouse.last_x = data->mlx->width - 15;
-		return ;
+		mouse_callback(data->mlx->width - 15, ypos, data);
+		// return ;
 	}
 	if (xpos >= data->mlx->width - 10)
 	{
-		mlx_set_mouse_pos(data->mlx, 15, ypos);
+		// mlx_set_mouse_pos(data->mlx, 15, ypos);
 		data->mouse.last_x = 15;
-		return ;
+		mouse_callback(15, ypos, data);
+		// return ;
 	}
 	sens = define_sens(data, xpos);
 	player_angle(data, xpos, sens);
