@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 17:14:07 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/26 11:56:01 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/26 17:30:19 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,15 @@ void	doors_interaction(t_player *player, t_door *doors, int doors_nbr, t_data *d
 	i = -1;
 	while (++i <= doors_nbr)
 	{
-		// printf("Player position: (%f, %f)\n", player->x, player->y);
-		// printf("Door %d position: (%f, %f)\n", i, doors[i].x, doors[i].y);
-		// printf("Distance to door %d: %f\n", i, distance_to_door(player, doors[i]));
 		dis_to_door = distance_to_door(player, doors[i]);
 		if (doors[i].open && (dis_to_door < 2.5f && dis_to_door > 1.0f))
 		{	
-			// printf("door closed\n");
 			doors[i].open = !doors[i].open;
 			data->flag_refresh = true;
 			break ;
 		}
 		else if (!doors[i].open && dis_to_door < 2.5f)
 		{
-			// printf("door open\n");
-			// data->flag_refresh = true;
 			if (doors[i].exit_game == 1)
 			{
 				welcome_screen(data, END_SCREEN);
@@ -70,6 +64,3 @@ static void	close_all_doors(t_door *doors, int doors_nbr)
 	while (++i <= doors_nbr)
 		doors[i].open = 0;
 }
-
-//mouse
-//refresh flag

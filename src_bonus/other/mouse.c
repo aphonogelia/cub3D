@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 15:51:29 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/26 11:56:11 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/26 17:31:46 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,45 +17,6 @@ void			check_mouse_inactivity(t_data *data);
 static double	define_sens(t_data *data, double xpos);
 static void		player_angle(t_data *data, double xpos, double sens);
 static int		prepare_callback(t_data *data, double xpos);
-
-
-// void mouse_callback(double xpos, double ypos, void *param)
-// {
-//     t_data *data = (t_data *)param;
-//     static bool wrapping = false;
-
-//     if (wrapping)
-//     {
-//         wrapping = false;
-//         data->mouse.last_x = xpos;
-//         return;
-//     }
-
-//     if (xpos <= 10)
-//     {
-//         wrapping = true;
-//         mlx_set_mouse_pos(data->mlx, data->mlx->width - 15, ypos);
-//         data->player.angle_r -= (data->mlx->width - 25) * MOUSE_SENS;
-//         return;
-//     }
-//     if (xpos >= data->mlx->width - 10)
-//     {
-//         wrapping = true;
-//         mlx_set_mouse_pos(data->mlx, 15, ypos);
-//         data->player.angle_r += (data->mlx->width - 25) * MOUSE_SENS;
-//         return;
-//     }
-
-//     // Normal mouse movement handling
-//     double delta_x = xpos - data->mouse.last_x;
-//     data->player.angle_r -= delta_x * MOUSE_SENS;
-//     data->player.angle_r = fmodf(data->player.angle_r, 2 * M_PI);
-//     if (data->player.angle_r < 0)
-//         data->player.angle_r += 2 * M_PI;
-
-//     data->mouse.last_x = xpos;
-//     data->flag_refresh = true;
-// }
 
 void	mouse_callback(double xpos, double ypos, void *param)
 {

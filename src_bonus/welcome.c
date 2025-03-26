@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 14:13:05 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/26 12:02:48 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/26 17:31:59 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	welcome_screen(t_data *data , char *path)
 	data->screen.is_welcome = true;
 }
 
-void	draw_background(t_data *data)
+static void	draw_background(t_data *data)
 {
 	int	x;
 	int	y;

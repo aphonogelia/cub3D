@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/26 12:02:33 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/26 17:32:20 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,7 @@
 
 # define WELCOME_SCREEN "imgs/cube.png"
 # define END_SCREEN "imgs/cube_end.png"
-# define DR_TEX_PATH "imgs/door1.png"
-
-// # define OFFSET 10
-// # define TILE_SIZE 5
-// # define PLAYER_X 100
-// # define PLAYER_Y 60
-// # define PLAYER_SPACE 0.35
+# define DR_TEX_PATH "imgs/door2.png"
 
 # define FOV 66
 # define MVT_SPEED 0.07
@@ -318,6 +312,8 @@ void				mouse_callback(double xpos, double ypos, void *param);
 void				init_doors(t_data *data);
 t_door				*get_door_at(t_data *data, int map_x, int map_y);
 void 				doors_interaction(t_player *player, t_door *doors, int doors_nbr, t_data *data);
+
+
 
 void				check_mouse_inactivity(t_data *data);
 
