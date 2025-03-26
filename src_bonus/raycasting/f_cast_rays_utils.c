@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 16:06:50 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/26 17:33:35 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/26 17:52:02 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 bool			wall_check(t_data *data, t_ray *ray);
 t_door			*get_door_at(t_data *data, int map_x, int map_y);
 void			wall_orient(t_data *data, t_ray *ray);
-static void 	update_door_orient(t_ray *ray, int *door);
 
 bool	wall_check(t_data *data, t_ray *ray)
 {
@@ -55,36 +54,28 @@ t_door	*get_door_at(t_data *data, int map_x, int map_y)
 
 void wall_orient(t_data *data, t_ray *ray)
 { 
-	int door;
+	int orient;
 	
-	door = 0;
-	update_door_orient(ray, &door);
+	orient = NO_ORIENT;
 	if (ray->corr_dist < 0)
 	{
 		ray->distance *= -1;
 		ray->corr_dist *= -1;
 		if (ray->step_x > 0)
-			ray->wall_orient = EAST;
+			orient = EAST;
 		else 
-			ray->wall_orient = WEST;
+			orient = WEST;
 		ray->wall_x = data->player.y - ray->distance * ray->sin_angle ;
 	}
 	else
 	{
 		if (ray->step_y > 0)
-			ray->wall_orient = SOUTH;
+			orient = SOUTH;
 		else 
-			ray->wall_orient = NORTH;
+			orient = NORTH;
 		ray->wall_x = data->player.x + ray->distance * ray->cos_angle;
 	}
-	update_door_orient(ray, &door);
+	if (ray->wall_orient != DOOR_TEXTURE)
+		ray->wall_orient = orient;
 	ray->wall_x -= floorf(ray->wall_x);
-}
-
-static void update_door_orient(t_ray *ray, int *door)
-{
-	if (ray->wall_orient == DOOR_TEXTURE)
-		*door = 1;
-	else if (*door == 1)
-		ray->wall_orient = DOOR_TEXTURE;
 }
