@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/26 17:45:10 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/26 18:01:50 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@
 # define WIDTH 800
 # define HEIGHT 600
 
+//menus
 # define WELCOME_SCREEN "imgs/cube.png"
 # define END_SCREEN "imgs/cube_end.png"
 # define DR_TEX_PATH "imgs/door2.png"
@@ -82,7 +83,7 @@
 # define MVT_SPEED 0.07
 # define ROT_SPEED 0.055
 # define MOUSE_SENS 0.01    // mouse sensitivity
-# define MAX_DOORS 25
+# define MAX_DOORS 10
 
 // map items
 # define WALL '1'

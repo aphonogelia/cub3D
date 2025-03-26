@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 04:33:38 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/26 12:03:36 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/26 18:03:06 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@ void	init_doors(t_data *data)
 			{
 				doors_nbr++;
 				if (doors_nbr > MAX_DOORS - 1)
-					handle_error("Doors exceed maximum\n", data);
-						// should check if closes correctly
+					handle_error("Doors number exceed maximum\n", data);
 				save_door(data, i, j, doors_nbr);
 			}
 			j++;
@@ -45,7 +44,6 @@ void	init_doors(t_data *data)
 
 static void	save_door(t_data *data, int row, int col, int door_nbr)
 {
-	// printf("save door nbr %d\n", door_nbr);
 	data->doors[door_nbr].x = col;
 	data->doors[door_nbr].y = row;
 	data->doors[door_nbr].open = 0;
@@ -54,17 +52,17 @@ static void	save_door(t_data *data, int row, int col, int door_nbr)
 
 static int	is_exit_door(t_data *data, int row, int col)
 {
-	if (row == 0) // first row
+	if (row == 0)
 		return (1);
 	if (data->input.map[row - 1][col] == ' ')
 		return (1);
-	if (row == data->input.h_map - 1) // last row
+	if (row == data->input.h_map - 1)
 		return (1);
-	if (data->input.map[row + 1][col] == ' ') // row down
+	if (data->input.map[row + 1][col] == ' ')
 		return (1);
-	if (col == 0) // first collum
+	if (col == 0)
 		return (1);
-	if (data->input.map[row][col - 1] == ' ') // left collum
+	if (data->input.map[row][col - 1] == ' ')
 		return (1);
 	if (data->input.map[row][col + 1] == ' ' || data->input.map[row][col
 		+ 1] == '\0')
