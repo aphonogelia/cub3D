@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 14:13:05 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/26 17:44:39 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/27 16:50:44 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void		welcome_screen(t_data *data, char *path);
 static void	draw_background(t_data *data);
 
-void	welcome_screen(t_data *data , char *path)
+void	welcome_screen(t_data *data, char *path)
 {
 	int	pos_x;
 	int	pos_y;

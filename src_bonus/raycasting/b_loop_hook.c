@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 22:43:01 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/26 11:56:29 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/27 16:51:17 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	hoop_func(void *param)
 	t_data	*data;
 
 	data = (t_data *)param;
-	if ((!data->screen.is_welcome))
+	if (!data->screen.is_welcome)
 	{
 		// check_mouse_inactivity(data);
 		update_fov(data);
