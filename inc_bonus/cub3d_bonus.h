@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/26 18:01:50 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/27 18:09:51 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@
 # define WIDTH 800
 # define HEIGHT 600
 
-//menus
+// menus
 # define WELCOME_SCREEN "imgs/cube.png"
 # define END_SCREEN "imgs/cube_end.png"
 # define DR_TEX_PATH "imgs/door2.png"
@@ -82,7 +82,7 @@
 # define FOV 66
 # define MVT_SPEED 0.07
 # define ROT_SPEED 0.055
-# define MOUSE_SENS 0.01    // mouse sensitivity
+# define MOUSE_SENS 0.01 // mouse sensitivity
 # define MAX_DOORS 10
 
 // map items
@@ -308,11 +308,11 @@ void				print_ray1(t_ray *ray);
 void				print_ray2(t_ray *ray);
 void				exit_err(t_data *data, char *msg, int exit_status);
 void				welcome_screen(t_data *data, char *path);
+void				menu_clean(t_data *data);
 void				init_doors(t_data *data);
 t_door				*get_door_at(t_data *data, int map_x, int map_y);
-void 				doors_interaction(t_player *player, t_door *doors, int doors_nbr, t_data *data);
-
-
+void				doors_interaction(t_player *player, t_door *doors,
+						int doors_nbr, t_data *data);
 
 void				mouse_callback(double xpos, double ypos, void *param);
 void				check_mouse_inactivity(t_data *data);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   i_textures.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 15:43:48 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/25 19:11:44 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/27 17:38:52 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ uint32_t	sample_color(t_texture *texture)
 
 	raw_color = ((uint32_t *)texture->png->pixels)[texture->tex_y
 		* texture->png->width + texture->tex_x];
-	color = ((raw_color & 0xFF) << 24) | ((raw_color & 0xFF00) << 8) 
-		| ((raw_color & 0xFF0000) >> 8) | ((raw_color & 0xFF000000) >> 24);
+	color = ((raw_color & 0xFF) << 24) | ((raw_color & 0xFF00) << 8) | ((raw_color & 0xFF0000) >> 8) | ((raw_color & 0xFF000000) >> 24);
 	return (color);
 }
 
@@ -61,18 +60,17 @@ int	use_default_clr(int wall_orient)
 
 void	clean_textures(t_data *data)
 {
-	int	i;
+	int i;
 
 	i = -1;
 	if (data->textures)
 	{
-		while (++i < 4)
+		while (++i < 5)
 		{
 			if (data->textures[i])
-				free(data->textures[i]);
+				mlx_delete_texture(data->textures[i]);
 		}
-		if (data->textures[DOOR_TEXTURE])
-			free(data->textures[DOOR_TEXTURE]);
 		free(data->textures);
+		data->textures = NULL;
 	}
 }

@@ -6,13 +6,14 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 11:56:14 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/26 11:54:42 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/27 18:07:52 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc_bonus/cub3d_bonus.h"
 
 static mlx_texture_t	*load_png(t_data *data, char *path);
+static void				init_menus(t_data *data);
 
 void	init_data(t_data *data)
 {
@@ -37,12 +38,14 @@ void	init_data(t_data *data)
 	data->textures = NULL;
 	data->mouse.first_call = true;
 	data->mouse.last_x = -1;
+	init_menus(data);
 }
 
 void	load_textures(t_data *data)
 {
 	int			i;
-	const char	*orientations[] = {"NORTH", "SOUTH", "WEST", "EAST", "DOOR_TEXTURE"};
+	const char	*orientations[] = {"NORTH", "SOUTH", "WEST", "EAST",
+			"DOOR_TEXTURE"};
 
 	i = 0;
 	data->textures = (mlx_texture_t **)malloc(sizeof(mlx_texture_t *) * 5);
@@ -82,4 +85,11 @@ static mlx_texture_t	*load_png(t_data *data, char *path)
 		return (NULL);
 	}
 	return (texture);
+}
+
+static void	init_menus(t_data *data)
+{
+	data->screen.background = NULL;
+	data->screen.tex = NULL;
+	data->screen.welcome_img = NULL;
 }

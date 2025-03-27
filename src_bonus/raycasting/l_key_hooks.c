@@ -6,13 +6,11 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 15:10:25 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/27 17:04:47 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/27 18:05:13 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc_bonus/cub3d_bonus.h"
-
-static void	menu_clean(t_data *data);
 
 /* Consider adding collision detection in translation_press to prevent moving
 through walls. The update_play distance (50 units) seems large. Consider using a
@@ -53,9 +51,7 @@ void	keys_handle(mlx_key_data_t keys, void *param)
 		if (keys.action == MLX_PRESS)
 		{
 			menu_clean(data);
-			if (keys.key == MLX_KEY_ESCAPE)
-				mlx_close_window(data->mlx);
-			if (keys.key == MLX_KEY_ESCAPE && keys.action == MLX_PRESS)
+			if (keys.key == MLX_KEY_ESCAPE && keys.action == MLX_PRESS) //press esc on ketboard
 				mlx_close_window(data->mlx);
 			data->screen.is_welcome = false;
 			data->flag_refresh = true;
@@ -63,7 +59,7 @@ void	keys_handle(mlx_key_data_t keys, void *param)
 		return ;
 	}
 	if (keys.key == MLX_KEY_ESCAPE && keys.action == MLX_PRESS)
-		mlx_close_window(data->mlx);
+		close_window(data);
 	else if (keys.key == MLX_KEY_E && keys.action == MLX_PRESS)
 	{
 		doors_interaction(&data->player, data->doors, data->input.doors_nbr,
@@ -72,9 +68,3 @@ void	keys_handle(mlx_key_data_t keys, void *param)
 	}
 }
 
-static void	menu_clean(t_data *data)
-{
-	mlx_delete_image(data->mlx, data->screen.welcome_img);
-	mlx_delete_image(data->mlx, data->screen.background);
-	mlx_delete_texture(data->screen.tex);
-}
