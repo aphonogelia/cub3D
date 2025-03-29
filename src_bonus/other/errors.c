@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 17:14:14 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/25 19:11:24 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/29 16:35:00 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,10 @@ void	exit_err(t_data *data, char *msg, int exit_status)
 	clean_parse((data));
 	ft_printf("Exiting program...\n");
 	exit(exit_status);
+}
+
+void	handle_error(char *error_message, t_data *data)
+{
+	ft_printf("Error: %s\n", error_message);
+	mlx_close_window(data->mlx);
 }

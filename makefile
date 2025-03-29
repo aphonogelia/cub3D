@@ -6,7 +6,7 @@
 #    By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/27 19:14:42 by htharrau          #+#    #+#              #
-#    Updated: 2025/03/27 17:08:20 by ilazar           ###   ########.fr        #
+#    Updated: 2025/03/29 16:36:19 by ilazar           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ SRCS		= $(addprefix $(SRCS_DIR), init.c errors.c main.c welcome.c)       \
 				$(addprefix $(SRCS_DIR)raycasting/, a_init_mlx.c b_loop_hook.c \
 				c_update_fov.c  d_draw_ceiling_floor.c e_draw_walls.c		   \
 				f_cast_rays.c g_textures.c m_resize_hook.c  l_escape.c		   \
-				x_helper.c z_cleanup.c )
+				x_helper.c)
 	   
 SRCS_BONUS = $(addprefix $(BONUS_DIR), main.c) \
 				$(addprefix $(BONUS_DIR)other/, doors_parse.c doors.c mouse.c \
@@ -40,7 +40,7 @@ SRCS_BONUS = $(addprefix $(BONUS_DIR), main.c) \
 				$(addprefix $(BONUS_DIR)parsing/, a_parser.c e_trim_right.c d_trim_left.c \
 				g_valid_map.c f_valid_chars.c b_parse_elements.c h_utils_parse.c c_save_map.c) \
 				$(addprefix $(BONUS_DIR)raycasting/, a_init_mlx.c d_draw_ceiling_floor.c \
-				x_helper.c b_loop_hook.c e_draw_walls.c z_cleanup.c c_update_fov.c \
+				x_helper.c b_loop_hook.c e_draw_walls.c c_update_fov.c \
 				f_cast_rays.c l_key_hooks.c g_draw_miniray.c h_draw_minimap.c i_textures.c \
 				c_update_fov_utils.c f_cast_rays_utils.c m_resize_hook.c)
 
@@ -49,8 +49,8 @@ OBJS_BONUS	= $(addprefix $(OBJS_BONUS_DIR), $(SRCS_BONUS:.c=.o))
 
 #-fsanitize=address
 CC 			= cc
-CFLAGS 		= -Wall -Wextra -Werror -I$(MLX_DIR)/include -I$(LIBFT_DIR) -I$(INCS_DIR)
-CFLAGS_BONUS = -Wall -Wextra -Werror -I$(MLX_DIR)/include -I$(LIBFT_DIR) -I$(INCS_BONUS_DIR)
+CFLAGS 		= -Wall -Wextra -Werror -I$(MLX_DIR)/include -I$(LIBFT_DIR) -I$(INCS_DIR) -fsanitize=address
+CFLAGS_BONUS = -Wall -Wextra -Werror -I$(MLX_DIR)/include -I$(LIBFT_DIR) -I$(INCS_BONUS_DIR) -fsanitize=address
 LDFLAGS 	= -L$(LIBFT_DIR) -L$(MLX_DIR)/build -lft -lmlx42  -ldl -lglfw -pthread -lm
 MAKE		= make --no-print-directory
 

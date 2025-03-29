@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/27 18:09:51 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/29 16:26:33 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -279,7 +279,6 @@ void				put_pixel_minimap(t_data *data, int x, int y,
 						uint32_t color);
 void				resize_hook(int32_t width, int32_t height, void *param);
 void				handle_error(char *error_message, t_data *data);
-void				close_window(void *param);
 
 /******************************************************************************/
 /******************************************************************************/
@@ -308,7 +307,7 @@ void				print_ray1(t_ray *ray);
 void				print_ray2(t_ray *ray);
 void				exit_err(t_data *data, char *msg, int exit_status);
 void				welcome_screen(t_data *data, char *path);
-void				menu_clean(t_data *data);
+void				clean_menus(t_data *data);
 void				init_doors(t_data *data);
 t_door				*get_door_at(t_data *data, int map_x, int map_y);
 void				doors_interaction(t_player *player, t_door *doors,

@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 14:13:05 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/27 18:22:24 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/29 16:27:03 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,21 @@ static void	draw_background(t_data *data)
 	}
 }
 
-void	menu_clean(t_data *data)
+void	clean_menus(t_data *data)
 {
-	printf("cleaning menus\n");
-	if (data->screen.tex)
-		mlx_delete_texture(data->screen.tex);
-	if (data->screen.welcome_img)
-		mlx_delete_image(data->mlx, data->screen.welcome_img);
 	if (data->screen.background)
+	{
 		mlx_delete_image(data->mlx, data->screen.background);
+		data->screen.background = NULL;
+	}
+	if (data->screen.welcome_img)
+	{
+		mlx_delete_image(data->mlx, data->screen.welcome_img);
+		data->screen.welcome_img = NULL;
+	}
+	if (data->screen.tex)
+	{
+		mlx_delete_texture(data->screen.tex);
+		data->screen.tex = NULL;
+	}
 }

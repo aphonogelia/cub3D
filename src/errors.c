@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 17:14:14 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/17 18:07:53 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/29 16:34:01 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,10 @@ void	exit_err(t_data *data, char *msg, int exit_status)
 	clean_textures(data);
 	printf("Exiting program...\n");
 	exit(exit_status);
+}
+
+void	handle_error(char *error_message, t_data *data)
+{
+	ft_printf("Error: %s\n", error_message);
+	mlx_close_window(data->mlx);
 }

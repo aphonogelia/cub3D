@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/25 16:40:20 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/03/29 16:34:36 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,72 +169,72 @@ typedef struct s_mvt
 
 /******************************************************************************/
 /******************************************************************************/
-/*								PARSING									 	  */
+/*								PARSING												*/
 /******************************************************************************/
 /******************************************************************************/
 
-int			parser(char *file_name, t_data *data);
-int			parse_elements(char *line, t_data *data, int found_map);
-void		init_data(t_data *data);
-int			save_map(int fd, t_data *data, char **line, int *found_map);
-int			trim_lines(t_data *data);
-int			trim_rightend(t_data *data);
-int			trim_leftend(t_data *data);
-int			valid_chars(t_data *data, int i, int j);
-int			valid_map(t_data *data, int status);
-int			ft_isspace(char c);
-void		free_2d_char(char **arr);
-int			line_empty(char *line);
-char		*valid_first_occurance(char *str);
-void		clean_parse(t_data *data);
+int					parser(char *file_name, t_data *data);
+int					parse_elements(char *line, t_data *data, int found_map);
+void				init_data(t_data *data);
+int					save_map(int fd, t_data *data, char **line, int *found_map);
+int					trim_lines(t_data *data);
+int					trim_rightend(t_data *data);
+int					trim_leftend(t_data *data);
+int					valid_chars(t_data *data, int i, int j);
+int					valid_map(t_data *data, int status);
+int					ft_isspace(char c);
+void				free_2d_char(char **arr);
+int					line_empty(char *line);
+char				*valid_first_occurance(char *str);
+void				clean_parse(t_data *data);
 
 /******************************************************************************/
 /******************************************************************************/
-/*								RAYCASTING								      */
+/*								RAYCASTING										*/
 /******************************************************************************/
 /******************************************************************************/
 
 // HELENE
-void		init_mlx(t_data *data);
-void		hoop_func(void *param);
-void		update_angle(t_data *data);
-void		update_player(t_data *data);
-void		draw_ceiling_floor(t_data *data);
-void		draw_walls(t_data *data);
-void		cast_rays(t_data *data, t_ray *ray);
-void		escape_handle(mlx_key_data_t keys, void *param);
-float		deg_to_rad(int nb);
-float		rad_to_degree(float nb);
-void		handle_error(char *error_message, t_data *data);
-void		close_window(void *param);
-void		resize_hook(int32_t width, int32_t height, void *param);
+void				init_mlx(t_data *data);
+void				hoop_func(void *param);
+void				update_angle(t_data *data);
+void				update_player(t_data *data);
+void				draw_ceiling_floor(t_data *data);
+void				draw_walls(t_data *data);
+void				cast_rays(t_data *data, t_ray *ray);
+void				escape_handle(mlx_key_data_t keys, void *param);
+float				deg_to_rad(int nb);
+float				rad_to_degree(float nb);
+void				handle_error(char *error_message, t_data *data);
+void				resize_hook(int32_t width, int32_t height, void *param);
 
 /******************************************************************************/
 /******************************************************************************/
-/*									TEXTURES								  */
+/*									TEXTURES									*/
 /******************************************************************************/
 /******************************************************************************/
 
-void		load_textures(t_data *data);
-uint32_t	sample_color(t_texture *texture);
-int			calc_texture_x(t_ray *ray, mlx_texture_t *texture);
-int			use_default_clr(int wall_orient);
-void		clean_textures(t_data *data);
+void				load_textures(t_data *data);
+uint32_t			sample_color(t_texture *texture);
+int					calc_texture_x(t_ray *ray, mlx_texture_t *texture);
+int					use_default_clr(int wall_orient);
+void				clean_textures(t_data *data);
 
 /******************************************************************************/
 /******************************************************************************/
-/*									OTHER									  */
+/*									OTHER										*/
 /******************************************************************************/
 /******************************************************************************/
 
-void		welcome_screen(t_data *data);
-void		draw_on_screen(t_data *data, int32_t height, int32_t width);
-void		print_player(t_player *player);
-void		print_input(t_data *data);
-void		print_data(t_data *data);
-int			err_msg(char *msg, int err_nr);
-void		print_ray1(t_ray *ray);
-void		print_ray2(t_ray *ray);
-void		exit_err(t_data *data, char *msg, int exit_status);
+void				welcome_screen(t_data *data);
+void				clean_menus(t_data *data);
+void				draw_on_screen(t_data *data, int32_t height, int32_t width);
+void				print_player(t_player *player);
+void				print_input(t_data *data);
+void				print_data(t_data *data);
+int					err_msg(char *msg, int err_nr);
+void				print_ray1(t_ray *ray);
+void				print_ray2(t_ray *ray);
+void				exit_err(t_data *data, char *msg, int exit_status);
 
 #endif

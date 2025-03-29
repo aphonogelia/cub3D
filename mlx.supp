@@ -1,0 +1,69 @@
+{
+   DynamicLinker_StillReachable1
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   obj:/lib64/ld-linux-x86-64.so.2
+   fun:calloc
+   fun:_dl_check_map_versions
+}
+{
+   DynamicLinker_StillReachable2
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   obj:/lib64/ld-linux-x86-64.so.2
+   fun:calloc
+   fun:_dl_new_object
+}
+{
+   LLVM_StillReachable1
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   obj:/usr/lib/x86_64-linux-gnu/libLLVM-15.so.1
+   fun:operator new(unsigned long)
+}
+{
+   X11_StillReachable1
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   obj:/lib/x86_64-linux-gnu/libX11.so.6
+   fun:malloc
+   fun:_XrmInternalStringToQuark
+}
+{
+   X11_StillReachable2
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   obj:/lib/x86_64-linux-gnu/libX11.so.6
+   fun:calloc
+   fun:_XrmInternalStringToQuark
+}
+{
+   GLFW_StillReachable
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   obj:/lib/x86_64-linux-gnu/libglfw.so.3
+   fun:glfwInit
+}
+{
+   Stdlib_StillReachable
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   obj:/usr/lib/x86_64-linux-gnu/libstdc++.so.6
+   fun:malloc
+}
+{
+   DynamicLinker_DefLost_ZeroBytes
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:malloc
+   obj:/lib64/ld-linux-x86-64.so.2
+   fun:_dl_find_object_update
+}
+{
+   LLVM_StillReachable2
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   obj:/usr/lib/x86_64-linux-gnu/libLLVM-15.so.1
+   fun:calloc
+   fun:llvm::StringMapImpl::RehashTable(unsigned int)
+}

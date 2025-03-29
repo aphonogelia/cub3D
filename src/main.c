@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 16:57:54 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/27 17:27:38 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/03/29 16:33:13 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ int	main(int ac, char **av)
 	welcome_screen(&data);
 	load_textures(&data);
 	mlx_resize_hook(data.mlx, &resize_hook, &data);
-	mlx_close_hook(data.mlx, &close_window, &data);
 	mlx_loop_hook(data.mlx, &hoop_func, &data);
 	mlx_key_hook(data.mlx, &escape_handle, &data);
 	mlx_loop(data.mlx);
 	mlx_terminate(data.mlx);
+	clean_menus(&data);
 	clean_textures(&data);
 	clean_parse(&data);
 	return (0);
