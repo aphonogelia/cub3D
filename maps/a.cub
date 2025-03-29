@@ -1,12 +1,12 @@
 NO imgs/wall_ardoise.png
 WE imgs/wall_brick_blue.png
-SO imgs/wall_brickdds.png
+SO imgs/wall_bricks.png
 EA imgs/wall_brick_white.png
 
 C 135,206,235     
 F  63,155,11
 
- 1111111     11111111111111     1
+ 1111111     11111111111111     
 110000011      10000000001
 100000001     1000000000001
  1000001     100000000000001
