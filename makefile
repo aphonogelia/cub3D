@@ -6,7 +6,7 @@
 #    By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/27 19:14:42 by htharrau          #+#    #+#              #
-#    Updated: 2025/03/29 17:19:27 by ilazar           ###   ########.fr        #
+#    Updated: 2025/04/01 18:46:46 by ilazar           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ SRCS		= $(addprefix $(SRCS_DIR), init.c errors.c main.c welcome.c)       \
 				x_helper.c)
 	   
 SRCS_BONUS = $(addprefix $(BONUS_DIR), main.c) \
-				$(addprefix $(BONUS_DIR)other/, doors_parse.c doors.c mouse.c \
+				$(addprefix $(BONUS_DIR)other/, doors_parse.c doors.c \
 				init.c errors.c debug.c menus.c) \
 				$(addprefix $(BONUS_DIR)parsing/, a_parser.c e_trim_right.c d_trim_left.c \
 				g_valid_map.c f_valid_chars.c b_parse_elements.c h_utils_parse.c c_save_map.c) \
@@ -49,8 +49,8 @@ OBJS_BONUS	= $(addprefix $(OBJS_BONUS_DIR), $(SRCS_BONUS:.c=.o))
 
 #-fsanitize=address
 CC 			= cc
-CFLAGS 		= -Wall -Wextra -Werror -I$(MLX_DIR)/include -I$(LIBFT_DIR) -I$(INCS_DIR) -fsanitize=address
-CFLAGS_BONUS = -Wall -Wextra -Werror -I$(MLX_DIR)/include -I$(LIBFT_DIR) -I$(INCS_BONUS_DIR) -fsanitize=address
+CFLAGS 		= -Wall -Wextra -Werror -I$(MLX_DIR)/include -I$(LIBFT_DIR) -I$(INCS_DIR)
+CFLAGS_BONUS = -Wall -Wextra -Werror -I$(MLX_DIR)/include -I$(LIBFT_DIR) -I$(INCS_BONUS_DIR)
 LDFLAGS 	= -L$(LIBFT_DIR) -L$(MLX_DIR)/build -lft -lmlx42  -ldl -lglfw -pthread -lm
 MAKE		= make --no-print-directory
 

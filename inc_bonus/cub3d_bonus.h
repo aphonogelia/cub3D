@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/29 16:26:33 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/04/01 18:45:11 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -312,8 +312,5 @@ void				init_doors(t_data *data);
 t_door				*get_door_at(t_data *data, int map_x, int map_y);
 void				doors_interaction(t_player *player, t_door *doors,
 						int doors_nbr, t_data *data);
-
-void				mouse_callback(double xpos, double ypos, void *param);
-void				check_mouse_inactivity(t_data *data);
 
 #endif

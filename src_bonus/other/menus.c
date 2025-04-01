@@ -6,17 +6,18 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 14:13:05 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/29 17:45:58 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/04/01 19:38:05 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc_bonus/cub3d_bonus.h"
 
 void		welcome_screen(t_data *data, char *path);
-void		menu_clean(t_data *data);
 static void	draw_background(t_data *data);
 mlx_image_t	*scale_image(mlx_t *mlx, mlx_texture_t *texture, int win_width,
 				int win_height);
+static void	process_pixels(mlx_image_t *scaled_image, mlx_texture_t *texture,
+				float scale);
 
 void	welcome_screen(t_data *data, char *path)
 {
@@ -34,8 +35,6 @@ void	welcome_screen(t_data *data, char *path)
 			data->mlx->height);
 	if (scaled_image == NULL)
 		exit_err(data, "Failed to scale the screen img", FAILURE);
-	// data->screen.welcome_img = mlx_texture_to_image(data->mlx,
-	// data->screen.tex);
 	data->screen.welcome_img = scaled_image;
 	scaled_width = data->screen.welcome_img->width;
 	scaled_height = data->screen.welcome_img->height;
@@ -52,7 +51,6 @@ static void	draw_background(t_data *data)
 	int	x;
 	int	y;
 
-	printf("background\n");
 	data->screen.background = mlx_new_image(data->mlx, data->mlx->width,
 			data->mlx->height);
 	y = -1;
@@ -68,55 +66,45 @@ static void	draw_background(t_data *data)
 mlx_image_t	*scale_image(mlx_t *mlx, mlx_texture_t *texture, int win_width,
 		int win_height)
 {
-	float		scale_x;
-	float		scale_y;
+	mlx_image_t	*scaled_image;
+	float		scale;
 	int			new_width;
 	int			new_height;
-	mlx_image_t	*scaled_image;
-	int			src_x;
-	int			src_y;
-	float		scale;
-	int			raw_color;
-	int			color;
 
-	scale_x = (float)win_width / texture->width / 2;
-	scale_y = (float)win_height / texture->height / 2;
-	scale = fmin(scale_x, scale_y);
+	scale = fmin(((float)win_width / texture->width / 2), ((float)win_height
+				/ texture->height / 2));
 	new_width = (int)(texture->width * scale);
 	new_height = (int)(texture->height * scale);
 	scaled_image = mlx_new_image(mlx, new_width, new_height);
 	if (!scaled_image)
 		return (NULL);
-	for (int y = 0; y < new_height; ++y)
-	{
-		for (int x = 0; x < new_width; ++x)
-		{
-			src_x = (int)(x / scale);
-			src_y = (int)(y / scale);
-			raw_color = ((int *)texture->pixels)[src_y * texture->width
-				+ src_x];
-			color = ((raw_color & 0xFF) << 24) | ((raw_color & 0xFF00) << 8) | ((raw_color & 0xFF0000) >> 8) | ((raw_color & 0xFF000000) >> 24);
-			mlx_put_pixel(scaled_image, x, y, color);
-		}
-	}
+	process_pixels(scaled_image, texture, scale);
 	return (scaled_image);
 }
 
-void	clean_menus(t_data *data)
+static void	process_pixels(mlx_image_t *scaled_image, mlx_texture_t *texture,
+		float scale)
 {
-	if (data->screen.background)
+	unsigned int	x;
+	unsigned int	y;
+	int				raw_color;
+	int				color;
+
+	y = 0;
+	while (y < scaled_image->height)
 	{
-		mlx_delete_image(data->mlx, data->screen.background);
-		data->screen.background = NULL;
-	}
-	if (data->screen.welcome_img)
-	{
-		mlx_delete_image(data->mlx, data->screen.welcome_img);
-		data->screen.welcome_img = NULL;
-	}
-	if (data->screen.tex)
-	{
-		mlx_delete_texture(data->screen.tex);
-		data->screen.tex = NULL;
+		x = 0;
+		while (x < scaled_image->width)
+		{
+			raw_color = ((int *)texture->pixels)[((int)(y / scale))
+				* texture->width + ((int)(x / scale))];
+			color = ((raw_color & 0xFF) << 24) 
+				| ((raw_color & 0xFF00) << 8) 
+				| ((raw_color & 0xFF0000) >> 8) 
+				| ((raw_color & 0xFF000000) >> 24);
+			mlx_put_pixel(scaled_image, x, y, color);
+			x++;
+		}
+		y++;
 	}
 }

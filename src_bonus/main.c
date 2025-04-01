@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 16:57:54 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/29 17:17:18 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/04/01 19:07:24 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,9 @@ int	main(int ac, char **av)
 		init_mlx(data);
 		welcome_screen(data, WELCOME_SCREEN);
 		load_textures(data);
-		// print_data(data);
 		mlx_image_to_window((data)->mlx, (data)->img, 0, 0);
 		mlx_resize_hook(data->mlx, &resize_hook, data);
 		mlx_loop_hook((data)->mlx, &hoop_func, data);
-		// mlx_cursor_hook((data)->mlx, &mouse_callback, data);
 		mlx_key_hook((data)->mlx, &keys_handle, data);
 		mlx_loop((data)->mlx);
 		clean_up(data);

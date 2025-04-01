@@ -6,13 +6,11 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 21:25:58 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/26 11:55:33 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/04/01 19:07:44 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc_bonus/cub3d_bonus.h"
-
-
 
 void	print_player(t_player *player)
 {
