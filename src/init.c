@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 11:56:14 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/17 18:08:54 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/04/02 17:09:10 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	init_data(t_data *data)
 	data->input.we = NULL;
 	data->input.ea = NULL;
 	data->input.no = NULL;
-	data->input.floor = GREEN;
-	data->input.sky = BLUE;
+	data->input.floor = -1;
+	data->input.sky = -1;
 	data->input.play_x = -1;
 	data->input.play_y = -1;
 	data->input.player_dir = '0';

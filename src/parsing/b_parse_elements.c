@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_elements.c                                   :+:      :+:    :+:   */
+/*   b_parse_elements.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 12:02:11 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/17 18:05:49 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/04/02 18:11:13 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-static int	get_elem_path(char *line, char **element);
-static int	get_clr_elem(char *line, int *element);
+static int	get_elem_path(char *line, char **element, int start);
+static int	get_clr_elem(char *line, int *element, int i);
 static int	get_clr_component(char *line, int *i, int *comp);
 
 // when an element is found it will be validated and stored in data.
@@ -31,31 +31,33 @@ int	parse_elements(char *line, t_data *data, int found_map)
 	while (line[i] == ' ' || line[i] == '\t')
 		i++;
 	if (line[i] == 'N' && line[i + 1] == 'O')
-		status = get_elem_path(line, &data->input.no);
+		status = get_elem_path(line, &data->input.no, i + 2);
 	else if (line[i] == 'S' && line[i + 1] == 'O')
-		status = get_elem_path(line, &data->input.so);
+		status = get_elem_path(line, &data->input.so, i + 2);
 	else if (line[i] == 'W' && line[i + 1] == 'E')
-		status = get_elem_path(line, &data->input.we);
+		status = get_elem_path(line, &data->input.we, i + 2);
 	else if (line[i] == 'E' && line[i + 1] == 'A')
-		status = get_elem_path(line, &data->input.ea);
+		status = get_elem_path(line, &data->input.ea, i + 2);
 	else if (line[i] == 'F')
-		status = get_clr_elem(&line[i + 1], &data->input.floor);
+		status = get_clr_elem(line, &data->input.floor, i + 1);
 	else if (line[i] == 'C')
-		status = get_clr_elem(&line[i + 1], &data->input.sky);
+		status = get_clr_elem(line, &data->input.sky, i + 1);
+	else
+		err_msg("Unknown element in the map file :/", PARSE_ERR);
 	return (status);
 }
 
 // saves paths for NO SU WE EA
 // doesn't check if path exists - will be checked before loading the texture
-static int	get_elem_path(char *line, char **element)
+static int	get_elem_path(char *line, char **element, int start)
 {
-	int	start;
 	int	end;
 
+	if (line[start] != ' ' && line[start] != '\t')
+		return (err_msg("Map contains a bad element's name :/", PARSE_ERR));
 	if (*element)
 		return (err_msg("Map contains a duplicate element :/", PARSE_ERR));
-	start = 2;
-	while (line[start] == ' ')
+	while (line[start] == ' ' || line[start] == '\t')
 		start++;
 	end = start;
 	while (line[end] != '\n' && line[end] != '\0')
@@ -63,7 +65,7 @@ static int	get_elem_path(char *line, char **element)
 		if (line_empty(&line[end]))
 			break ;
 		if (!ft_isascii(line[end]))
-			return (err_msg("Map contains a bad path1 :/", PARSE_ERR));
+			return (err_msg("Map contains a bad path :/", PARSE_ERR));
 		end++;
 	}
 	if (end == start)
@@ -76,15 +78,18 @@ static int	get_elem_path(char *line, char **element)
 }
 
 // saves Floor or Ceiling color elements
-static int	get_clr_elem(char *line, int *element)
+static int	get_clr_elem(char *line, int *element, int i)
 {
-	int	i;
 	int	r;
 	int	g;
 	int	b;
 
-	i = 0;
-	while (line[i] == ' ')
+	if (line[i] != ' ' && line[i] != '\t')
+		return (err_msg("Map contains a bad element's name12 :/", PARSE_ERR));
+	if (*element != -1)
+		return (err_msg("Map contains a duplicate color element :/",
+				PARSE_ERR));
+	while (line[i] == ' ' || line[i] == '\t')
 		i++;
 	if (get_clr_component(line, &i, &r) == -1)
 		return (PARSE_ERR);
