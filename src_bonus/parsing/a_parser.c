@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 18:18:37 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/27 17:14:37 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/04/03 11:33:08 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	parser(char *file_name, t_data *data)
 	if (status == SUCCESS)
 		status = valid_chars(data, 0, 0);
 	if (status == SUCCESS)
-		status = valid_map(data, status);
+		status = valid_map(data, status, -1);
 	if (status != SUCCESS)
 		clean_parse(data);
 	return (status);

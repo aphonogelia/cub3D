@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   g_valid_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 12:44:10 by inbar             #+#    #+#             */
-/*   Updated: 2025/03/25 19:12:36 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/04/03 11:38:24 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,19 @@ static int	check_top_bottom(t_data *data);
 static int	is_wall(t_data *data, int row, int col);
 
 // returns SUCCESS if map is according to rules
-int	valid_map(t_data *data, int status)
+int	valid_map(t_data *data, int status, int i)
 {
-	int		i;
 	int		col;
 	char	c;
 
 	status = check_top_bottom(data);
-	i = -1;
 	while (data->input.map[++i] != NULL && status == SUCCESS)
 	{
 		col = 0;
-		while (data->input.map[i][col + 1] != '\0')
+		while (data->input.map[i][col + 1] != '\0' && data->input.map[i][col
+			+ 1] != ' ')
 			col++;
-		if (!is_wall(data, i, col) && data->input.map[i][col] != ' ')
+		if (!is_wall(data, i, col))
 			return (err_msg("Map contains open walls :/", PARSE_ERR));
 		while (--col != 0 && status == SUCCESS)
 		{
@@ -107,7 +106,7 @@ static int	check_top_bottom(t_data *data)
 	while (data->input.map[0][++j] != '\0')
 	{
 		if (!is_wall(data, 0, j) && data->input.map[0][j] != ' ')
-			return (err_msg("Map contains open walls1 :/", PARSE_ERR));
+			return (err_msg("Map contains open walls :/", PARSE_ERR));
 	}
 	j = -1;
 	bottom = data->input.h_map - 1;

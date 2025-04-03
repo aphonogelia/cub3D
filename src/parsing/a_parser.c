@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 17:11:28 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/27 17:14:13 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/04/03 11:29:38 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static int	valid_map_file(char *name, int *fd);
 static int	elements_finder(int fd, t_data *data, int status);
+void		print_input(t_data *data);
 
 int	parser(char *file_name, t_data *data)
 {
@@ -31,9 +32,11 @@ int	parser(char *file_name, t_data *data)
 	if (status == SUCCESS)
 		status = valid_chars(data, 0, 0);
 	if (status == SUCCESS)
-		status = valid_map(data, status);
+		status = valid_map(data, status, -1);
 	if (status != SUCCESS)
 		clean_parse(data);
+	if (status == SUCCESS)
+		print_input(data);
 	return (status);
 }
 
@@ -91,4 +94,32 @@ static int	elements_finder(int fd, t_data *data, int status)
 	}
 	free(line);
 	return (status);
+}
+
+void	print_input(t_data *data)
+{
+	int i;
+	t_input input;
+
+	input = data->input;
+	printf("\n=== INPUT INFO ===\n");
+	printf("Map Dimensions: %d x %d\n", input.w_map, input.h_map);
+	printf("Textures:\n");
+	printf("  North: %s\n", input.no);
+	printf("  South: %s\n", input.so);
+	printf("  West: %s\n", input.we);
+	printf("  East: %s\n", input.ea);
+	printf("Colors:\n");
+	printf("  Floor: %#x\n", input.floor);
+	printf("  Ceiling: %#x\n", input.sky);
+	printf("Player:\n");
+	printf("  (x, y): (%d, %d)\n", input.play_x, input.play_y);
+	printf("  Facing: %c\n", input.player_dir);
+	printf("\nMap:\n");
+	i = 0;
+	while (i < input.h_map)
+	{
+		printf("%s$\n", input.map[i]);
+		i++;
+	}
 }

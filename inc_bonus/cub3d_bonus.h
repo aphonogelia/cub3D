@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/04/01 18:45:11 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/04/03 11:32:39 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -245,7 +245,7 @@ int					trim_lines(t_data *data);
 int					trim_rightend(t_data *data);
 int					trim_leftend(t_data *data);
 int					valid_chars(t_data *data, int i, int j);
-int					valid_map(t_data *data, int status);
+int					valid_map(t_data *data, int status, int i);
 int					ft_isspace(char c);
 void				free_2d_char(char **arr);
 int					line_empty(char *line);

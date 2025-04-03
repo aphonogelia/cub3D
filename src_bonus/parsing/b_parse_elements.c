@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 12:02:11 by ilazar            #+#    #+#             */
-/*   Updated: 2025/04/02 18:12:27 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/04/03 11:37:49 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static int	get_clr_elem(char *line, int *element, int i)
 	int	b;
 
 	if (line[i] != ' ' && line[i] != '\t')
-		return (err_msg("Map contains a bad element's name12 :/", PARSE_ERR));
+		return (err_msg("Map contains a bad element's name :/", PARSE_ERR));
 	if (*element != -1)
 		return (err_msg("Map contains a duplicate color element :/",
 				PARSE_ERR));
