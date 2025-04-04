@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 12:44:10 by inbar             #+#    #+#             */
-/*   Updated: 2025/04/04 13:52:49 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/04/04 14:01:50 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 static int	check_space(t_data *data, int row, int col);
 static int	check_zero(t_data *data, int row, int col);
 static int	check_top_bottom(t_data *data);
-static int check_end_line(t_data *data, int *col, int i);
-
+static int	check_end_line(t_data *data, int *col, int i);
 
 // returns SUCCESS if map is according to rules
 int	valid_map(t_data *data, int status, int i)

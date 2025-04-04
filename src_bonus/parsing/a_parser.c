@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 18:18:37 by ilazar            #+#    #+#             */
-/*   Updated: 2025/04/04 13:57:25 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/04/04 14:04:07 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,18 @@ static int	elements_finder(int fd, t_data *data, int status)
 	}
 	free(line);
 	return (status);
+}
+
+void	clean_parse(t_data *data)
+{
+	if (data->input.map)
+		free_2d_char(data->input.map);
+	if (data->input.no)
+		free(data->input.no);
+	if (data->input.so)
+		free(data->input.so);
+	if (data->input.we)
+		free(data->input.we);
+	if (data->input.ea)
+		free(data->input.ea);
 }

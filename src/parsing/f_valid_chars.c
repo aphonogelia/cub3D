@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 13:20:57 by ilazar            #+#    #+#             */
-/*   Updated: 2025/04/04 13:50:49 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/04/04 14:01:45 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ static void	handle_player(t_data *data, int i, int j);
 static int	is_player(char c);
 static int	is_valid_char(char c);
 
-// extracts player position and direction, returns error if found invalid char
-// bc of extracting player's position, should happen after trimming map lines
+/* extracts player position and direction, returns error if found invalid char
+ bc of extracting player's position, should happen after trimming map lines */
 int	valid_chars(t_data *data, int i, int j)
 {
 	char	c;

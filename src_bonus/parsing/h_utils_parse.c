@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   h_utils_parse.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 16:31:50 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/25 19:12:38 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/04/04 14:04:00 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,10 @@ char	*valid_first_occurance(char *str)
 	return (NULL);
 }
 
-void	clean_parse(t_data *data)
+// returns 1 if value in map should be treated as a wall
+int	is_wall(t_data *data, int row, int col)
 {
-	if (data->input.map)
-		free_2d_char(data->input.map);
-	if (data->input.no)
-		free(data->input.no);
-	if (data->input.so)
-		free(data->input.so);
-	if (data->input.we)
-		free(data->input.we);
-	if (data->input.ea)
-		free(data->input.ea);
+	if (data->input.map[row][col] == '1' || data->input.map[row][col] == '2')
+		return (1);
+	return (0);
 }

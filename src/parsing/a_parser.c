@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 17:11:28 by ilazar            #+#    #+#             */
-/*   Updated: 2025/04/04 13:57:33 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/04/04 14:00:28 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,8 @@ static int	elements_finder(int fd, t_data *data, int status)
 
 void	print_input(t_data *data)
 {
-	int i;
-	t_input input;
+	t_input	input;
+	int		i;
 
 	input = data->input;
 	printf("\n=== INPUT INFO ===\n");
