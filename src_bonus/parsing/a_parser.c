@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 18:18:37 by ilazar            #+#    #+#             */
-/*   Updated: 2025/04/03 11:33:08 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/04/04 13:57:25 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	valid_map_file(char *name, int *fd)
 	i = 0;
 	while (name[i] != '\0' && name[i] != '.')
 	{
-		if (name[0] == ' ')
+		if (name[i] == ' ')
 			return (err_msg("No spaces in the filename please :/", PARSE_ERR));
 		i++;
 	}

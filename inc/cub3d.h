@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/04/03 11:30:15 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/04/04 13:51:01 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,6 +182,7 @@ int					trim_rightend(t_data *data);
 int					trim_leftend(t_data *data);
 int					valid_chars(t_data *data, int i, int j);
 int					valid_map(t_data *data, int status, int i);
+int					is_wall(t_data *data, int row, int col);
 int					ft_isspace(char c);
 void				free_2d_char(char **arr);
 int					line_empty(char *line);
@@ -194,7 +195,6 @@ void				clean_parse(t_data *data);
 /******************************************************************************/
 /******************************************************************************/
 
-// HELENE
 void				init_mlx(t_data *data);
 void				hoop_func(void *param);
 void				update_angle(t_data *data);

@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 12:44:10 by inbar             #+#    #+#             */
-/*   Updated: 2025/04/03 12:10:59 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/04/04 13:52:49 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,33 +15,8 @@
 static int	check_space(t_data *data, int row, int col);
 static int	check_zero(t_data *data, int row, int col);
 static int	check_top_bottom(t_data *data);
-static int	is_wall(t_data *data, int row, int col);
+static int check_end_line(t_data *data, int *col, int i);
 
-int	check_end_line(t_data *data, int *col, int i)
-{
-	printf("check line:%s , i:%d\n", data->input.map[i], i);
-	while (data->input.map[i][*col + 1] != '\0')
-		*col = *col + 1;
-	printf("c:%c$ col:%d\n", data->input.map[i][*col], *col);
-	if (!is_wall(data, i, *col) && data->input.map[i][*col] != ' ')
-	{
-		// printf("%s, i:%d\n", data->input.map[i], i);
-		printf("c:%c col:%d\n", data->input.map[i][*col], *col);
-		return (err_msg("Map contains open walls1 :/", PARSE_ERR));
-	}
-	if (data->input.map[i][*col] != ' ' && data->input.map[i][*col + 1] != '\0')
-	{
-		*col = *col - 1;
-		while (*col != 0)
-		{
-			if (data->input.map[i][*col] == '1')
-				return (SUCCESS);
-			*col = *col - 1;
-		}
-		return (err_msg("Map contains open walls11 :/", PARSE_ERR));
-	}
-	return (SUCCESS);
-}
 
 // returns SUCCESS if map is according to rules
 int	valid_map(t_data *data, int status, int i)
@@ -76,7 +51,7 @@ static int	check_space(t_data *data, int row, int col)
 	char	*msg;
 	char	c;
 
-	msg = "Map contains open walls2 :/";
+	msg = "Map contains open walls :/";
 	map = data->input.map;
 	if (col != 0)
 	{
@@ -101,7 +76,7 @@ static int	check_zero(t_data *data, int row, int col)
 	char	*msg;
 	char	c;
 
-	msg = "Map contains open walls3 :/";
+	msg = "Map contains open walls :/";
 	map = data->input.map;
 	if (col != 0)
 	{
@@ -128,22 +103,27 @@ static int	check_top_bottom(t_data *data)
 	while (data->input.map[0][++j] != '\0')
 	{
 		if (!is_wall(data, 0, j) && data->input.map[0][j] != ' ')
-			return (err_msg("Map contains open walls4 :/", PARSE_ERR));
+			return (err_msg("Map contains open walls :/", PARSE_ERR));
 	}
 	j = -1;
 	bottom = data->input.h_map - 1;
 	while (data->input.map[bottom][++j] != '\0')
 	{
 		if (!is_wall(data, bottom, j) && data->input.map[bottom][j] != ' ')
-			return (err_msg("Map contains open walls5 :/", PARSE_ERR));
+			return (err_msg("Map contains open walls :/", PARSE_ERR));
 	}
 	return (SUCCESS);
 }
 
-// returns 1 if value in map should be treated as a wall
-static int	is_wall(t_data *data, int row, int col)
+static int	check_end_line(t_data *data, int *col, int i)
 {
-	if (data->input.map[row][col] == '1')
-		return (1);
-	return (0);
+	while (data->input.map[i][*col + 1] != '\0')
+		*col = *col + 1;
+	while (!is_wall(data, i, *col))
+	{
+		if (*col == -1 || data->input.map[i][*col] == '0')
+			return (err_msg("Map contains open walls :/", PARSE_ERR));
+		*col = *col - 1;
+	}
+	return (SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 12:44:10 by inbar             #+#    #+#             */
-/*   Updated: 2025/04/03 11:38:24 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/04/04 13:51:36 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 static int	check_space(t_data *data, int row, int col);
 static int	check_zero(t_data *data, int row, int col);
 static int	check_top_bottom(t_data *data);
-static int	is_wall(t_data *data, int row, int col);
+static int	check_end_line(t_data *data, int *col, int i);
+
 
 // returns SUCCESS if map is according to rules
 int	valid_map(t_data *data, int status, int i)
@@ -27,11 +28,7 @@ int	valid_map(t_data *data, int status, int i)
 	while (data->input.map[++i] != NULL && status == SUCCESS)
 	{
 		col = 0;
-		while (data->input.map[i][col + 1] != '\0' && data->input.map[i][col
-			+ 1] != ' ')
-			col++;
-		if (!is_wall(data, i, col))
-			return (err_msg("Map contains open walls :/", PARSE_ERR));
+		status = check_end_line(data, &col, i);
 		while (--col != 0 && status == SUCCESS)
 		{
 			c = data->input.map[i][col];
@@ -118,10 +115,15 @@ static int	check_top_bottom(t_data *data)
 	return (SUCCESS);
 }
 
-// returns 1 if value in map should be treated as a wall
-static int	is_wall(t_data *data, int row, int col)
+static int	check_end_line(t_data *data, int *col, int i)
 {
-	if (data->input.map[row][col] == '1' || data->input.map[row][col] == '2')
-		return (1);
-	return (0);
+	while (data->input.map[i][*col + 1] != '\0')
+		*col = *col + 1;
+	while (!is_wall(data, i, *col))
+	{
+		if (*col == -1 || data->input.map[i][*col] == '0')
+			return (err_msg("Map contains open walls 909 :/", PARSE_ERR));
+		*col = *col - 1;
+	}
+	return (SUCCESS);
 }

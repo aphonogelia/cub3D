@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   valid_chars.c                                      :+:      :+:    :+:   */
+/*   f_valid_chars.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 13:20:57 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/17 18:06:14 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/04/04 13:50:49 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,16 @@ static void	handle_player(t_data *data, int i, int j)
 static int	is_player(char c)
 {
 	if (c == 'N' || c == 'S' || c == 'W' || c == 'E')
+		return (1);
+	return (0);
+}
+
+// returns 1 if value in map should be treated as a wall
+int	is_wall(t_data *data, int row, int col)
+{
+	if (col < 0 || row < 0)
+		return (0);
+	if (data->input.map[row][col] == '1')
 		return (1);
 	return (0);
 }
