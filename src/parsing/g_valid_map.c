@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 12:44:10 by inbar             #+#    #+#             */
-/*   Updated: 2025/04/04 14:01:50 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/04/06 18:55:51 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ static int	check_space(t_data *data, int row, int col)
 
 // if col is not 0 -> leftside must be 1, 2 or 0 or player
 // if row is not last one -> line down must be 1 or 0 or player
+// if row is not first one -> row up must be wall or 0 or player
 static int	check_zero(t_data *data, int row, int col)
 {
 	char	**map;
@@ -87,6 +88,12 @@ static int	check_zero(t_data *data, int row, int col)
 	{
 		c = map[row + 1][col];
 		if (!is_wall(data, row + 1, col) && c != '0')
+			return (err_msg(msg, PARSE_ERR));
+	}
+	if (row != 0)
+	{
+		c = map[row - 1][col];
+		if (!is_wall(data, row - 1, col) && c != '0')
 			return (err_msg(msg, PARSE_ERR));
 	}
 	return (SUCCESS);

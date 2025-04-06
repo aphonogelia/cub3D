@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 11:56:14 by ilazar            #+#    #+#             */
-/*   Updated: 2025/04/01 19:09:48 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/04/06 18:38:27 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,6 @@ void	init_data(t_data *data)
 
 void	load_textures(t_data *data)
 {
-	int	i;
-
-	i = 0;
 	data->textures = (mlx_texture_t **)malloc(sizeof(mlx_texture_t *) * 5);
 	if (!data->textures)
 		exit_err(data, "Malloc", MALLOC_ERR);
