@@ -6,13 +6,14 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 20:30:47 by htharrau          #+#    #+#             */
-/*   Updated: 2025/03/14 14:09:27 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/04/07 13:27:43 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-void	draw_ceiling_floor(t_data *data);
+void		draw_ceiling_floor(t_data *data);
+static void	default_clrs(t_data *data);
 
 void	draw_ceiling_floor(t_data *data)
 {
@@ -20,6 +21,7 @@ void	draw_ceiling_floor(t_data *data)
 	int32_t	j;
 
 	i = 0;
+	default_clrs(data);
 	while (i < data->mlx->height / 2)
 	{
 		j = 0;
@@ -40,4 +42,13 @@ void	draw_ceiling_floor(t_data *data)
 		}
 		i++;
 	}
+}
+
+// sets default colors if needed
+static void	default_clrs(t_data *data)
+{
+	if (data->input.floor == -1)
+		data->input.floor = CLR_FLOOR;
+	if (data->input.sky == -1)
+		data->input.sky = CLR_SKY;
 }

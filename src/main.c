@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 16:57:54 by htharrau          #+#    #+#             */
-/*   Updated: 2025/04/01 18:46:12 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/04/07 13:09:07 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,5 @@ int	main(int ac, char **av)
 	clean_parse(&data);
 	clean_textures(&data);
 	mlx_terminate(data.mlx);
-	return (0);
+	return (status);
 }

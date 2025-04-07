@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/04/07 12:50:46 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/04/07 13:28:33 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@
 # define SEAFOAM 0x98FB98FF
 # define ROSE 0xFFB3BAFF
 # define LEMON 0xFFFACD8F
+# define COLUMBIA_BLUE 0xC8D9F0FF
 # define BLUSH_TRANSLUCENT 0xFFB6C180 // Approximately 50% translucent
 
 // Minimap
@@ -61,7 +62,9 @@
 # define FLOOR_COL LEMON
 # define BACK_COL NAVY
 
-// Wall default colors
+// Wall floor sky default colors
+# define CLR_SKY COLUMBIA_BLUE
+# define CLR_FLOOR LEMON
 # define CLR_NORTH MINT
 # define CLR_WEST SAGE
 # define CLR_SOUTH LILAC

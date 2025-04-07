@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/04/04 13:51:01 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/04/07 13:28:42 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 # define LIME 0x00FF00FF
 # define TEAL 0x008080FF
 # define NAVY 0x00008000
+# define LEMON 0xFFFACD8F
+# define COLUMBIA_BLUE 0xC8D9F0FF
 
 # define M_PI 3.14159265358979323846
 # define MAX_DIST 1e5
@@ -61,7 +63,9 @@
 # define SOUTH 2
 # define EAST 3
 
-// Wall default colors
+// Wall floor sky default colors
+# define CLR_SKY COLUMBIA_BLUE
+# define CLR_FLOOR LEMON
 # define CLR_NORTH TEAL
 # define CLR_WEST ORANGE
 # define CLR_SOUTH PURPLE
