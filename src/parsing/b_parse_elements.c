@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 12:02:11 by ilazar            #+#    #+#             */
-/*   Updated: 2025/04/03 11:38:47 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/04/07 13:00:57 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,8 @@ static int	get_clr_elem(char *line, int *element, int i)
 	int	b;
 
 	if (line[i] != ' ' && line[i] != '\t')
-		return (err_msg("Map contains a bad element's name :/", PARSE_ERR));
+		return (err_msg("Map file contains a bad element's name :/",
+				PARSE_ERR));
 	if (*element != -1)
 		return (err_msg("Map contains a duplicate color element :/",
 				PARSE_ERR));
@@ -108,6 +109,12 @@ static int	get_clr_elem(char *line, int *element, int i)
 // gets the R G or B component or a color
 static int	get_clr_component(char *line, int *i, int *comp)
 {
+	while (line[*i] == ' ' || line[*i] == '\t')
+		*i = *i + 1;
+	if (line[*i] == ',')
+		*i = *i + 1;
+	while (line[*i] == ' ' || line[*i] == '\t')
+		*i = *i + 1;
 	*comp = 0;
 	if (line[*i] == '\0' || !ft_isdigit(line[*i]))
 		return (err_msg("Map contains a bad color element :/", -1));
