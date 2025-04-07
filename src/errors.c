@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 17:14:14 by ilazar            #+#    #+#             */
-/*   Updated: 2025/04/01 19:38:23 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/04/07 12:03:59 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	err_msg(char *msg, int exit_status)
 {
-	printf("Error\n%s\n", msg);
+	printf("Error:\n%s\n", msg);
 	return (exit_status);
 }
 

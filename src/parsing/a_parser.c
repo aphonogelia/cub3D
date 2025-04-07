@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 17:11:28 by ilazar            #+#    #+#             */
-/*   Updated: 2025/04/04 14:00:28 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/04/07 11:59:05 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static int	valid_map_file(char *name, int *fd)
 		return (err_msg("File is a directory :/", PARSE_ERR));
 	*fd = open(name, O_RDONLY);
 	if (*fd == -1)
-		return (err_msg("File has no permissions or doesn't exists :/",
+		return (err_msg("File has no permissions or doesn't exist :/",
 				PARSE_ERR));
 	return (SUCCESS);
 }
