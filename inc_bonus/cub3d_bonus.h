@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/04/04 13:50:53 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/04/07 12:50:46 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@
 // Minimap
 # define PLAYER_COL CORAL
 # define TILE_COL ROSE
+# define DOOR_COL ROSE
 # define RAY_COL MAGENTA
 # define OFFSET 5
 # define TILE_SIZE 7
@@ -58,7 +59,6 @@
 # define PLAYER_SPACE 0.35
 
 # define FLOOR_COL LEMON
-# define DOOR_COL PURPLE
 # define BACK_COL NAVY
 
 // Wall default colors
@@ -71,8 +71,8 @@
 # define M_PI 3.14159265358979323846
 # define MAX_DIST 1e5
 
-# define WIDTH 800
-# define HEIGHT 600
+# define WIDTH 1000
+# define HEIGHT 1000
 
 // menus
 # define WELCOME_SCREEN "imgs/cube.png"
@@ -81,8 +81,7 @@
 
 # define FOV 66
 # define MVT_SPEED 0.07
-# define ROT_SPEED 0.055
-# define MOUSE_SENS 0.01 // mouse sensitivity
+# define ROT_SPEED 0.045
 # define MAX_DOORS 10
 
 // map items

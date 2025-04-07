@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+         #
+#    By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/27 19:14:42 by htharrau          #+#    #+#              #
-#    Updated: 2025/04/01 18:46:46 by ilazar           ###   ########.fr        #
+#    Updated: 2025/04/07 12:51:21 by htharrau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,8 +56,8 @@ MAKE		= make --no-print-directory
 
 .SILENT:
 
-all:			$(NAME) $(NAME_BONUS)
 normal:			$(NAME)
+all:			$(NAME) $(NAME_BONUS)
 bonus:			$(NAME_BONUS)
 
 $(NAME):		$(OBJS) $(LIBFT) $(MLX)
