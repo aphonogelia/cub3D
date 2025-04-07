@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/04/07 13:28:33 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/04/07 15:42:18 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@
 # define TILE_SIZE 7
 # define PLAYER_X 200
 # define PLAYER_Y 80
-# define PLAYER_SPACE 0.35
+# define PLAYER_SPACE 0.25
 
 # define FLOOR_COL LEMON
 # define BACK_COL NAVY
@@ -80,7 +80,7 @@
 // menus
 # define WELCOME_SCREEN "imgs/cube.png"
 # define END_SCREEN "imgs/cube_end.png"
-# define DR_TEX_PATH "imgs/door2.png"
+# define DR_TEX_PATH "imgs/door1.png"
 
 # define FOV 66
 # define MVT_SPEED 0.07

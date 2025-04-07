@@ -1,18 +1,20 @@
 
 
-F 100,150,80    
-C 50,100,200
 
-NO imgs/wall_coquelicot.png
-SO imgs/marble-yellow.png
-WE imgs/wall_flower_yellow.png
-EA imgs/wall_natural_yellow.png 
+
+NO imgs/cheese2.png
+SO imgs/wine.png
+WE imgs/cheese1.png
+EA imgs/baguette.png 
 
 
 
 
 1111111111111111111
 1000000000110000001
-1011000001110000001  
-1000100N00000000001
+1011000001211000001  
+1000000000000000001
+1000000000000000001
+1000000000000000001
+10000000000000000W1
 1121111111111111111
