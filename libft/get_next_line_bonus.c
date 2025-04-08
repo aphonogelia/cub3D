@@ -6,11 +6,17 @@
 /*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 11:19:59 by htharrau          #+#    #+#             */
-/*   Updated: 2025/02/04 10:08:16 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/02/19 15:46:47 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+char		*get_next_line(int fd);
+static char	*ft_stash(char *buffer, char **stash);
+static char	*ft_line(char **stash);
+static int	ft_read(int fd, char **stash);
+static char	*ft_remain(char **stash);
 
 static char	*ft_stash(char *buffer, char **stash)
 {
@@ -92,8 +98,11 @@ char	*get_next_line(int fd)
 	ssize_t		bytes_read;
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE < 1)
-		return (NULL);
+	if (fd < 0 || BUFFER_SIZE < 1 || fd >= 1024)
+	{
+			cleanup_stash(&stash[fd]);
+			return NULL;
+	}
 	while (1)
 	{
 		line = ft_line(&stash[fd]);
@@ -108,5 +117,22 @@ char	*get_next_line(int fd)
 		}
 		if (bytes_read == 0)
 			return (ft_remain(&stash[fd]));
+	}
+}
+
+// Cleanup all stashes when called with invalid fd
+void	cleanup_stash(char	*stash[])
+{
+	int	i;
+
+	i = 0;
+	while (i < 1024)
+	{
+		if (stash[i])
+		{
+			free(stash[i]);
+			stash[i] = NULL;
+		}
+		i++;
 	}
 }

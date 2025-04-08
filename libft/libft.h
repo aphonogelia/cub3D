@@ -24,10 +24,11 @@
 
 // GET NEXT LINE
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 5
+#  define BUFFER_SIZE 50000
 # endif
 
 char	*get_next_line(int fd);
+void	cleanup_stash(char	*stash[]);
 
 // LIBFT
 typedef struct s_list

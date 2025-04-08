@@ -6,7 +6,7 @@
 #    By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/20 20:43:24 by htharrau          #+#    #+#              #
-#    Updated: 2025/02/16 14:47:39 by htharrau         ###   ########.fr        #
+#    Updated: 2025/02/19 15:46:35 by htharrau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,10 @@ SRCS	=   ft_atoi.c		ft_itoa.c		ft_putnbr_fd.c	ft_strlcpy.c	\
 			ft_putchar_fd.c	ft_strjoin.c	ft_strtrim.c	ft_isprint.c	\
 			ft_putendl_fd.c	ft_strlcat.c	ft_strcmp.c						\
 			ft_lstnew.c		ft_lstsize.c	ft_lstlast.c	ft_lstdelone.c	\
-			ft_lstclear.c	ft_lstiter.c	ft_lstmap.c 					\
+			ft_lstclear.c	ft_lstiter.c	ft_lstmap.c   get_next_line_utils.c \
 			ft_lstadd_back.c	ft_lstadd_front.c	get_next_line_bonus.c	\
-			ft_printf.c 	ft_spec.c 		ft_put.c 		ft_length.c
+			ft_printf.c 	ft_spec.c 		ft_put.c 		ft_length.c		\
+			
 
 OBJS	= $(SRCS:.c=.o)
 

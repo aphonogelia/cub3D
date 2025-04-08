@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   a_parser.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 17:11:28 by ilazar            #+#    #+#             */
-/*   Updated: 2025/04/07 11:59:05 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/04/08 18:35:22 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ static int	elements_finder(int fd, t_data *data, int status)
 			status = parse_elements(line, data, found_map);
 	}
 	free(line);
+	get_next_line(-1);
 	return (status);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   doors_parse.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 04:33:38 by ilazar            #+#    #+#             */
-/*   Updated: 2025/04/08 16:18:19 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/04/08 18:39:44 by htharrau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,6 @@ static void		maximum_doors(t_data *data)
 {
 	ft_printf("Doors number exceed maximum :/\n");
 	clean_parse(data);
+	free(data);
 	exit(PARSE_ERR);
 }
