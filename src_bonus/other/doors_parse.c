@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 04:33:38 by ilazar            #+#    #+#             */
-/*   Updated: 2025/03/26 18:03:06 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/04/08 16:18:19 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void		save_door(t_data *data, int row, int col, int door_nbr);
 static int		is_exit_door(t_data *data, int row, int col);
+static void		maximum_doors(t_data *data);
 
 void	init_doors(t_data *data)
 {
@@ -32,7 +33,7 @@ void	init_doors(t_data *data)
 			{
 				doors_nbr++;
 				if (doors_nbr > MAX_DOORS - 1)
-					handle_error("Doors number exceed maximum\n", data);
+					maximum_doors(data);
 				save_door(data, i, j, doors_nbr);
 			}
 			j++;
@@ -68,4 +69,11 @@ static int	is_exit_door(t_data *data, int row, int col)
 		+ 1] == '\0')
 		return (1);
 	return (0);
+}
+
+static void		maximum_doors(t_data *data)
+{
+	ft_printf("Doors number exceed maximum :/\n");
+	clean_parse(data);
+	exit(PARSE_ERR);
 }
