@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/04/08 16:19:33 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/04/10 07:58:46 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@
 # define FOV 66
 # define MVT_SPEED 0.07
 # define ROT_SPEED 0.045
-# define MAX_DOORS 10
+# define MAX_DOORS 15
 
 // map items
 # define WALL '1'
@@ -310,7 +310,7 @@ void				print_ray2(t_ray *ray);
 void				exit_err(t_data *data, char *msg, int exit_status);
 void				welcome_screen(t_data *data, char *path);
 void				clean_menus(t_data *data);
-void				init_doors(t_data *data);
+int				parse_doors(t_data *data);
 t_door				*get_door_at(t_data *data, int map_x, int map_y);
 void				doors_interaction(t_player *player, t_door *doors,
 						int doors_nbr, t_data *data);

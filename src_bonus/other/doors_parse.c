@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   doors_parse.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 04:33:38 by ilazar            #+#    #+#             */
-/*   Updated: 2025/04/08 18:39:44 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/04/10 07:57:23 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static void		save_door(t_data *data, int row, int col, int door_nbr);
 static int		is_exit_door(t_data *data, int row, int col);
-static void		maximum_doors(t_data *data);
+// static void		maximum_doors(t_data *data);
 
-void	init_doors(t_data *data)
+int	parse_doors(t_data *data)
 {
 	int	j;
 	int	doors_nbr;
@@ -33,7 +33,7 @@ void	init_doors(t_data *data)
 			{
 				doors_nbr++;
 				if (doors_nbr > MAX_DOORS - 1)
-					maximum_doors(data);
+					return (err_msg("Doors number exceed maximum :/", PARSE_ERR));
 				save_door(data, i, j, doors_nbr);
 			}
 			j++;
@@ -41,6 +41,7 @@ void	init_doors(t_data *data)
 		i++;
 	}
 	data->input.doors_nbr = doors_nbr;
+	return (SUCCESS);
 }
 
 static void	save_door(t_data *data, int row, int col, int door_nbr)
@@ -71,10 +72,10 @@ static int	is_exit_door(t_data *data, int row, int col)
 	return (0);
 }
 
-static void		maximum_doors(t_data *data)
-{
-	ft_printf("Doors number exceed maximum :/\n");
-	clean_parse(data);
-	free(data);
-	exit(PARSE_ERR);
-}
+// static void		maximum_doors(t_data *data)
+// {
+// 	ft_printf("Doors number exceed maximum :/\n");
+// 	clean_parse(data);
+// 	free(data);
+// 	exit(PARSE_ERR);
+// }

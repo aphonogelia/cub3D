@@ -6,7 +6,7 @@
 /*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:14:51 by htharrau          #+#    #+#             */
-/*   Updated: 2025/04/07 13:28:42 by ilazar           ###   ########.fr       */
+/*   Updated: 2025/04/10 07:59:12 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,6 @@
 # define FOV 66
 # define PLAYER_SPACE 0.15
 
-// Minimap colors
-# define PLAYER_COL NAVY
-# define TILE_COL NAVY
-# define FLOOR_COL NAVY
-# define DOOR_COL NAVY
-# define BACK_COL NAVY
-# define RAY_COL NAVY
-
 // status states
 # define PARSE_ERR 3
 # define MALLOC_ERR 2
@@ -70,7 +62,6 @@
 # define CLR_WEST ORANGE
 # define CLR_SOUTH PURPLE
 # define CLR_EAST GRAY
-# define CLR_DOOR BROWN
 
 # include "../MLX42/include/MLX42/MLX42.h"
 # include "../libft/libft.h"

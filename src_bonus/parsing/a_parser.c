@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   a_parser.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htharrau <htharrau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilazar <ilazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 18:18:37 by ilazar            #+#    #+#             */
-/*   Updated: 2025/04/08 18:35:34 by htharrau         ###   ########.fr       */
+/*   Updated: 2025/04/10 07:56:55 by ilazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	parser(char *file_name, t_data *data)
 		status = valid_chars(data, 0, 0);
 	if (status == SUCCESS)
 		status = valid_map(data, status, -1);
+	if (status == SUCCESS)
+		status = parse_doors(data);
 	if (status != SUCCESS)
 		clean_parse(data);
 	return (status);
